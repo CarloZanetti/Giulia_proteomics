@@ -3,7 +3,7 @@ project:
   output-dir: docs
   render:
     - "**/*.qmd"
-    - "!notebooks/02a_msstats.qmd"
+    - "!notebooks/02_msstats.qmd"
 
 website:
   title: "Giulia Proteomics"
@@ -11,9 +11,9 @@ website:
     left:
       - href: index.qmd
         text: Home
-      - href: notebooks/01a_initial_qc_spectronaut.qmd
+      - href: notebooks/01_initial_qc_spectronaut.qmd
         text: "1. Initial QC"
-      - href: notebooks/02a_msstats.qmd
+      - href: notebooks/02_msstats.qmd
         text: "2. MSstats"
       - href: notebooks/03_DE_plots.qmd
         text: "3. DE Plots"

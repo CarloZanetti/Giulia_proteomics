@@ -1,105 +1,105 @@
 [
   {
-    "objectID": "notebooks/01a_initial_qc_spectronaut.html#set-directories",
-    "href": "notebooks/01a_initial_qc_spectronaut.html#set-directories",
+    "objectID": "notebooks/01_initial_qc_spectronaut.html#set-directories",
+    "href": "notebooks/01_initial_qc_spectronaut.html#set-directories",
     "title": "Initial QC & Data Cleaning — Proteome",
     "section": "Set directories",
     "text": "Set directories\n\n\nCode\nbase_dir &lt;- \"/nemo/lab/destrooperb/home/shared/zanettc/giulia_proteomics\"\nrun_num  &lt;- \"run1\"\n\nresults_dir &lt;- file.path(base_dir, \"results\", run_num)\nobjects_dir &lt;- file.path(base_dir, \"data\", \"processed\", run_num)\ninput_dir   &lt;- file.path(base_dir, \"input\")\n\ndir.create(results_dir, recursive = TRUE, showWarnings = FALSE)\ndir.create(objects_dir, recursive = TRUE, showWarnings = FALSE)"
   },
   {
-    "objectID": "notebooks/01a_initial_qc_spectronaut.html#define-study-design",
-    "href": "notebooks/01a_initial_qc_spectronaut.html#define-study-design",
+    "objectID": "notebooks/01_initial_qc_spectronaut.html#define-study-design",
+    "href": "notebooks/01_initial_qc_spectronaut.html#define-study-design",
     "title": "Initial QC & Data Cleaning — Proteome",
     "section": "Define study design",
     "text": "Define study design\nGA_1–4: hApp | GA_5–8: hAppNLGF | GA_9–12: hAppNLG_FIRE (no microglia) | GA_13–16: hApp_FIRE (no microglia)\n\n\nCode\nmeta &lt;- data.table(\n  FileName      = paste0(\"GA_\", 1:16),\n  Condition     = rep(c(\"hApp\", \"hAppNLGF\", \"hAppNLG_FIRE\", \"hApp_FIRE\"), each = 4),\n  BioReplicate  = rep(1:4, times = 4),\n  Has_Microglia = rep(c(TRUE, TRUE, FALSE, FALSE), each = 4)\n)\nmeta"
   },
   {
-    "objectID": "notebooks/01a_initial_qc_spectronaut.html#read-spectronaut-msstats-proteome-report",
-    "href": "notebooks/01a_initial_qc_spectronaut.html#read-spectronaut-msstats-proteome-report",
+    "objectID": "notebooks/01_initial_qc_spectronaut.html#read-spectronaut-msstats-proteome-report",
+    "href": "notebooks/01_initial_qc_spectronaut.html#read-spectronaut-msstats-proteome-report",
     "title": "Initial QC & Data Cleaning — Proteome",
     "section": "Read Spectronaut MSStats proteome report",
     "text": "Read Spectronaut MSStats proteome report\nOnly the protein-level columns are selected to keep memory manageable on this 8.4 GB file. After deduplication the fragment-level rows collapse to one row per protein–sample pair.\n\n\nCode\ncat(\"Reading Spectronaut report (selecting protein-level columns only)...\\n\")\n\n\nReading Spectronaut report (selecting protein-level columns only)...\n\n\nCode\n#no PG.Genes\nspec_raw &lt;- fread(\n  file.path(input_dir, \"20260423_154110_PCF000612_GA_MSStats_Report-Proteome.csv\")#,\n  #select = c(\"R.FileName\", \"PG.ProteinGroups\", \"PG.ProteinAccessions\", #\"PG.Qvalue\", \"PG.Quantity\")\n)\n\ncat(\"Fragment rows loaded:\", nrow(spec_raw), \"\\n\")\n\n\nFragment rows loaded: 24057952 \n\n\nCode\ncat(\"Unique samples found:\", uniqueN(spec_raw$R.FileName), \"\\n\")\n\n\nUnique samples found: 16 \n\n\nCode\ncat(\"Samples present:\", sort(unique(spec_raw$R.FileName)), \"\\n\")\n\n\nSamples present: GA_1 GA_10 GA_11 GA_12 GA_13 GA_14 GA_15 GA_16 GA_2 GA_3 GA_4 GA_5 GA_6 GA_7 GA_8 GA_9"
   },
   {
-    "objectID": "notebooks/01a_initial_qc_spectronaut.html#extract-unique-protein-level-quantities-per-sample",
-    "href": "notebooks/01a_initial_qc_spectronaut.html#extract-unique-protein-level-quantities-per-sample",
+    "objectID": "notebooks/01_initial_qc_spectronaut.html#extract-unique-protein-level-quantities-per-sample",
+    "href": "notebooks/01_initial_qc_spectronaut.html#extract-unique-protein-level-quantities-per-sample",
     "title": "Initial QC & Data Cleaning — Proteome",
     "section": "Extract unique protein-level quantities per sample",
     "text": "Extract unique protein-level quantities per sample\nPG.Quantity repeats for every fragment of a protein within a sample — deduplicate to one row per protein–sample pair.\n\n\nCode\npg_long &lt;- unique(spec_raw[, .(R.FileName, PG.ProteinGroups, PG.ProteinAccessions,\n                                PG.Qvalue, PG.Quantity)])\n\ncat(\"Unique protein-sample rows:\", nrow(pg_long), \"\\n\")\n\n\nUnique protein-sample rows: 142768 \n\n\nCode\ncat(\"Unique proteins:\", uniqueN(pg_long$PG.ProteinGroups), \"\\n\")\n\n\nUnique proteins: 8923"
   },
   {
-    "objectID": "notebooks/01a_initial_qc_spectronaut.html#pivot-to-wide-format-proteins-samples",
-    "href": "notebooks/01a_initial_qc_spectronaut.html#pivot-to-wide-format-proteins-samples",
+    "objectID": "notebooks/01_initial_qc_spectronaut.html#pivot-to-wide-format-proteins-samples",
+    "href": "notebooks/01_initial_qc_spectronaut.html#pivot-to-wide-format-proteins-samples",
     "title": "Initial QC & Data Cleaning — Proteome",
     "section": "Pivot to wide format (proteins × samples)",
     "text": "Pivot to wide format (proteins × samples)\n\n\nCode\nquant_wide &lt;- dcast(\n  pg_long[, .(R.FileName, PG.ProteinGroups, PG.Quantity)],\n  PG.ProteinGroups ~ R.FileName,\n  value.var = \"PG.Quantity\"\n)\n\nsample_cols &lt;- paste0(\"GA_\", 1:16)\n\n# Sanity-check that all expected samples are present\nmissing_samples &lt;- setdiff(sample_cols, colnames(quant_wide))\nif (length(missing_samples) &gt; 0) {\n  warning(\"These samples are missing from the data: \", paste(missing_samples, collapse = \", \"))\n} else {\n  cat(\"All 16 samples found in data.\\n\")\n}\n\n\nAll 16 samples found in data.\n\n\nCode\n# Extract quantitative matrix in numeric order (GA_1 … GA_16)\nquant_data &lt;- quant_wide[, ..sample_cols]\n\n# Convert Spectronaut NaN to R NA throughout\nquant_matrix &lt;- as.matrix(quant_data)\nquant_matrix[is.nan(quant_matrix)] &lt;- NA\n\ncat(\"Proteins in matrix:\", nrow(quant_matrix), \"\\n\")\n\n\nProteins in matrix: 8923 \n\n\nCode\ncat(\"Samples in matrix: \", ncol(quant_matrix), \"\\n\")\n\n\nSamples in matrix:  16"
   },
   {
-    "objectID": "notebooks/01a_initial_qc_spectronaut.html#calculate-protein-id-counts-per-sample",
-    "href": "notebooks/01a_initial_qc_spectronaut.html#calculate-protein-id-counts-per-sample",
+    "objectID": "notebooks/01_initial_qc_spectronaut.html#calculate-protein-id-counts-per-sample",
+    "href": "notebooks/01_initial_qc_spectronaut.html#calculate-protein-id-counts-per-sample",
     "title": "Initial QC & Data Cleaning — Proteome",
     "section": "Calculate protein ID counts per sample",
     "text": "Calculate protein ID counts per sample\nA protein is “identified” if it has a finite, positive PG.Quantity.\n\n\nCode\nprotein_counts &lt;- colSums(!is.na(quant_matrix) & quant_matrix &gt; 0)\n\nqc_counts &lt;- data.table(FileName = names(protein_counts), Protein_Count = protein_counts)\nqc_data   &lt;- merge(qc_counts, meta, by = \"FileName\", all.x = TRUE)\n\nsummary(qc_data$Protein_Count)\n\n\n   Min. 1st Qu.  Median    Mean 3rd Qu.    Max. \n   8654    8697    8707    8711    8726    8765 \n\n\nCode\nqc_data"
   },
   {
-    "objectID": "notebooks/01a_initial_qc_spectronaut.html#mad-outlier-detection",
-    "href": "notebooks/01a_initial_qc_spectronaut.html#mad-outlier-detection",
+    "objectID": "notebooks/01_initial_qc_spectronaut.html#mad-outlier-detection",
+    "href": "notebooks/01_initial_qc_spectronaut.html#mad-outlier-detection",
     "title": "Initial QC & Data Cleaning — Proteome",
     "section": "MAD outlier detection",
     "text": "MAD outlier detection\nFlags samples with protein counts more than 3 MADs below the median.\n\n\nCode\nmed_count  &lt;- median(qc_data$Protein_Count, na.rm = TRUE)\nmad_count  &lt;- mad(qc_data$Protein_Count, na.rm = TRUE)\nmad_cutoff &lt;- med_count - (3 * mad_count)\n\ncat(\"Median Protein Count:\", round(med_count), \"\\n\")\n\n\nMedian Protein Count: 8707 \n\n\nCode\ncat(\"MAD:                 \", round(mad_count), \"\\n\")\n\n\nMAD:                  23 \n\n\nCode\ncat(\"3-MAD cutoff:        \", round(mad_cutoff), \"\\n\")\n\n\n3-MAD cutoff:         8638 \n\n\nCode\nfailed_runs &lt;- qc_data[Protein_Count &lt; mad_cutoff, FileName]\n\nif (length(failed_runs) &gt; 0) {\n  cat(\"\\nWARNING:\", length(failed_runs), \"failed run(s) to drop:\\n\")\n  print(failed_runs)\n} else {\n  cat(\"\\nNo runs fell below the 3-MAD threshold.\\n\")\n}\n\n\n\nNo runs fell below the 3-MAD threshold."
   },
   {
-    "objectID": "notebooks/01a_initial_qc_spectronaut.html#generate-pdf-qc-report",
-    "href": "notebooks/01a_initial_qc_spectronaut.html#generate-pdf-qc-report",
+    "objectID": "notebooks/01_initial_qc_spectronaut.html#generate-pdf-qc-report",
+    "href": "notebooks/01_initial_qc_spectronaut.html#generate-pdf-qc-report",
     "title": "Initial QC & Data Cleaning — Proteome",
     "section": "Generate PDF QC report",
     "text": "Generate PDF QC report\n\n\nCode\ncondition_colours &lt;- c(\n  \"hApp\"         = \"#1b9e77\",\n  \"hAppNLGF\"     = \"#d95f02\",\n  \"hAppNLG_FIRE\" = \"#7570b3\",\n  \"hApp_FIRE\"    = \"#e7298a\"\n)\n\n# ── Plot 1: Protein Count per Sample with MAD cutoff ───────────────────────\np1 &lt;- ggplot(qc_data,\n             aes(x = reorder(FileName, Protein_Count), y = Protein_Count, fill = Condition)) +\n  geom_bar(stat = \"identity\") +\n  geom_hline(yintercept = mad_cutoff, color = \"red\", linetype = \"dashed\", linewidth = 1) +\n  annotate(\"text\", x = 2, y = mad_cutoff + 100,\n           label = \"3 MAD Cutoff\", color = \"red\", hjust = 0) +\n  scale_fill_manual(values = condition_colours) +\n  coord_flip() +\n  theme_minimal() +\n  labs(title = \"Total Proteins Identified per Sample\",\n       subtitle = \"Red dashed line = 3-MAD failure threshold\",\n       x = \"Sample\", y = \"Protein Count\") +\n  theme(axis.text.y = element_text(size = 9))\n\n# ── Plot 2: Protein Yield by Condition ─────────────────────────────────────\np2 &lt;- ggplot(qc_data, aes(x = Condition, y = Protein_Count, fill = Condition)) +\n  geom_boxplot(outlier.shape = NA, alpha = 0.7) +\n  geom_point(aes(shape = Has_Microglia),\n             position = position_jitter(width = 0.2), alpha = 0.8, size = 3) +\n  scale_fill_manual(values = condition_colours) +\n  scale_shape_manual(values = c(\"TRUE\" = 16, \"FALSE\" = 1),\n                     labels = c(\"TRUE\" = \"Microglia\", \"FALSE\" = \"No microglia\")) +\n  theme_minimal() +\n  labs(title = \"Protein Yield by Condition\",\n       subtitle = \"Filled circles = microglia; open circles = no microglia\",\n       x = \"Condition\", y = \"Protein Count\",\n       shape = \"Microglia present\")\n\n# ── PCA ─────────────────────────────────────────────────────────────────────\ncat(\"Preparing PCA...\\n\")\n\n\nPreparing PCA...\n\n\nCode\npca_mat_log   &lt;- log2(quant_matrix + 1)\npca_mat_log_t &lt;- t(pca_mat_log)\n\nnoise_floor &lt;- min(pca_mat_log_t[pca_mat_log_t &gt; 0], na.rm = TRUE) / 2\npca_mat_log_t[is.na(pca_mat_log_t) | pca_mat_log_t == 0] &lt;- noise_floor\n\nvalid_cols    &lt;- apply(pca_mat_log_t, 2, var) &gt; 0\npca_mat_log_t &lt;- pca_mat_log_t[, valid_cols]\ncat(\"Proteins retained for PCA (non-zero variance):\", sum(valid_cols), \"\\n\")\n\n\nProteins retained for PCA (non-zero variance): 8792 \n\n\nCode\npca_res  &lt;- prcomp(pca_mat_log_t, center = TRUE, scale. = TRUE)\nvar_expl &lt;- round(100 * pca_res$sdev^2 / sum(pca_res$sdev^2), 1)\n\npca_df &lt;- as.data.frame(pca_res$x)\npca_df$FileName &lt;- rownames(pca_df)\npca_df &lt;- merge(pca_df, meta, by = \"FileName\", all.x = TRUE)\n\n# ── Plot 3: PCA by Condition ────────────────────────────────────────────────\np3 &lt;- ggplot(pca_df, aes(x = PC1, y = PC2, color = Condition, shape = Has_Microglia)) +\n  geom_point(size = 4, alpha = 0.85) +\n  ggrepel::geom_text_repel(aes(label = FileName), size = 3, max.overlaps = 20) +\n  scale_color_manual(values = condition_colours) +\n  scale_shape_manual(values = c(\"TRUE\" = 16, \"FALSE\" = 1),\n                     labels = c(\"TRUE\" = \"Microglia\", \"FALSE\" = \"No microglia\")) +\n  theme_minimal() +\n  labs(title = \"PCA of Log2 Protein Intensities\",\n       subtitle = \"Filled = microglia present; open = no microglia\",\n       x = paste0(\"PC1 (\", var_expl[1], \"%)\"),\n       y = paste0(\"PC2 (\", var_expl[2], \"%)\"),\n       shape = \"Microglia present\")\n\n# ── Save PDF ────────────────────────────────────────────────────────────────\npdf_path &lt;- file.path(results_dir, \"Initial_QC_Report.pdf\")\ncat(\"Saving PDF:\", pdf_path, \"\\n\")\n\n\nSaving PDF: /nemo/lab/destrooperb/home/shared/zanettc/giulia_proteomics/results/run1/Initial_QC_Report.pdf \n\n\nCode\npdf(pdf_path, width = 10, height = 7)\nprint(p1); print(p2); print(p3)\ndev.off()\n\n\npng \n  2 \n\n\nCode\nprint(p1); print(p2); print(p3)"
   },
   {
-    "objectID": "notebooks/01a_initial_qc_spectronaut.html#abundance-distributions",
-    "href": "notebooks/01a_initial_qc_spectronaut.html#abundance-distributions",
+    "objectID": "notebooks/01_initial_qc_spectronaut.html#abundance-distributions",
+    "href": "notebooks/01_initial_qc_spectronaut.html#abundance-distributions",
     "title": "Initial QC & Data Cleaning — Proteome",
     "section": "Abundance distributions",
     "text": "Abundance distributions\nLog2 intensity boxplots per sample, ordered numerically. Red outlines flag MAD failures.\n\n\nCode\nquant_log_plot &lt;- log2(quant_matrix + 1)\nquant_log_plot[quant_log_plot == 0] &lt;- NA\n\nabund_long &lt;- as.data.frame(quant_log_plot) %&gt;%\n  mutate(Protein = row_number()) %&gt;%\n  pivot_longer(-Protein, names_to = \"FileName\", values_to = \"Log2_Intensity\") %&gt;%\n  drop_na() %&gt;%\n  left_join(as.data.frame(qc_data), by = \"FileName\") %&gt;%\n  mutate(\n    Status      = ifelse(FileName %in% failed_runs, \"Failed (Outlier)\", \"Pass\"),\n    Sample_Num  = as.integer(str_extract(FileName, \"[0-9]+\"))\n  )\n\np_abund &lt;- ggplot(abund_long, aes(x = reorder(FileName, Sample_Num),\n                                   y = Log2_Intensity, fill = Condition)) +\n  geom_boxplot(aes(color = Status), outlier.shape = NA, lwd = 0.4) +\n  scale_fill_manual(values = condition_colours) +\n  scale_color_manual(values = c(\"Pass\" = \"black\", \"Failed (Outlier)\" = \"red\")) +\n  theme_minimal() +\n  labs(title = \"Log2 Abundance per Sample (All Proteins)\",\n       subtitle = \"Red outlines = samples flagged by 3-MAD filter\",\n       x = \"Sample (GA_1 → GA_16)\", y = \"Log2 Intensity\") +\n  theme(axis.text.x = element_text(angle = 45, hjust = 1))\n\nprint(p_abund)"
   },
   {
-    "objectID": "notebooks/01a_initial_qc_spectronaut.html#correlation-heatmap",
-    "href": "notebooks/01a_initial_qc_spectronaut.html#correlation-heatmap",
+    "objectID": "notebooks/01_initial_qc_spectronaut.html#correlation-heatmap",
+    "href": "notebooks/01_initial_qc_spectronaut.html#correlation-heatmap",
     "title": "Initial QC & Data Cleaning — Proteome",
     "section": "Correlation heatmap",
     "text": "Correlation heatmap\nSamples grouped by microglia status then condition to make the biological structure visible.\n\n\nCode\nquant_mat_cor &lt;- log2(quant_matrix + 1)\nquant_mat_cor[quant_mat_cor == 0] &lt;- NA\n\ncor_mat &lt;- cor(quant_mat_cor, use = \"pairwise.complete.obs\")\n\nmeta_sorted &lt;- meta %&gt;%\n  arrange(Has_Microglia, Condition, BioReplicate) %&gt;%\n  as.data.frame()\n\nsorted_runs    &lt;- meta_sorted$FileName\ncor_mat_sorted &lt;- cor_mat[sorted_runs, sorted_runs]\n\nanno_df &lt;- meta_sorted %&gt;%\n  select(FileName, Condition, Has_Microglia, BioReplicate) %&gt;%\n  mutate(Has_Microglia = as.factor(Has_Microglia),\n         BioReplicate  = as.factor(BioReplicate)) %&gt;%\n  as.data.frame()\nrownames(anno_df) &lt;- anno_df$FileName\nanno_df$FileName  &lt;- NULL\n\npheatmap(cor_mat_sorted,\n         main           = \"Pearson Correlation: Grouped by Microglia Status & Condition\",\n         annotation_col = anno_df,\n         cluster_rows   = FALSE,\n         cluster_cols   = FALSE,\n         show_rownames  = TRUE,\n         show_colnames  = TRUE,\n         color          = colorRampPalette(c(\"navy\", \"white\", \"firebrick3\"))(100),\n         gaps_col       = which(diff(as.numeric(as.factor(meta_sorted$Condition))) != 0),\n         gaps_row       = which(diff(as.numeric(as.factor(meta_sorted$Condition))) != 0))"
   },
   {
-    "objectID": "notebooks/01a_initial_qc_spectronaut.html#average-correlation-diagnostic",
-    "href": "notebooks/01a_initial_qc_spectronaut.html#average-correlation-diagnostic",
+    "objectID": "notebooks/01_initial_qc_spectronaut.html#average-correlation-diagnostic",
+    "href": "notebooks/01_initial_qc_spectronaut.html#average-correlation-diagnostic",
     "title": "Initial QC & Data Cleaning — Proteome",
     "section": "Average-correlation diagnostic",
     "text": "Average-correlation diagnostic\nIdentifies the sample with the lowest mean correlation to the rest of the cohort.\n\n\nCode\nqc_diagnostics &lt;- data.table(\n  FileName        = colnames(quant_mat_cor),\n  Protein_Count   = protein_counts[colnames(quant_mat_cor)],\n  NA_Percent      = colMeans(is.na(quant_mat_cor)) * 100,\n  Avg_Correlation = rowMeans(cor_mat, na.rm = TRUE)\n)\n\noutlier_id &lt;- qc_diagnostics[which.min(Avg_Correlation), FileName]\n\ncat(\"--- Diagnostic for lowest-correlation sample ---\\n\")\n\n\n--- Diagnostic for lowest-correlation sample ---\n\n\nCode\nprint(qc_diagnostics[FileName == outlier_id])\n\n\n   FileName Protein_Count NA_Percent Avg_Correlation\n     &lt;char&gt;         &lt;num&gt;      &lt;num&gt;           &lt;num&gt;\n1:     GA_9          8730    2.16295       0.9878816\n\n\nCode\np_diag &lt;- ggplot(qc_diagnostics, aes(x = Protein_Count, y = Avg_Correlation)) +\n  geom_point(aes(color = NA_Percent), size = 4) +\n  geom_vline(xintercept = mad_cutoff, linetype = \"dashed\", color = \"red\") +\n  ggrepel::geom_text_repel(aes(label = FileName), size = 3, max.overlaps = 20) +\n  scale_color_viridis_c(name = \"% Missing\") +\n  theme_minimal() +\n  labs(title = \"Signal vs. Correlation Diagnostic\",\n       subtitle = \"Red line = 3-MAD cutoff\",\n       x = \"Total Protein IDs\", y = \"Average Pearson Correlation (r)\")\n\nprint(p_diag)"
   },
   {
-    "objectID": "notebooks/01a_initial_qc_spectronaut.html#contaminant-check-top-10-protein-signal-contribution",
-    "href": "notebooks/01a_initial_qc_spectronaut.html#contaminant-check-top-10-protein-signal-contribution",
+    "objectID": "notebooks/01_initial_qc_spectronaut.html#contaminant-check-top-10-protein-signal-contribution",
+    "href": "notebooks/01_initial_qc_spectronaut.html#contaminant-check-top-10-protein-signal-contribution",
     "title": "Initial QC & Data Cleaning — Proteome",
     "section": "Contaminant check: top-10 protein signal contribution",
     "text": "Contaminant check: top-10 protein signal contribution\nHigh top-10% (&gt;50%) suggests a very low-complexity sample or dominant contaminant proteins (e.g. keratins, actin).\n\n\nCode\ncalc_top_n_pct &lt;- function(column, n = 10) {\n  sorted_vals &lt;- sort(column, decreasing = TRUE, na.last = TRUE)\n  (sum(sorted_vals[1:n], na.rm = TRUE) / sum(column, na.rm = TRUE)) * 100\n}\n\ntop10_metrics &lt;- apply(quant_matrix, 2, calc_top_n_pct, n = 10)\nqc_data[, Top10_Percent   := top10_metrics[FileName]]\nqc_data[, Total_Intensity := colSums(quant_matrix, na.rm = TRUE)[FileName]]\n\ncontaminant_suspects &lt;- qc_data[Top10_Percent &gt; 50,\n                                 .(FileName, Condition, Protein_Count, Top10_Percent)]\ncat(\"Samples where top 10 proteins account for &gt;50% of signal:\\n\")\n\n\nSamples where top 10 proteins account for &gt;50% of signal:\n\n\nCode\nprint(contaminant_suspects)\n\n\nKey: &lt;FileName&gt;\nEmpty data.table (0 rows and 4 cols): FileName,Condition,Protein_Count,Top10_Percent\n\n\nCode\np_top10 &lt;- ggplot(qc_data, aes(x = Protein_Count, y = Top10_Percent)) +\n  geom_point(aes(color = Condition, size = Total_Intensity), alpha = 0.7) +\n  geom_hline(yintercept = 50, linetype = \"dashed\", color = \"red\") +\n  ggrepel::geom_text_repel(\n    aes(label = ifelse(Top10_Percent &gt; 50, FileName, \"\")),\n    size = 3, max.overlaps = 10\n  ) +\n  scale_color_manual(values = condition_colours) +\n  theme_minimal() +\n  labs(title = \"Top-10 Protein Signal Contribution\",\n       subtitle = \"&gt;50% suggests contamination or extremely low sample complexity\",\n       x = \"Total Proteins Identified\",\n       y = \"% Total Intensity from Top 10 Proteins\",\n       size = \"Total Signal (raw)\")\n\nprint(p_top10)"
   },
   {
-    "objectID": "notebooks/01a_initial_qc_spectronaut.html#identify-top-contributing-proteins-in-suspect-samples",
-    "href": "notebooks/01a_initial_qc_spectronaut.html#identify-top-contributing-proteins-in-suspect-samples",
+    "objectID": "notebooks/01_initial_qc_spectronaut.html#identify-top-contributing-proteins-in-suspect-samples",
+    "href": "notebooks/01_initial_qc_spectronaut.html#identify-top-contributing-proteins-in-suspect-samples",
     "title": "Initial QC & Data Cleaning — Proteome",
     "section": "Identify top contributing proteins in suspect samples",
     "text": "Identify top contributing proteins in suspect samples\n\n\nCode\nif (nrow(contaminant_suspects) &gt; 0) {\n  suspect_cols &lt;- contaminant_suspects$FileName\n  top_ids &lt;- apply(quant_matrix[, suspect_cols, drop = FALSE], 2, function(x) {\n    quant_wide$PG.ProteinGroups[which.max(x)]\n  })\n  cat(\"Top protein per suspect sample:\\n\")\n  print(top_ids)\n} else {\n  cat(\"No suspect samples to investigate.\\n\")\n}\n\n\nNo suspect samples to investigate."
   },
   {
-    "objectID": "notebooks/01a_initial_qc_spectronaut.html#filter-out-failed-samples",
-    "href": "notebooks/01a_initial_qc_spectronaut.html#filter-out-failed-samples",
+    "objectID": "notebooks/01_initial_qc_spectronaut.html#filter-out-failed-samples",
+    "href": "notebooks/01_initial_qc_spectronaut.html#filter-out-failed-samples",
     "title": "Initial QC & Data Cleaning — Proteome",
     "section": "Filter out failed samples",
     "text": "Filter out failed samples\n\n\nCode\nvalid_runs &lt;- meta$FileName\nfinal_runs &lt;- setdiff(valid_runs, failed_runs)\n\ncat(\"Original samples:        \", length(valid_runs), \"\\n\")\n\n\nOriginal samples:         16 \n\n\nCode\ncat(\"Samples dropped (3-MAD): \", length(failed_runs), \"\\n\")\n\n\nSamples dropped (3-MAD):  0 \n\n\nCode\ncat(\"Clean samples remaining: \", length(final_runs), \"\\n\")\n\n\nClean samples remaining:  16 \n\n\nCode\nif (length(failed_runs) &gt; 0) print(failed_runs)"
   },
   {
-    "objectID": "notebooks/01a_initial_qc_spectronaut.html#save-objects",
-    "href": "notebooks/01a_initial_qc_spectronaut.html#save-objects",
+    "objectID": "notebooks/01_initial_qc_spectronaut.html#save-objects",
+    "href": "notebooks/01_initial_qc_spectronaut.html#save-objects",
     "title": "Initial QC & Data Cleaning — Proteome",
     "section": "Save objects",
     "text": "Save objects\n\n\nCode\n# Clean wide protein matrix (proteins × passing samples)\nclean_quant_wide &lt;- cbind(\n  quant_wide[, .(PG.ProteinGroups)],\n  quant_wide[, ..final_runs]\n)\n\n# Clean metadata\nclean_meta &lt;- qc_data[FileName %in% final_runs]\n\n# Dropped sample log\ndropped_log &lt;- qc_data[FileName %in% failed_runs,\n                        .(FileName, Condition, Has_Microglia, Protein_Count)]\ndropped_log[, Reason := \"Sub 3-MAD Protein Count\"]\n\n\nfwrite(spec_raw, file.path(objects_dir, \"clean_spec_raw.csv\"))\nfwrite(clean_meta,       file.path(objects_dir, \"clean_metadata.csv\"))\nfwrite(clean_quant_wide, file.path(objects_dir, \"clean_quant_wide.csv\"))\nfwrite(dropped_log,      file.path(objects_dir, \"dropped_samples_log.csv\"))\n\ncat(\"Objects saved to:\", objects_dir, \"\\n\")\n\n\nObjects saved to: /nemo/lab/destrooperb/home/shared/zanettc/giulia_proteomics/data/processed/run1"
