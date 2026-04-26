@@ -13,8 +13,6 @@ website:
         text: Home
       - href: notebooks/01_initial_qc_spectronaut.qmd
         text: "1. Initial QC"
-      - href: notebooks/02_msstats.qmd
-        text: "2. MSstats"
       - href: notebooks/03_DE_plots.qmd
         text: "3. DE Plots"
       - href: notebooks/04_gsea.qmd

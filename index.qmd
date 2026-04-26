@@ -22,6 +22,6 @@ FIRE knockout mice lack microglia and serve as controls to identify microglia-sp
 | Notebook | Description |
 |----------|-------------|
 | [1. Initial QC](notebooks/01_initial_qc_spectronaut.qmd) | Protein counts, MAD outlier detection, PCA, correlation heatmap, contaminant check |
-| [2. MSstats](notebooks/02_msstats.qmd) | Differential abundance analysis across all pairwise contrasts |
+| 2. MSstats | Differential abundance analysis across all pairwise contrasts |
 | [3. DE Plots](notebooks/03_DE_plots.qmd) | Volcano plots and visualisation of differentially abundant proteins |
 | [4. GSEA](notebooks/04_gsea.qmd) | Gene set enrichment analysis using GO, KEGG, and cell-type signatures (C8) |
