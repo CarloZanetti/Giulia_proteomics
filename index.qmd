@@ -1,0 +1,27 @@
+---
+title: "Giulia Proteomics"
+---
+
+Bulk microglia proteomics analysis of mouse brain samples from the Destrooper lab. Data was acquired by DIA mass spectrometry and processed with Spectronaut, then analysed in R.
+
+## Study design
+
+Four genotypes, 4 animals each (n=16 total):
+
+| Group | Samples | Microglia |
+|-------|---------|-----------|
+| hApp | GA_1–4 | Yes |
+| hAppNLGF | GA_5–8 | Yes |
+| hAppNLGF_FIRE | GA_9–12 | No (FIRE KO) |
+| hApp_FIRE | GA_13–16 | No (FIRE KO) |
+
+FIRE knockout mice lack microglia and serve as controls to identify microglia-specific signals.
+
+## Analysis
+
+| Notebook | Description |
+|----------|-------------|
+| [1. Initial QC](notebooks/01a_initial_qc_spectronaut.qmd) | Protein counts, MAD outlier detection, PCA, correlation heatmap, contaminant check |
+| [2. MSstats](notebooks/02a_msstats.qmd) | Differential abundance analysis across all pairwise contrasts |
+| [3. DE Plots](notebooks/03_DE_plots.qmd) | Volcano plots and visualisation of differentially abundant proteins |
+| [4. GSEA](notebooks/04_gsea.qmd) | Gene set enrichment analysis using GO, KEGG, and cell-type signatures (C8) |

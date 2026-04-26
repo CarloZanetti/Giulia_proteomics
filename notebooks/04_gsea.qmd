@@ -339,7 +339,7 @@ purrr::walk2(names(gene_sets_master), gene_sets_master, function(gset_name, gset
 # SPECIFIC TERM PLOTTING
 # ==============================================================================
 
-term_to_plot <- "GOBP_MICROGLIAL_CELL_ACTIVATION"
+term_to_plot <- "GOBP_LEUKOCYTE_MEDIATED_IMMUNITY"
 # 1. Flatten master gene list
 all_pathways_flat <- do.call(c, unname(gene_sets_master))
 
@@ -391,7 +391,7 @@ Tests whether the top 10 up-regulated proteins from a given MSstats contrast ove
 
 ```{r}
 target_comparison <- "hAppNLGF_FIRE_vs_hAppNLGF"  # change to any of the four contrasts
-target_pathway    <- term_to_plot                  # GOBP_MICROGLIAL_CELL_ACTIVATION by default
+target_pathway    <- term_to_plot                  # GOBP_LEUKOCYTE_MEDIATED_IMMUNITY by default
 
 # Top 10 up-regulated genes from the chosen contrast
 ranks_target <- comparisons_master[[target_comparison]]

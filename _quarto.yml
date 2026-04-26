@@ -1,0 +1,35 @@
+project:
+  type: website
+  output-dir: docs
+  render:
+    - "**/*.qmd"
+    - "!notebooks/02a_msstats.qmd"
+
+website:
+  title: "Giulia Proteomics"
+  navbar:
+    left:
+      - href: index.qmd
+        text: Home
+      - href: notebooks/01a_initial_qc_spectronaut.qmd
+        text: "1. Initial QC"
+      - href: notebooks/02a_msstats.qmd
+        text: "2. MSstats"
+      - href: notebooks/03_DE_plots.qmd
+        text: "3. DE Plots"
+      - href: notebooks/04_gsea.qmd
+        text: "4. GSEA"
+
+format:
+  html:
+    theme: cosmo
+    toc: true
+    toc-depth: 3
+    code-fold: true
+    code-tools: true
+    df-print: paged
+
+execute:
+  freeze: auto
+  warning: false
+  message: false
