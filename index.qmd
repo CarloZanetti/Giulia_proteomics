@@ -15,7 +15,6 @@ Four genotypes, 4 animals each (n=16 total):
 | hAppNLGF_FIRE | GA_9–12 | No (FIRE KO) |
 | hApp_FIRE | GA_13–16 | No (FIRE KO) |
 
-FIRE knockout mice lack microglia and serve as controls to identify microglia-specific signals.
 
 ## Analysis
 
