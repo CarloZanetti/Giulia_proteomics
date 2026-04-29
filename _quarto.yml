@@ -3,7 +3,6 @@ project:
   output-dir: docs
   render:
     - "**/*.qmd"
-    - "!notebooks/02_msstats.qmd"
 
 website:
   title: "Giulia Proteomics"
@@ -11,12 +10,34 @@ website:
     left:
       - href: index.qmd
         text: Home
-      - href: notebooks/01_initial_qc_spectronaut.qmd
-        text: "1. Initial QC"
-      - href: notebooks/03_DE_plots.qmd
-        text: "3. DE Plots"
-      - href: notebooks/04_gsea.qmd
-        text: "4. GSEA"
+      - text: "Bulk Proteomics"
+        menu:
+          - href: bulk_proteomics/notebooks/01_initial_qc_spectronaut.qmd
+            text: "1. Initial QC"
+          - href: bulk_proteomics/notebooks/02_msstats.qmd
+            text: "2. MSstats"
+          - href: bulk_proteomics/notebooks/03_DE_plots.qmd
+            text: "3. DE Plots"
+          - href: bulk_proteomics/notebooks/04_gsea.qmd
+            text: "4. GSEA"
+          - href: bulk_proteomics/notebooks/05_microglia_app_modulated.qmd
+            text: "5. Microglia × APP-NLGF"
+          - href: bulk_proteomics/notebooks/06_PPI.qmd
+            text: "6. PPI Networks"
+          - href: bulk_proteomics/notebooks/07_subcellular.qmd
+            text: "7. Subcellular Stratification"
+      - text: "Phosphoproteomics"
+        menu:
+          - href: phosphoproteomics/notebooks/01_phospho_qc.qmd
+            text: "1. Phospho QC"
+          - href: phosphoproteomics/notebooks/02_msstatsptm.qmd
+            text: "2. MSstatsPTM"
+          - href: phosphoproteomics/notebooks/03_phospho_DE_plots.qmd
+            text: "3. Phospho DE Plots"
+          - href: phosphoproteomics/notebooks/04_kinase_activity.qmd
+            text: "4. Kinase Activity"
+          - href: phosphoproteomics/notebooks/05_phospho_GSEA.qmd
+            text: "5. Phospho GSEA"
 
 format:
   html:

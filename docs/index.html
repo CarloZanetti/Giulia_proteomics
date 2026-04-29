@@ -125,22 +125,68 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <a class="nav-link active" href="./index.html" aria-current="page"> 
 <span class="menu-text">Home</span></a>
   </li>  
-  <li class="nav-item">
-    <a class="nav-link" href="./notebooks/01_initial_qc_spectronaut.html"> 
-<span class="menu-text">1. Initial QC</span></a>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-bulk-proteomics" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Bulk Proteomics</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-bulk-proteomics">    
+        <li>
+    <a class="dropdown-item" href="./bulk_proteomics/notebooks/01_initial_qc_spectronaut.html">
+ <span class="dropdown-text">1. Initial QC</span></a>
   </li>  
-  <li class="nav-item">
-    <a class="nav-link" href="./notebooks/02_msstats.qmd"> 
-<span class="menu-text">2. MSstats</span></a>
+        <li>
+    <a class="dropdown-item" href="./bulk_proteomics/notebooks/02_msstats.html">
+ <span class="dropdown-text">2. MSstats</span></a>
   </li>  
-  <li class="nav-item">
-    <a class="nav-link" href="./notebooks/03_DE_plots.html"> 
-<span class="menu-text">3. DE Plots</span></a>
+        <li>
+    <a class="dropdown-item" href="./bulk_proteomics/notebooks/03_DE_plots.html">
+ <span class="dropdown-text">3. DE Plots</span></a>
   </li>  
-  <li class="nav-item">
-    <a class="nav-link" href="./notebooks/04_gsea.html"> 
-<span class="menu-text">4. GSEA</span></a>
+        <li>
+    <a class="dropdown-item" href="./bulk_proteomics/notebooks/04_gsea.html">
+ <span class="dropdown-text">4. GSEA</span></a>
   </li>  
+        <li>
+    <a class="dropdown-item" href="./bulk_proteomics/notebooks/05_microglia_app_modulated.html">
+ <span class="dropdown-text">5. Microglia × APP-NLGF</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./bulk_proteomics/notebooks/06_PPI.html">
+ <span class="dropdown-text">6. PPI Networks</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./bulk_proteomics/notebooks/07_subcellular.html">
+ <span class="dropdown-text">7. Subcellular Stratification</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-phosphoproteomics" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Phosphoproteomics</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-phosphoproteomics">    
+        <li>
+    <a class="dropdown-item" href="./phosphoproteomics/notebooks/01_phospho_qc.html">
+ <span class="dropdown-text">1. Phospho QC</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./phosphoproteomics/notebooks/02_msstatsptm.html">
+ <span class="dropdown-text">2. MSstatsPTM</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./phosphoproteomics/notebooks/03_phospho_DE_plots.html">
+ <span class="dropdown-text">3. Phospho DE Plots</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./phosphoproteomics/notebooks/04_kinase_activity.html">
+ <span class="dropdown-text">4. Kinase Activity</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./phosphoproteomics/notebooks/05_phospho_GSEA.html">
+ <span class="dropdown-text">5. Phospho GSEA</span></a>
+  </li>  
+    </ul>
+  </li>
 </ul>
           </div> <!-- /navcollapse -->
             <div class="quarto-navbar-tools">
@@ -158,7 +204,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
    
   <ul>
   <li><a href="#study-design" id="toc-study-design" class="nav-link active" data-scroll-target="#study-design">Study design</a></li>
-  <li><a href="#analysis" id="toc-analysis" class="nav-link" data-scroll-target="#analysis">Analysis</a></li>
+  <li><a href="#analysis" id="toc-analysis" class="nav-link" data-scroll-target="#analysis">Analysis</a>
+  <ul class="collapse">
+  <li><a href="#bulk-proteomics" id="toc-bulk-proteomics" class="nav-link" data-scroll-target="#bulk-proteomics">Bulk proteomics</a></li>
+  <li><a href="#phosphoproteomics" id="toc-phosphoproteomics" class="nav-link" data-scroll-target="#phosphoproteomics">Phosphoproteomics</a></li>
+  </ul></li>
   </ul>
 </nav>
     </div>
@@ -219,10 +269,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </tr>
 </tbody>
 </table>
-<p>FIRE knockout mice lack microglia and serve as controls to identify microglia-specific signals.</p>
 </section>
 <section id="analysis" class="level2">
 <h2 class="anchored" data-anchor-id="analysis">Analysis</h2>
+<section id="bulk-proteomics" class="level3">
+<h3 class="anchored" data-anchor-id="bulk-proteomics">Bulk proteomics</h3>
 <table class="caption-top table">
 <thead>
 <tr class="header">
@@ -232,20 +283,65 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </thead>
 <tbody>
 <tr class="odd">
-<td><a href="./notebooks/01_initial_qc_spectronaut.html">1. Initial QC</a></td>
+<td><a href="./bulk_proteomics/notebooks/01_initial_qc_spectronaut.html">1. Initial QC</a></td>
 <td>Protein counts, MAD outlier detection, PCA, correlation heatmap, contaminant check</td>
 </tr>
 <tr class="even">
-<td><a href="notebooks/02_msstats.qmd">2. MSstats</a></td>
-<td>Differential abundance analysis across all pairwise contrasts</td>
+<td><a href="./bulk_proteomics/notebooks/02_msstats.html">2. MSstats</a></td>
+<td>Differential abundance — pairwise contrasts plus the APP × Microglia interaction contrast</td>
 </tr>
 <tr class="odd">
-<td><a href="./notebooks/03_DE_plots.html">3. DE Plots</a></td>
+<td><a href="./bulk_proteomics/notebooks/03_DE_plots.html">3. DE Plots</a></td>
 <td>Volcano plots and visualisation of differentially abundant proteins</td>
 </tr>
 <tr class="even">
-<td><a href="./notebooks/04_gsea.html">4. GSEA</a></td>
+<td><a href="./bulk_proteomics/notebooks/04_gsea.html">4. GSEA</a></td>
 <td>Gene set enrichment analysis using GO, KEGG, and cell-type signatures (C8)</td>
+</tr>
+<tr class="odd">
+<td><a href="./bulk_proteomics/notebooks/05_microglia_app_modulated.html">5. Microglia × APP-NLGF</a></td>
+<td>Microglia-attributable proteins further modulated by APP-NLGF — interaction hits, UpSet, heatmap</td>
+</tr>
+<tr class="even">
+<td><a href="./bulk_proteomics/notebooks/06_PPI.html">6. PPI Networks</a></td>
+<td>STRINGdb interaction networks and hub proteins per contrast</td>
+</tr>
+<tr class="odd">
+<td><a href="./bulk_proteomics/notebooks/07_subcellular.html">7. Subcellular Stratification</a></td>
+<td>UniProt subcellular-location and secretome stratification of significant hits</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="phosphoproteomics" class="level3">
+<h3 class="anchored" data-anchor-id="phosphoproteomics">Phosphoproteomics</h3>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Notebook</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><a href="./phosphoproteomics/notebooks/01_phospho_qc.html">1. Phospho QC</a></td>
+<td>Phosphopeptide / phosphosite counts, MAD outliers, PCA, sample correlation</td>
+</tr>
+<tr class="even">
+<td><a href="./phosphoproteomics/notebooks/02_msstatsptm.html">2. MSstatsPTM</a></td>
+<td>Phospho DE adjusted for protein-level abundance — 4 pairwise + APP × Microglia interaction</td>
+</tr>
+<tr class="odd">
+<td><a href="./phosphoproteomics/notebooks/03_phospho_DE_plots.html">3. Phospho DE Plots</a></td>
+<td>Volcano plots of adjusted phospho contrasts, plus phospho-vs-protein concordance scatter</td>
+</tr>
+<tr class="even">
+<td><a href="./phosphoproteomics/notebooks/04_kinase_activity.html">4. Kinase Activity</a></td>
+<td>Inferred kinase activities per contrast via decoupleR + OmniPath kinase–substrate network</td>
+</tr>
+<tr class="odd">
+<td><a href="./phosphoproteomics/notebooks/05_phospho_GSEA.html">5. Phospho GSEA</a></td>
+<td>Pathway enrichment over GO/KEGG/C8 using gene-level rolled-up phospho ranks</td>
 </tr>
 </tbody>
 </table>
@@ -253,6 +349,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <!-- -->
 
+</section>
 </section>
 
 </main> <!-- /main -->
@@ -744,16 +841,30 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>| hAppNLGF_FIRE | GA_9–12 | No (FIRE KO) |</span>
 <span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>| hApp_FIRE | GA_13–16 | No (FIRE KO) |</span>
 <span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a>FIRE knockout mice lack microglia and serve as controls to identify microglia-specific signals.</span>
-<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a><span class="fu">## Analysis</span></span>
-<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a>| Notebook | Description |</span>
-<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a>|----------|-------------|</span>
-<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a>| <span class="co">[</span><span class="ot">1. Initial QC</span><span class="co">](notebooks/01_initial_qc_spectronaut.qmd)</span> | Protein counts, MAD outlier detection, PCA, correlation heatmap, contaminant check |</span>
-<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a>| <span class="co">[</span><span class="ot">2. MSstats</span><span class="co">](notebooks/02_msstats.qmd)</span> | Differential abundance analysis across all pairwise contrasts |</span>
-<span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a>| <span class="co">[</span><span class="ot">3. DE Plots</span><span class="co">](notebooks/03_DE_plots.qmd)</span> | Volcano plots and visualisation of differentially abundant proteins |</span>
-<span id="cb1-27"><a href="#cb1-27" aria-hidden="true" tabindex="-1"></a>| <span class="co">[</span><span class="ot">4. GSEA</span><span class="co">](notebooks/04_gsea.qmd)</span> | Gene set enrichment analysis using GO, KEGG, and cell-type signatures (C8) |</span></code><button title="Copy to Clipboard" class="code-copy-button" data-in-quarto-modal=""><i class="bi"></i></button></pre></div>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a><span class="fu">## Analysis</span></span>
+<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a><span class="fu">### Bulk proteomics</span></span>
+<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a>| Notebook | Description |</span>
+<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a>|----------|-------------|</span>
+<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a>| <span class="co">[</span><span class="ot">1. Initial QC</span><span class="co">](bulk_proteomics/notebooks/01_initial_qc_spectronaut.qmd)</span> | Protein counts, MAD outlier detection, PCA, correlation heatmap, contaminant check |</span>
+<span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a>| <span class="co">[</span><span class="ot">2. MSstats</span><span class="co">](bulk_proteomics/notebooks/02_msstats.qmd)</span> | Differential abundance — pairwise contrasts plus the APP × Microglia interaction contrast |</span>
+<span id="cb1-27"><a href="#cb1-27" aria-hidden="true" tabindex="-1"></a>| <span class="co">[</span><span class="ot">3. DE Plots</span><span class="co">](bulk_proteomics/notebooks/03_DE_plots.qmd)</span> | Volcano plots and visualisation of differentially abundant proteins |</span>
+<span id="cb1-28"><a href="#cb1-28" aria-hidden="true" tabindex="-1"></a>| <span class="co">[</span><span class="ot">4. GSEA</span><span class="co">](bulk_proteomics/notebooks/04_gsea.qmd)</span> | Gene set enrichment analysis using GO, KEGG, and cell-type signatures (C8) |</span>
+<span id="cb1-29"><a href="#cb1-29" aria-hidden="true" tabindex="-1"></a>| <span class="co">[</span><span class="ot">5. Microglia × APP-NLGF</span><span class="co">](bulk_proteomics/notebooks/05_microglia_app_modulated.qmd)</span> | Microglia-attributable proteins further modulated by APP-NLGF — interaction hits, UpSet, heatmap |</span>
+<span id="cb1-30"><a href="#cb1-30" aria-hidden="true" tabindex="-1"></a>| <span class="co">[</span><span class="ot">6. PPI Networks</span><span class="co">](bulk_proteomics/notebooks/06_PPI.qmd)</span> | STRINGdb interaction networks and hub proteins per contrast |</span>
+<span id="cb1-31"><a href="#cb1-31" aria-hidden="true" tabindex="-1"></a>| <span class="co">[</span><span class="ot">7. Subcellular Stratification</span><span class="co">](bulk_proteomics/notebooks/07_subcellular.qmd)</span> | UniProt subcellular-location and secretome stratification of significant hits |</span>
+<span id="cb1-32"><a href="#cb1-32" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-33"><a href="#cb1-33" aria-hidden="true" tabindex="-1"></a><span class="fu">### Phosphoproteomics</span></span>
+<span id="cb1-34"><a href="#cb1-34" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-35"><a href="#cb1-35" aria-hidden="true" tabindex="-1"></a>| Notebook | Description |</span>
+<span id="cb1-36"><a href="#cb1-36" aria-hidden="true" tabindex="-1"></a>|----------|-------------|</span>
+<span id="cb1-37"><a href="#cb1-37" aria-hidden="true" tabindex="-1"></a>| <span class="co">[</span><span class="ot">1. Phospho QC</span><span class="co">](phosphoproteomics/notebooks/01_phospho_qc.qmd)</span> | Phosphopeptide / phosphosite counts, MAD outliers, PCA, sample correlation |</span>
+<span id="cb1-38"><a href="#cb1-38" aria-hidden="true" tabindex="-1"></a>| <span class="co">[</span><span class="ot">2. MSstatsPTM</span><span class="co">](phosphoproteomics/notebooks/02_msstatsptm.qmd)</span> | Phospho DE adjusted for protein-level abundance — 4 pairwise + APP × Microglia interaction |</span>
+<span id="cb1-39"><a href="#cb1-39" aria-hidden="true" tabindex="-1"></a>| <span class="co">[</span><span class="ot">3. Phospho DE Plots</span><span class="co">](phosphoproteomics/notebooks/03_phospho_DE_plots.qmd)</span> | Volcano plots of adjusted phospho contrasts, plus phospho-vs-protein concordance scatter |</span>
+<span id="cb1-40"><a href="#cb1-40" aria-hidden="true" tabindex="-1"></a>| <span class="co">[</span><span class="ot">4. Kinase Activity</span><span class="co">](phosphoproteomics/notebooks/04_kinase_activity.qmd)</span> | Inferred kinase activities per contrast via decoupleR + OmniPath kinase–substrate network |</span>
+<span id="cb1-41"><a href="#cb1-41" aria-hidden="true" tabindex="-1"></a>| <span class="co">[</span><span class="ot">5. Phospho GSEA</span><span class="co">](phosphoproteomics/notebooks/05_phospho_GSEA.qmd)</span> | Pathway enrichment over GO/KEGG/C8 using gene-level rolled-up phospho ranks |</span></code><button title="Copy to Clipboard" class="code-copy-button" data-in-quarto-modal=""><i class="bi"></i></button></pre></div>
 </div></div></div></div></div>
 </div> <!-- /content -->
 

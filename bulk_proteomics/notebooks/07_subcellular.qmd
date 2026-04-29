@@ -1,0 +1,224 @@
+---
+title: "7. Subcellular and secretome stratification"
+format: html
+---
+
+## Overview
+
+Stratifies the significant proteins from each MSstats contrast by subcellular compartment using GO Cellular Component annotations (MSigDB C5 GO:CC). Useful for spotting compartment-skewed responses (e.g. "microglia depletion is dominated by lysosomal/phagosomal proteins") and for flagging potential secreted biomarkers.
+
+## Libraries
+
+```{r setup, message=FALSE, warning=FALSE}
+suppressPackageStartupMessages({
+  library(data.table)
+  library(qs2)
+  library(dplyr)
+  library(tidyr)
+  library(stringr)
+  library(ggplot2)
+  library(ggrepel)
+  library(msigdbr)
+  library(scales)
+})
+```
+
+## Directories and parameters
+
+```{r}
+base_dir    <- "/nemo/lab/destrooperb/home/shared/zanettc/giulia_proteomics/bulk_proteomics"
+run_num     <- "run3"
+results_dir <- file.path(base_dir, "results", run_num)
+objects_dir <- file.path(base_dir, "data", "processed", run_num)
+
+subcell_dir <- file.path(results_dir, "Subcellular")
+dir.create(subcell_dir, recursive = TRUE, showWarnings = FALSE)
+
+FDR_CUTOFF   <- 0.05
+LOGFC_CUTOFF <- 0.5
+```
+
+## Load DE results and protein dictionary
+
+```{r}
+res_df             <- fread(file.path(results_dir, "Full_GroupComparison_Results.csv"))
+protein_dictionary <- fread(file.path(objects_dir, "protein_dictionary.csv"))
+
+msstats_ready <- res_df %>%
+  filter(!is.na(adj.pvalue), is.finite(log2FC)) %>%
+  left_join(protein_dictionary, by = "Protein") %>%
+  mutate(
+    Gene = ifelse(is.na(Gene) | Gene == "", Protein, Gene),
+    Gene_upper = toupper(Gene),
+    Status = case_when(
+      adj.pvalue < FDR_CUTOFF & log2FC >  LOGFC_CUTOFF ~ "Upregulated",
+      adj.pvalue < FDR_CUTOFF & log2FC < -LOGFC_CUTOFF ~ "Downregulated",
+      TRUE ~ "Not Significant"
+    )
+  )
+```
+
+## Build compartment → genes mapping from GO:CC
+
+We assign each gene to one or more broad compartments based on the GO Cellular Component gene sets (mouse). The compartment categories are defined by keyword matches against GO:CC term names — coarser than raw GO IDs but readable.
+
+```{r}
+gocc <- msigdbr(species = "Mus musculus", collection = "C5", subcollection = "GO:CC")
+
+# Compartment definitions — order matters (first match wins on the per-gene roll-up)
+compartment_patterns <- list(
+  "Extracellular / Secreted" = "EXTRACELLULAR|SECRET",
+  "Plasma membrane"          = "PLASMA_MEMBRANE|CELL_SURFACE|CELL_PROJECTION_MEMBRANE",
+  "Lysosome / Endosome"      = "LYSOSOM|ENDOSOM|PHAGOSOM|AUTOPHAG",
+  "Mitochondrion"            = "MITOCHONDRI",
+  "Endoplasmic reticulum"    = "ENDOPLASMIC_RETICULUM|\\bER\\b",
+  "Golgi"                    = "GOLGI",
+  "Nucleus"                  = "NUCLEAR|NUCLEUS|NUCLEOLUS|NUCLEOPLASM|CHROMATIN",
+  "Cytoskeleton"             = "CYTOSKELET|MICROTUBULE|ACTIN_FILAMENT|INTERMEDIATE_FILAMENT",
+  "Ribosome / Translation"   = "RIBOSOM|POLYSOM|TRANSLATION_INITIATION",
+  "Synapse"                  = "SYNAPS|POSTSYNAP|PRESYNAP|AXON|DENDRITE",
+  "Cytosol / Cytoplasm"      = "CYTOSOL|\\bCYTOPLASM\\b"
+)
+
+# Long-format gene × compartment table (one gene can hit multiple compartments)
+compartment_map <- bind_rows(lapply(names(compartment_patterns), function(cmp) {
+  pat <- compartment_patterns[[cmp]]
+  gocc %>%
+    filter(str_detect(gs_name, pat)) %>%
+    distinct(gene_symbol) %>%
+    transmute(Compartment = cmp, Gene_upper = toupper(gene_symbol))
+})) %>%
+  distinct()
+
+cat("Compartment coverage (genes per compartment):\n")
+compartment_map %>% count(Compartment, sort = TRUE) %>% print()
+```
+
+## Annotate the significant proteins
+
+```{r}
+sig <- msstats_ready %>% filter(Status != "Not Significant")
+
+sig_compart <- sig %>%
+  inner_join(compartment_map, by = "Gene_upper", relationship = "many-to-many")
+
+# Coverage diagnostic: significant genes that hit no compartment
+no_compart <- setdiff(unique(sig$Gene_upper), unique(compartment_map$Gene_upper))
+cat("Significant genes with no GO:CC annotation in our compartment list:",
+    length(no_compart), "/", length(unique(sig$Gene_upper)), "\n")
+```
+
+## Per-compartment counts of significant proteins per contrast
+
+```{r compartment_counts, fig.width=11, fig.height=6}
+counts_df <- sig_compart %>%
+  count(Label, Compartment, Status) %>%
+  mutate(n_signed = ifelse(Status == "Upregulated", n, -n))
+
+p_counts <- ggplot(counts_df, aes(x = reorder(Compartment, abs(n_signed)),
+                                  y = n_signed, fill = Status)) +
+  geom_col() +
+  scale_fill_manual(values = c("Upregulated" = "firebrick3",
+                                "Downregulated" = "navy")) +
+  facet_wrap(~ Label, ncol = 3, scales = "free_y") +
+  coord_flip() +
+  labs(x = NULL, y = "# significant proteins (- = down, + = up)",
+       title = "Significant proteins by subcellular compartment",
+       subtitle = paste0("FDR < ", FDR_CUTOFF, ", |log2FC| > ", LOGFC_CUTOFF)) +
+  theme_minimal(base_size = 12) +
+  theme(legend.position = "top",
+        strip.text       = element_text(face = "bold"),
+        panel.grid.major.y = element_blank())
+
+print(p_counts)
+ggsave(file.path(subcell_dir, "Compartment_counts_by_contrast.pdf"),
+       p_counts, width = 11, height = 6, device = cairo_pdf)
+```
+
+## Stratified volcano — facet by compartment for one contrast at a time
+
+```{r facet_volcano, fig.width=12, fig.height=10}
+plot_compartment_volcano <- function(contrast_label) {
+  sub <- msstats_ready %>%
+    filter(Label == contrast_label) %>%
+    inner_join(compartment_map, by = "Gene_upper", relationship = "many-to-many")
+
+  if (nrow(sub) == 0) return(invisible())
+
+  labels <- sub %>% filter(Status != "Not Significant") %>%
+    group_by(Compartment, Status) %>%
+    arrange(adj.pvalue) %>%
+    slice_head(n = 5) %>%
+    ungroup()
+
+  p <- ggplot(sub, aes(x = log2FC, y = -log10(adj.pvalue))) +
+    geom_point(aes(color = Status, size = Status, alpha = Status), shape = 16) +
+    scale_color_manual(values = c("Upregulated" = "firebrick3",
+                                   "Downregulated" = "navy",
+                                   "Not Significant" = "grey80")) +
+    scale_size_manual(values  = c("Upregulated" = 1.6, "Downregulated" = 1.6,
+                                   "Not Significant" = 0.7)) +
+    scale_alpha_manual(values = c("Upregulated" = 0.9, "Downregulated" = 0.9,
+                                   "Not Significant" = 0.4)) +
+    geom_hline(yintercept = -log10(FDR_CUTOFF), linetype = "dashed", color = "grey40") +
+    geom_vline(xintercept = c(-LOGFC_CUTOFF, LOGFC_CUTOFF),
+               linetype = "dashed", color = "grey40") +
+    geom_text_repel(data = labels, aes(label = Gene),
+                    size = 2.7, max.overlaps = 30, segment.color = "grey60") +
+    facet_wrap(~ Compartment, ncol = 3) +
+    labs(title = paste0("Compartment-stratified volcano: ", contrast_label),
+         x = "log2FC", y = "-log10(FDR)") +
+    theme_bw(base_size = 11) +
+    theme(legend.position = "top", strip.text = element_text(face = "bold"))
+
+  print(p)
+  ggsave(file.path(subcell_dir,
+                   paste0("Volcano_compartments_", contrast_label, ".pdf")),
+         p, width = 12, height = 10, device = cairo_pdf)
+}
+
+for (cl in unique(msstats_ready$Label))
+  plot_compartment_volcano(cl)
+```
+
+## Secretome candidates — flagged separately
+
+Significantly changed proteins annotated as Extracellular / Secreted are useful biomarker candidates. Exported as a single ranked table.
+
+```{r secretome}
+secreted_genes <- compartment_map %>%
+  filter(Compartment == "Extracellular / Secreted") %>%
+  pull(Gene_upper)
+
+secretome_table <- msstats_ready %>%
+  filter(Status != "Not Significant", Gene_upper %in% secreted_genes) %>%
+  arrange(Label, adj.pvalue) %>%
+  select(Label, Gene, Protein, Description, log2FC, adj.pvalue, Status)
+
+cat("Secreted/extracellular hits:", nrow(secretome_table), "\n")
+fwrite(secretome_table, file.path(subcell_dir, "Secretome_candidates.csv"))
+
+head(secretome_table, 30)
+```
+
+## Per-compartment top hits — wide table per contrast
+
+For each contrast and compartment, the 10 most significant up- and down-regulated proteins.
+
+```{r top_per_compartment}
+top_compart <- sig_compart %>%
+  arrange(Label, Compartment, adj.pvalue) %>%
+  group_by(Label, Compartment, Status) %>%
+  slice_head(n = 10) %>%
+  ungroup() %>%
+  select(Label, Compartment, Status, Gene, log2FC, adj.pvalue)
+
+fwrite(top_compart, file.path(subcell_dir, "Top10_per_compartment_per_contrast.csv"))
+head(top_compart, 25)
+```
+
+## Session info
+
+```{r}
+sessionInfo()
+```

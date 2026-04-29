@@ -1,0 +1,250 @@
+---
+title: "2. MSstatsPTM — Phospho DE with protein-level adjustment"
+---
+
+## Overview
+
+Differential phospho-site abundance, adjusted for protein-level abundance changes from the bulk proteome pipeline. Uses MSstatsPTM, which fits paired models on PTM and protein datasets and reports both unadjusted (raw phospho) and adjusted (phospho minus protein) log2 fold changes per contrast.
+
+Same contrast set as the bulk pipeline: 4 pairwise + APP × Microglia interaction.
+
+## Libraries
+
+```{r setup, include=TRUE, message=FALSE}
+library(data.table)
+library(MSstats)
+library(MSstatsPTM)
+library(MSstatsConvert)
+library(qs2)
+library(dplyr)
+library(ggplot2)
+library(stringr)
+library(tidyr)
+```
+
+## Directories and parameters
+
+```{r}
+project_root <- "/nemo/lab/destrooperb/home/shared/zanettc/giulia_proteomics"
+phospho_base <- file.path(project_root, "phosphoproteomics")
+bulk_base    <- file.path(project_root, "bulk_proteomics")
+
+run_num <- "run1"
+
+phospho_results_dir <- file.path(phospho_base, "results", run_num)
+phospho_objects_dir <- file.path(phospho_base, "data", "processed", run_num)
+phospho_input_dir   <- file.path(phospho_base, "input")
+bulk_input_dir      <- file.path(bulk_base, "input")
+
+dir.create(phospho_results_dir, recursive = TRUE, showWarnings = FALSE)
+dir.create(phospho_objects_dir, recursive = TRUE, showWarnings = FALSE)
+
+FASTA_PATH <- file.path(phospho_input_dir, "UP000000589_10090.fasta")
+PTM_LABEL  <- "Phospho (STY)"   # how Spectronaut writes the modification
+
+stopifnot("FASTA missing — see Setup notes" = file.exists(FASTA_PATH))
+```
+
+## Build annotation (same 16-sample design)
+
+```{r}
+msstats_annotation <- data.table(
+  Run          = paste0("GA_", 1:16),
+  Condition    = rep(c("hApp", "hAppNLGF", "hAppNLGF_FIRE", "hApp_FIRE"), each = 4),
+  BioReplicate = rep(1:4, times = 4)
+)
+msstats_annotation
+fwrite(msstats_annotation, file.path(phospho_objects_dir, "msstats_annotation.csv"))
+```
+
+## Load both Spectronaut reports (PTM and bulk)
+
+The bulk report serves as the "global protein" reference for adjustment. We read the same column subset that the bulk MSstats notebook uses.
+
+```{r load}
+msstats_cols <- c(
+  "R.Condition", "R.FileName", "R.Replicate",
+  "PG.ProteinGroups", "PG.ProteinAccessions",
+  "PEP.StrippedSequence",
+  "EG.ModifiedSequence", "EG.PrecursorId", "EG.Qvalue",
+  "FG.Charge", "FG.Id",
+  "F.FrgIon", "F.Charge", "F.FrgLossType", "F.FrgNum", "F.FrgType",
+  "F.NormalizedPeakArea", "F.PeakArea", "F.ExcludedFromQuantification"
+)
+
+cat("Reading phospho report...\n")
+phospho_raw <- fread(
+  file.path(phospho_input_dir, "PCF000612_phospho_GA_MSStats_report.csv"),
+  select = msstats_cols
+)
+cat("Phospho rows:", nrow(phospho_raw), "\n")
+
+cat("Reading bulk proteome report (for protein-level adjustment)...\n")
+protein_raw <- fread(
+  file.path(bulk_input_dir, "20260423_154110_PCF000612_GA_MSStats_Report-Proteome.csv"),
+  select = msstats_cols
+)
+cat("Protein rows:", nrow(protein_raw), "\n")
+```
+
+## Normalise phospho R.FileName + patch R.Condition / R.Replicate
+
+The phospho report writes sample IDs as `GA_P_1..GA_P_16` while the bulk proteome and the annotation use `GA_1..GA_16`. Strip the `GA_P_` prefix on the phospho data so both reports key against the same annotation. R.Condition is also "Not Defined" in both raw files — overwrite it from the annotation.
+
+```{r patch_conditions}
+phospho_raw[, R.FileName := stringr::str_replace(R.FileName, "^GA_P_", "GA_")]
+
+patch <- function(dt) {
+  dt[msstats_annotation, on = c("R.FileName" = "Run"),
+     `:=`(R.Condition = i.Condition, R.Replicate = i.BioReplicate)]
+  dt
+}
+phospho_raw <- patch(phospho_raw)
+protein_raw <- patch(protein_raw)
+```
+
+## Convert to MSstatsPTM input format
+
+`SpectronauttoMSstatsPTMFormat()` returns a list of two data frames: `PTM` and `PROTEIN`. Both must be present for protein-level adjustment. The same `annotation` table is used for both — MSstatsPTM matches by `Run`.
+
+```{r convert}
+ptm_input <- suppressWarnings(SpectronauttoMSstatsPTMFormat(
+  input              = phospho_raw,
+  annotation         = msstats_annotation,
+  fasta_path         = FASTA_PATH,
+  protein_input      = protein_raw,
+  use_unmod_peptides = FALSE,         # site-level: drop unmodified peptides
+  mod_id             = "\\[Phospho \\(STY\\)\\]",
+  filter_with_Qvalue = TRUE,
+  qvalue_cutoff      = 0.01,
+  removeProtein_with1Feature = FALSE
+))
+
+cat("PTM features:    ", nrow(ptm_input$PTM),     "\n")
+cat("Protein features:", nrow(ptm_input$PROTEIN), "\n")
+
+qs_save(ptm_input, file.path(phospho_objects_dir, "ptm_input.qs2"))
+```
+
+## Reload checkpoint (skip the read+convert on re-runs)
+
+```{r reload, eval=FALSE}
+ptm_input <- qs_read(file.path(phospho_objects_dir, "ptm_input.qs2"))
+```
+
+## Data summarisation (per dataset)
+
+`dataSummarizationPTM()` runs `dataProcess` on PTM and PROTEIN separately and returns both. TMP summarisation, median normalisation, MB-imputation — same defaults as the bulk pipeline.
+
+```{r summarise}
+summarised <- suppressWarnings(dataSummarizationPTM(
+  data                                 = ptm_input,
+  normalization                        = "equalizeMedians",
+  summaryMethod                        = "TMP",
+  censoredInt                          = "NA",
+  MBimpute                             = TRUE,
+  featureSubset                        = "highQuality",
+  remove_uninformative_feature_outlier = TRUE
+))
+
+qs_save(summarised, file.path(phospho_objects_dir, "summarised_ptm.qs2"))
+```
+
+## Verify condition levels and build contrast matrix
+
+Same 4 pairwise + interaction as the bulk pipeline.
+
+```{r contrasts}
+summarised <- qs_read(file.path(phospho_objects_dir, "summarised_ptm.qs2"))
+
+condition_levels <- levels(summarised$PTM$ProteinLevelData$GROUP)
+cat("Condition levels (alphabetical):\n")
+print(condition_levels)
+
+make_contrast <- function(numerator, denominator, levels) {
+  v <- setNames(rep(0L, length(levels)), levels)
+  v[numerator]   <-  1L
+  v[denominator] <- -1L
+  v
+}
+
+interaction_weights <- c(
+  hApp           = -1,
+  hAppNLGF       =  1,
+  hApp_FIRE      =  1,
+  hAppNLGF_FIRE = -1
+)
+make_linear_contrast <- function(weights, levels) {
+  v <- setNames(rep(0, length(levels)), levels)
+  v[names(weights)] <- weights
+  stopifnot(abs(sum(v)) < 1e-9)
+  v
+}
+
+comparison_matrix <- rbind(
+  make_contrast("hAppNLGF",      "hApp",        condition_levels),
+  make_contrast("hApp_FIRE",     "hApp",        condition_levels),
+  make_contrast("hAppNLGF_FIRE", "hAppNLGF",    condition_levels),
+  make_contrast("hAppNLGF_FIRE", "hApp_FIRE",   condition_levels),
+  make_linear_contrast(interaction_weights,     condition_levels)
+)
+rownames(comparison_matrix) <- c(
+  "hAppNLGF_vs_hApp",
+  "hApp_FIRE_vs_hApp",
+  "hAppNLGF_FIRE_vs_hAppNLGF",
+  "hAppNLGF_FIRE_vs_hApp_FIRE",
+  "Interaction_APP_x_Microglia"
+)
+print(comparison_matrix)
+```
+
+## Group comparison (adjusted for protein abundance)
+
+`groupComparisonPTM()` returns three result tables:
+
+-   `PTM.Model` — raw PTM contrast results (unadjusted phospho changes)
+-   `PROTEIN.Model` — protein-level contrast results (from the bulk reference)
+-   `ADJUSTED.Model` — phospho minus protein per contrast → "phospho-specific" changes
+
+The adjusted table is what most phospho papers cite — it isolates regulation that isn't simply explained by total protein abundance.
+
+```{r group_comparison}
+ptm_results <- suppressWarnings(groupComparisonPTM(
+  data            = summarised,
+  contrast.matrix = comparison_matrix,
+  data.type       = "LabelFree"
+))
+
+# qs_save(ptm_results, file.path(phospho_objects_dir, "ptm_results.qs2"))
+```
+
+## Export results CSVs
+
+```{r export}
+write_table <- function(df, filename) {
+  fwrite(as.data.table(df), file.path(phospho_results_dir, filename))
+  cat("Wrote", filename, ":", nrow(df), "rows\n")
+}
+
+write_table(ptm_results$PTM.Model,      "PTM_unadjusted_GroupComparison.csv")
+write_table(ptm_results$PROTEIN.Model,  "PROTEIN_GroupComparison.csv")
+write_table(ptm_results$ADJUSTED.Model, "PTM_adjusted_GroupComparison.csv")
+```
+
+## Quick summary of adjusted results
+
+```{r summary_table}
+adj <- as.data.table(ptm_results$ADJUSTED.Model)
+adj[!is.na(adj.pvalue),
+    .(n_tested = .N,
+      n_sig    = sum(adj.pvalue < 0.05),
+      n_up     = sum(adj.pvalue < 0.05 & log2FC > 0),
+      n_down   = sum(adj.pvalue < 0.05 & log2FC < 0)),
+    by = Label][order(Label)]
+```
+
+## Reload checkpoint
+
+```{r reload2, eval=FALSE}
+ptm_results <- qs_read(file.path(phospho_objects_dir, "ptm_results.qs2"))
+```

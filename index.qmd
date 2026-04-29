@@ -18,9 +18,24 @@ Four genotypes, 4 animals each (n=16 total):
 
 ## Analysis
 
+### Bulk proteomics
+
 | Notebook | Description |
 |----------|-------------|
-| [1. Initial QC](notebooks/01_initial_qc_spectronaut.qmd) | Protein counts, MAD outlier detection, PCA, correlation heatmap, contaminant check |
-| 2. MSstats | Differential abundance analysis across all pairwise contrasts |
-| [3. DE Plots](notebooks/03_DE_plots.qmd) | Volcano plots and visualisation of differentially abundant proteins |
-| [4. GSEA](notebooks/04_gsea.qmd) | Gene set enrichment analysis using GO, KEGG, and cell-type signatures (C8) |
+| [1. Initial QC](bulk_proteomics/notebooks/01_initial_qc_spectronaut.qmd) | Protein counts, MAD outlier detection, PCA, correlation heatmap, contaminant check |
+| [2. MSstats](bulk_proteomics/notebooks/02_msstats.qmd) | Differential abundance — pairwise contrasts plus the APP × Microglia interaction contrast |
+| [3. DE Plots](bulk_proteomics/notebooks/03_DE_plots.qmd) | Volcano plots and visualisation of differentially abundant proteins |
+| [4. GSEA](bulk_proteomics/notebooks/04_gsea.qmd) | Gene set enrichment analysis using GO, KEGG, and cell-type signatures (C8) |
+| [5. Microglia × APP-NLGF](bulk_proteomics/notebooks/05_microglia_app_modulated.qmd) | Microglia-attributable proteins further modulated by APP-NLGF — interaction hits, UpSet, heatmap |
+| [6. PPI Networks](bulk_proteomics/notebooks/06_PPI.qmd) | STRINGdb interaction networks and hub proteins per contrast |
+| [7. Subcellular Stratification](bulk_proteomics/notebooks/07_subcellular.qmd) | UniProt subcellular-location and secretome stratification of significant hits |
+
+### Phosphoproteomics
+
+| Notebook | Description |
+|----------|-------------|
+| [1. Phospho QC](phosphoproteomics/notebooks/01_phospho_qc.qmd) | Phosphopeptide / phosphosite counts, MAD outliers, PCA, sample correlation |
+| [2. MSstatsPTM](phosphoproteomics/notebooks/02_msstatsptm.qmd) | Phospho DE adjusted for protein-level abundance — 4 pairwise + APP × Microglia interaction |
+| [3. Phospho DE Plots](phosphoproteomics/notebooks/03_phospho_DE_plots.qmd) | Volcano plots of adjusted phospho contrasts, plus phospho-vs-protein concordance scatter |
+| [4. Kinase Activity](phosphoproteomics/notebooks/04_kinase_activity.qmd) | Inferred kinase activities per contrast via decoupleR + OmniPath kinase–substrate network |
+| [5. Phospho GSEA](phosphoproteomics/notebooks/05_phospho_GSEA.qmd) | Pathway enrichment over GO/KEGG/C8 using gene-level rolled-up phospho ranks |
