@@ -1,0 +1,43 @@
+host=cn079
+start=2026-04-30T04:03:22+01:00
+[31m
+
+processing file: 05_phospho_GSEA.qmd
+[39m1/13                  
+2/13 [setup]          
+3/13                  
+4/13 [unnamed-chunk-1]
+5/13                  
+6/13 [load]           
+7/13                  
+8/13 [ranks]          
+9/13                  
+10/13 [genesets]       
+11/13                  
+12/13 [run_gsea]       
+13/13                  
+[31moutput file: 05_phospho_GSEA.knit.md
+
+[39m[1mpandoc [22m
+  to: html
+  output-file: 05_phospho_GSEA.html
+  standalone: true
+  title-prefix: Giulia Proteomics
+  section-divs: true
+  html-math-method: mathjax
+  wrap: none
+  default-image-extension: png
+  toc: true
+  toc-depth: 3
+  
+[1mmetadata[22m
+  document-css: false
+  link-citations: true
+  date-format: long
+  lang: en
+  theme: cosmo
+  title: 5. Phospho — Pathway enrichment
+  
+Output created: ../../docs/phosphoproteomics/notebooks/05_phospho_GSEA.html
+
+end=2026-04-30T04:06:20+01:00

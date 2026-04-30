@@ -1,0 +1,38 @@
+INFO  [2026-04-29 22:26:32] MSstats - dataProcess function
+INFO  [2026-04-29 22:26:32] Summary method: TMP
+INFO  [2026-04-29 22:26:32] censoredInt: NA
+INFO  [2026-04-29 22:26:59] ** Features with one or two measurements across runs are removed.
+INFO  [2026-04-29 22:27:00] ** Fractionation handled.
+INFO  [2026-04-29 22:27:47] ** Updated quantification data to make balanced design. Missing values are marked by NA
+INFO  [2026-04-29 22:27:48] 
+
+INFO  [2026-04-29 22:28:10] Logarithm transformation with base 2 is done
+INFO  [2026-04-29 22:28:36] Factorize in columns(GROUP, SUBJECT, GROUP_ORIGINAL, SUBJECT_ORIGINAL, FEATURE, RUN)
+Normalization based on median: OK [2026-04-29 22:28:42] 
+INFO  [2026-04-29 22:28:47] ** Log2 intensities under cutoff = -2.1513  were considered as censored missing values.
+INFO  [2026-04-29 22:28:47] ** Log2 intensities = NA were considered as censored missing values.
+INFO  [2026-04-30 00:14:06] ** Flag uninformative feature and outliers by feature selection algorithm.
+INFO  [2026-04-30 00:14:09] 
+ # proteins: 8890
+ # peptides per protein: 1-629
+ # features per peptide: 1-6
+INFO  [2026-04-30 00:14:09] Some proteins have only one feature: 
+ A0A0G2JET4,
+ A6X935,
+ D3Z7A4;K7N6U2;K7N6Y8;K7N754;L7N2A7,
+ P35991,
+ Q64445 ...
+INFO  [2026-04-30 00:14:09] 
+                    hApp hAppNLGF hAppNLGF_FIRE hApp_FIRE
+             # runs    4        4             4         4
+    # bioreplicates    4        4             4         4
+ # tech. replicates    1        1             1         1
+INFO  [2026-04-30 00:14:12] Some features are completely missing in at least one condition:  
+ AAAAAAAAQM[Oxidation (M)]HTK_2_b4_1,
+ AAAAAAAAQM[Oxidation (M)]HTK_2_b5_1,
+ AAAAAAAAQM[Oxidation (M)]HTK_2_y8_1,
+ AAAADGEPLHNEEER_2_y10_1,
+ AAAAVVEFQR_2_y4_1 ...
+INFO  [2026-04-30 00:14:12] == Start the summarization per subplot...
+INFO  [2026-04-30 00:14:12] ** Filtered out uninformative features and outliers.
+INFO  [2026-04-30 00:30:47] == Summarization is done.

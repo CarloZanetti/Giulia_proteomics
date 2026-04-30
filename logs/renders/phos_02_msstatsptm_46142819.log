@@ -1,0 +1,57 @@
+host=cn023
+start=2026-04-29T22:11:04+01:00
+[31m
+
+processing file: 02_msstatsptm.qmd
+[39m1/27                   
+2/27 [setup]           
+3/27                   
+4/27 [unnamed-chunk-1] 
+5/27                   
+6/27 [unnamed-chunk-2] 
+7/27                   
+8/27 [load]            
+9/27                   
+10/27 [patch_conditions]
+11/27                   
+12/27 [convert]         
+13/27                   
+14/27 [reload]          
+15/27                   
+16/27 [summarise]       
+17/27                   
+18/27 [contrasts]       
+19/27                   
+20/27 [group_comparison]
+21/27                   
+22/27 [export]          
+23/27                   
+24/27 [summary_table]   
+25/27                   
+26/27 [reload2]         
+27/27                   
+[31moutput file: 02_msstatsptm.knit.md
+
+[39m[1mpandoc [22m
+  to: html
+  output-file: 02_msstatsptm.html
+  standalone: true
+  title-prefix: Giulia Proteomics
+  section-divs: true
+  html-math-method: mathjax
+  wrap: none
+  default-image-extension: png
+  toc: true
+  toc-depth: 3
+  
+[1mmetadata[22m
+  document-css: false
+  link-citations: true
+  date-format: long
+  lang: en
+  theme: cosmo
+  title: 2. MSstatsPTM — Phospho DE with protein-level adjustment
+  
+Output created: ../../docs/phosphoproteomics/notebooks/02_msstatsptm.html
+
+end=2026-04-30T04:03:11+01:00

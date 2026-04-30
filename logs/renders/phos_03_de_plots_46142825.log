@@ -1,0 +1,45 @@
+host=cn077
+start=2026-04-30T04:03:22+01:00
+[31m
+
+processing file: 03_phospho_DE_plots.qmd
+[39m1/15                  
+2/15 [setup]          
+3/15                  
+4/15 [unnamed-chunk-1]
+5/15                  
+6/15 [load]           
+7/15                  
+8/15 [volcano_fn]     
+9/15                  
+10/15 [run_volcanoes]  
+11/15                  
+12/15 [concordance]    
+13/15                  
+14/15 [unnamed-chunk-2]
+15/15                  
+[31moutput file: 03_phospho_DE_plots.knit.md
+
+[39m[1mpandoc [22m
+  to: html
+  output-file: 03_phospho_DE_plots.html
+  standalone: true
+  title-prefix: Giulia Proteomics
+  section-divs: true
+  html-math-method: mathjax
+  wrap: none
+  default-image-extension: png
+  toc: true
+  toc-depth: 3
+  
+[1mmetadata[22m
+  document-css: false
+  link-citations: true
+  date-format: long
+  lang: en
+  theme: cosmo
+  title: 3. Phospho — DE volcanoes (adjusted)
+  
+Output created: ../../docs/phosphoproteomics/notebooks/03_phospho_DE_plots.html
+
+end=2026-04-30T04:04:19+01:00

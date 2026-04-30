@@ -275,7 +275,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>phospho_base <span class="ot">&lt;-</span> <span class="fu">file.path</span>(project_root, <span class="st">"phosphoproteomics"</span>)</span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>bulk_base    <span class="ot">&lt;-</span> <span class="fu">file.path</span>(project_root, <span class="st">"bulk_proteomics"</span>)</span>
 <span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>run_num <span class="ot">&lt;-</span> <span class="st">"run1"</span></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>run_num <span class="ot">&lt;-</span> <span class="st">"run2"</span></span>
 <span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>phospho_results_dir <span class="ot">&lt;-</span> <span class="fu">file.path</span>(phospho_base, <span class="st">"results"</span>, run_num)</span>
 <span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>phospho_objects_dir <span class="ot">&lt;-</span> <span class="fu">file.path</span>(phospho_base, <span class="st">"data"</span>, <span class="st">"processed"</span>, run_num)</span>
@@ -300,14 +300,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>msstats_annotation <span class="ot">&lt;-</span> <span class="fu">data.table</span>(</span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">Run          =</span> <span class="fu">paste0</span>(<span class="st">"GA_"</span>, <span class="dv">1</span><span class="sc">:</span><span class="dv">16</span>),</span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">Condition    =</span> <span class="fu">rep</span>(<span class="fu">c</span>(<span class="st">"hApp"</span>, <span class="st">"hAppNLGF"</span>, <span class="st">"hAppNLGF_FIRE"</span>, <span class="st">"hApp_FIRE"</span>), <span class="at">each =</span> <span class="dv">4</span>),</span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">BioReplicate =</span> <span class="fu">rep</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">4</span>, <span class="at">times =</span> <span class="dv">4</span>)</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">BioReplicate =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">16</span></span>
 <span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>)</span>
 <span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>msstats_annotation</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output-display">
 <div data-pagedtable="false">
   <script data-pagedtable-source="" type="application/json">
-{"columns":[{"label":["Run"],"name":[1],"type":["chr"],"align":["left"]},{"label":["Condition"],"name":[2],"type":["chr"],"align":["left"]},{"label":["BioReplicate"],"name":[3],"type":["int"],"align":["right"]}],"data":[{"1":"GA_1","2":"hApp","3":"1"},{"1":"GA_2","2":"hApp","3":"2"},{"1":"GA_3","2":"hApp","3":"3"},{"1":"GA_4","2":"hApp","3":"4"},{"1":"GA_5","2":"hAppNLGF","3":"1"},{"1":"GA_6","2":"hAppNLGF","3":"2"},{"1":"GA_7","2":"hAppNLGF","3":"3"},{"1":"GA_8","2":"hAppNLGF","3":"4"},{"1":"GA_9","2":"hAppNLGF_FIRE","3":"1"},{"1":"GA_10","2":"hAppNLGF_FIRE","3":"2"},{"1":"GA_11","2":"hAppNLGF_FIRE","3":"3"},{"1":"GA_12","2":"hAppNLGF_FIRE","3":"4"},{"1":"GA_13","2":"hApp_FIRE","3":"1"},{"1":"GA_14","2":"hApp_FIRE","3":"2"},{"1":"GA_15","2":"hApp_FIRE","3":"3"},{"1":"GA_16","2":"hApp_FIRE","3":"4"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+{"columns":[{"label":["Run"],"name":[1],"type":["chr"],"align":["left"]},{"label":["Condition"],"name":[2],"type":["chr"],"align":["left"]},{"label":["BioReplicate"],"name":[3],"type":["int"],"align":["right"]}],"data":[{"1":"GA_1","2":"hApp","3":"1"},{"1":"GA_2","2":"hApp","3":"2"},{"1":"GA_3","2":"hApp","3":"3"},{"1":"GA_4","2":"hApp","3":"4"},{"1":"GA_5","2":"hAppNLGF","3":"5"},{"1":"GA_6","2":"hAppNLGF","3":"6"},{"1":"GA_7","2":"hAppNLGF","3":"7"},{"1":"GA_8","2":"hAppNLGF","3":"8"},{"1":"GA_9","2":"hAppNLGF_FIRE","3":"9"},{"1":"GA_10","2":"hAppNLGF_FIRE","3":"10"},{"1":"GA_11","2":"hAppNLGF_FIRE","3":"11"},{"1":"GA_12","2":"hAppNLGF_FIRE","3":"12"},{"1":"GA_13","2":"hApp_FIRE","3":"13"},{"1":"GA_14","2":"hApp_FIRE","3":"14"},{"1":"GA_15","2":"hApp_FIRE","3":"15"},{"1":"GA_16","2":"hApp_FIRE","3":"16"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
   </script>
 </div>
 </div>
@@ -407,48 +407,48 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </details>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] "FASTA file missing 342 Proteins. These will be removed. This may be due to non-unique identifications."
-INFO  [2026-04-29 11:15:05] ** Raw data from Spectronaut imported successfully.
-INFO  [2026-04-29 11:15:07] ** Raw data from Spectronaut cleaned successfully.
-INFO  [2026-04-29 11:15:07] ** Using provided annotation.
-INFO  [2026-04-29 11:15:07] ** Run labels were standardized to remove symbols such as '.' or '%'.
-INFO  [2026-04-29 11:15:07] ** The following options are used:
+INFO  [2026-04-29 22:44:16] ** Raw data from Spectronaut imported successfully.
+INFO  [2026-04-29 22:44:17] ** Raw data from Spectronaut cleaned successfully.
+INFO  [2026-04-29 22:44:17] ** Using provided annotation.
+INFO  [2026-04-29 22:44:17] ** Run labels were standardized to remove symbols such as '.' or '%'.
+INFO  [2026-04-29 22:44:17] ** The following options are used:
   - Features will be defined by the columns: PeptideSequence, PrecursorCharge, FragmentIon, ProductCharge
   - Shared peptides will be removed.
   - Proteins with single feature will not be removed.
   - Features with less than 3 measurements across runs will be removed.
-INFO  [2026-04-29 11:15:09] ** Intensities with values of FExcludedFromQuantification equal to TRUE are replaced with NA
-WARN  [2026-04-29 11:15:10] ** PGQvalue not found in input columns.
-INFO  [2026-04-29 11:15:10] ** Intensities with values not smaller than 0.01 in EGQvalue are replaced with NA
-INFO  [2026-04-29 11:15:12] ** Features with all missing measurements across runs are removed.
-INFO  [2026-04-29 11:15:14] ** Shared peptides are removed.
-INFO  [2026-04-29 11:16:14] ** Multiple measurements in a feature and a run are summarized by summaryforMultipleRows: max
-INFO  [2026-04-29 11:16:15] ** Features with one or two measurements across runs are removed.
-INFO  [2026-04-29 11:16:16] ** Run annotation merged with quantification data.
-INFO  [2026-04-29 11:16:19] ** Features with one or two measurements across runs are removed.
-INFO  [2026-04-29 11:16:20] ** Fractionation handled.
-INFO  [2026-04-29 11:16:28] ** Updated quantification data to make balanced design. Missing values are marked by NA
-INFO  [2026-04-29 11:16:29] ** Finished preprocessing. The dataset is ready to be processed by the dataProcess function.
-INFO  [2026-04-29 11:16:30] ** Raw data from Spectronaut imported successfully.
-INFO  [2026-04-29 11:16:36] ** Raw data from Spectronaut cleaned successfully.
-INFO  [2026-04-29 11:16:36] ** Using annotation extracted from quantification data.
-INFO  [2026-04-29 11:16:36] ** Run labels were standardized to remove symbols such as '.' or '%'.
-INFO  [2026-04-29 11:16:36] ** The following options are used:
+INFO  [2026-04-29 22:44:20] ** Intensities with values of FExcludedFromQuantification equal to TRUE are replaced with NA
+WARN  [2026-04-29 22:44:20] ** PGQvalue not found in input columns.
+INFO  [2026-04-29 22:44:21] ** Intensities with values not smaller than 0.01 in EGQvalue are replaced with NA
+INFO  [2026-04-29 22:44:23] ** Features with all missing measurements across runs are removed.
+INFO  [2026-04-29 22:44:24] ** Shared peptides are removed.
+INFO  [2026-04-29 22:45:24] ** Multiple measurements in a feature and a run are summarized by summaryforMultipleRows: max
+INFO  [2026-04-29 22:45:25] ** Features with one or two measurements across runs are removed.
+INFO  [2026-04-29 22:45:25] ** Run annotation merged with quantification data.
+INFO  [2026-04-29 22:45:29] ** Features with one or two measurements across runs are removed.
+INFO  [2026-04-29 22:45:29] ** Fractionation handled.
+INFO  [2026-04-29 22:45:38] ** Updated quantification data to make balanced design. Missing values are marked by NA
+INFO  [2026-04-29 22:45:38] ** Finished preprocessing. The dataset is ready to be processed by the dataProcess function.
+INFO  [2026-04-29 22:45:39] ** Raw data from Spectronaut imported successfully.
+INFO  [2026-04-29 22:45:44] ** Raw data from Spectronaut cleaned successfully.
+INFO  [2026-04-29 22:45:44] ** Using annotation extracted from quantification data.
+INFO  [2026-04-29 22:45:44] ** Run labels were standardized to remove symbols such as '.' or '%'.
+INFO  [2026-04-29 22:45:44] ** The following options are used:
   - Features will be defined by the columns: PeptideSequence, PrecursorCharge, FragmentIon, ProductCharge
   - Shared peptides will be removed.
   - Proteins with single feature will not be removed.
   - Features with less than 3 measurements across runs will be removed.
-INFO  [2026-04-29 11:16:42] ** Intensities with values of FExcludedFromQuantification equal to TRUE are replaced with NA
-WARN  [2026-04-29 11:16:43] ** PGQvalue not found in input columns.
-INFO  [2026-04-29 11:16:44] ** Intensities with values not smaller than 0.01 in EGQvalue are replaced with NA
-INFO  [2026-04-29 11:16:49] ** Features with all missing measurements across runs are removed.
-INFO  [2026-04-29 11:16:53] ** Shared peptides are removed.
-INFO  [2026-04-29 11:17:52] ** Multiple measurements in a feature and a run are summarized by summaryforMultipleRows: max
-INFO  [2026-04-29 11:17:55] ** Features with one or two measurements across runs are removed.
-INFO  [2026-04-29 11:17:57] ** Run annotation merged with quantification data.
-INFO  [2026-04-29 11:18:07] ** Features with one or two measurements across runs are removed.
-INFO  [2026-04-29 11:18:08] ** Fractionation handled.
-INFO  [2026-04-29 11:18:32] ** Updated quantification data to make balanced design. Missing values are marked by NA
-INFO  [2026-04-29 11:18:33] ** Finished preprocessing. The dataset is ready to be processed by the dataProcess function.</code></pre>
+INFO  [2026-04-29 22:45:49] ** Intensities with values of FExcludedFromQuantification equal to TRUE are replaced with NA
+WARN  [2026-04-29 22:45:51] ** PGQvalue not found in input columns.
+INFO  [2026-04-29 22:45:52] ** Intensities with values not smaller than 0.01 in EGQvalue are replaced with NA
+INFO  [2026-04-29 22:45:56] ** Features with all missing measurements across runs are removed.
+INFO  [2026-04-29 22:46:00] ** Shared peptides are removed.
+INFO  [2026-04-29 22:46:58] ** Multiple measurements in a feature and a run are summarized by summaryforMultipleRows: max
+INFO  [2026-04-29 22:47:01] ** Features with one or two measurements across runs are removed.
+INFO  [2026-04-29 22:47:02] ** Run annotation merged with quantification data.
+INFO  [2026-04-29 22:47:11] ** Features with one or two measurements across runs are removed.
+INFO  [2026-04-29 22:47:12] ** Fractionation handled.
+INFO  [2026-04-29 22:47:35] ** Updated quantification data to make balanced design. Missing values are marked by NA
+INFO  [2026-04-29 22:47:36] ** Finished preprocessing. The dataset is ready to be processed by the dataProcess function.</code></pre>
 </div>
 <details class="code-fold">
 <summary>Code</summary>
@@ -496,34 +496,34 @@ INFO  [2026-04-29 11:18:33] ** Finished preprocessing. The dataset is ready to b
 <span id="cb22-9"><a href="#cb22-9" aria-hidden="true" tabindex="-1"></a>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
-<pre><code>INFO  [2026-04-29 11:18:49] ** Features with one or two measurements across runs are removed.
-INFO  [2026-04-29 11:18:49] ** Fractionation handled.
-INFO  [2026-04-29 11:18:57] ** Updated quantification data to make balanced design. Missing values are marked by NA
-INFO  [2026-04-29 11:19:12] ** Log2 intensities under cutoff = -2.7132  were considered as censored missing values.
-INFO  [2026-04-29 11:19:12] ** Log2 intensities = NA were considered as censored missing values.
-INFO  [2026-04-29 11:19:12] ** Use all features that the dataset originally has.
-INFO  [2026-04-29 11:19:14] 
+<pre><code>INFO  [2026-04-29 22:47:51] ** Features with one or two measurements across runs are removed.
+INFO  [2026-04-29 22:47:51] ** Fractionation handled.
+INFO  [2026-04-29 22:47:59] ** Updated quantification data to make balanced design. Missing values are marked by NA
+INFO  [2026-04-29 22:48:11] ** Log2 intensities under cutoff = -2.7132  were considered as censored missing values.
+INFO  [2026-04-29 22:48:11] ** Log2 intensities = NA were considered as censored missing values.
+INFO  [2026-04-29 22:48:12] ** Use all features that the dataset originally has.
+INFO  [2026-04-29 22:48:14] 
  # proteins: 43745
  # peptides per protein: 1-292
  # features per peptide: 1-6
-INFO  [2026-04-29 11:19:14] Some proteins have only one feature: 
+INFO  [2026-04-29 22:48:14] Some proteins have only one feature: 
  A2A699_S730,
  A2AIV2_T994,
  A2AJI0_S282,
  A2AJI0_S95_T99,
  A2ALS5_S529 ...
-INFO  [2026-04-29 11:19:14] 
+INFO  [2026-04-29 22:48:14] 
                     hApp hAppNLGF hAppNLGF_FIRE hApp_FIRE
              # runs    4        4             4         4
     # bioreplicates    4        4             4         4
  # tech. replicates    1        1             1         1
-INFO  [2026-04-29 11:19:15] Some features are completely missing in at least one condition:  
+INFO  [2026-04-29 22:48:15] Some features are completely missing in at least one condition:  
  AAAAALS[Phospho (STY)]GSPPQTEKPTHYR_4_y13_2,
  AAADDGEEPKS[Phospho (STY)]EPETKK_2_y3_1,
  AAADDGEEPKSEPETK_2_b12_1,
  AAADDGEEPKSEPETK_2_b8_1,
  AAADDGEEPKSEPETK_2_y11_1 ...
-INFO  [2026-04-29 11:19:15]  == Start the summarization per subplot...
+INFO  [2026-04-29 22:48:15]  == Start the summarization per subplot...
 
   |                                                                            
   |                                                                      |   0%
@@ -870,38 +870,38 @@ INFO  [2026-04-29 11:19:15]  == Start the summarization per subplot...
   |======================================================================|  99%
   |                                                                            
   |======================================================================| 100%
-INFO  [2026-04-29 12:45:52]  == Summarization is done.</code></pre>
+INFO  [2026-04-30 01:10:16]  == Summarization is done.</code></pre>
 </div>
 <div class="cell-output cell-output-stdout">
-<pre><code>INFO  [2026-04-29 12:46:54] ** Features with one or two measurements across runs are removed.
-INFO  [2026-04-29 12:46:54] ** Fractionation handled.
-INFO  [2026-04-29 12:47:11] ** Updated quantification data to make balanced design. Missing values are marked by NA
-INFO  [2026-04-29 12:47:35] ** Log2 intensities under cutoff = -2.162  were considered as censored missing values.
-INFO  [2026-04-29 12:47:35] ** Log2 intensities = NA were considered as censored missing values.
-INFO  [2026-04-29 14:38:00] ** Flag uninformative feature and outliers by feature selection algorithm.
-INFO  [2026-04-29 14:38:04] 
+<pre><code>INFO  [2026-04-30 01:11:42] ** Features with one or two measurements across runs are removed.
+INFO  [2026-04-30 01:11:42] ** Fractionation handled.
+INFO  [2026-04-30 01:12:15] ** Updated quantification data to make balanced design. Missing values are marked by NA
+INFO  [2026-04-30 01:13:00] ** Log2 intensities under cutoff = -2.162  were considered as censored missing values.
+INFO  [2026-04-30 01:13:00] ** Log2 intensities = NA were considered as censored missing values.
+INFO  [2026-04-30 03:30:50] ** Flag uninformative feature and outliers by feature selection algorithm.
+INFO  [2026-04-30 03:30:52] 
  # proteins: 8918
  # peptides per protein: 1-631
  # features per peptide: 1-6
-INFO  [2026-04-29 14:38:04] Some proteins have only one feature: 
+INFO  [2026-04-30 03:30:52] Some proteins have only one feature: 
  A0A0G2JET4,
  A6X935,
  C0HLV9,
  D3Z7A4;K7N6U2;K7N6Y8;K7N754;L7N2A7,
  P35991 ...
-INFO  [2026-04-29 14:38:04] 
+INFO  [2026-04-30 03:30:52] 
                     hApp hAppNLGF hAppNLGF_FIRE hApp_FIRE
              # runs    4        4             4         4
     # bioreplicates    4        4             4         4
  # tech. replicates    1        1             1         1
-INFO  [2026-04-29 14:38:07] Some features are completely missing in at least one condition:  
+INFO  [2026-04-30 03:30:55] Some features are completely missing in at least one condition:  
  AAAAAAAAQM[Oxidation (M)]HTK_2_b4_1,
  AAAAAAAAQM[Oxidation (M)]HTK_2_b5_1,
  AAAAAAAAQM[Oxidation (M)]HTK_2_y8_1,
  AAAADGEPLHNEEER_2_y10_1,
  AAAAVASAASSC[Carbamidomethyl (C)]R_3_y7_1 ...
-INFO  [2026-04-29 14:38:07]  == Start the summarization per subplot...
-INFO  [2026-04-29 14:38:08] ** Filtered out uninformative features and outliers.
+INFO  [2026-04-30 03:30:55]  == Start the summarization per subplot...
+INFO  [2026-04-30 03:30:55] ** Filtered out uninformative features and outliers.
 
   |                                                                            
   |                                                                      |   0%
@@ -1245,7 +1245,7 @@ INFO  [2026-04-29 14:38:08] ** Filtered out uninformative features and outliers.
   |======================================================================|  99%
   |                                                                            
   |======================================================================| 100%
-INFO  [2026-04-29 14:55:10]  == Summarization is done.</code></pre>
+INFO  [2026-04-30 03:46:10]  == Summarization is done.</code></pre>
 </div>
 <details class="code-fold">
 <summary>Code</summary>
@@ -1341,7 +1341,7 @@ Interaction_APP_x_Microglia   -1         1        1            -1</code></pre>
 <span id="cb33-5"><a href="#cb33-5" aria-hidden="true" tabindex="-1"></a>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
-<pre><code>INFO  [2026-04-29 14:55:41]  == Start to test and get inference in whole plot ...
+<pre><code>INFO  [2026-04-30 03:46:43]  == Start to test and get inference in whole plot ...
 
   |                                                                            
   |                                                                      |   0%
@@ -1685,10 +1685,10 @@ Interaction_APP_x_Microglia   -1         1        1            -1</code></pre>
   |======================================================================|  99%
   |                                                                            
   |======================================================================| 100%
-INFO  [2026-04-29 15:21:30]  == Comparisons for all proteins are done.</code></pre>
+INFO  [2026-04-30 03:59:18]  == Comparisons for all proteins are done.</code></pre>
 </div>
 <div class="cell-output cell-output-stdout">
-<pre><code>INFO  [2026-04-29 15:22:21]  == Start to test and get inference in whole plot ...
+<pre><code>INFO  [2026-04-30 04:00:07]  == Start to test and get inference in whole plot ...
 
   |                                                                            
   |                                                                      |   0%
@@ -2032,7 +2032,7 @@ INFO  [2026-04-29 15:21:30]  == Comparisons for all proteins are done.</code></p
   |======================================================================|  99%
   |                                                                            
   |======================================================================| 100%
-INFO  [2026-04-29 15:26:38]  == Comparisons for all proteins are done.</code></pre>
+INFO  [2026-04-30 04:02:00]  == Comparisons for all proteins are done.</code></pre>
 </div>
 <details class="code-fold">
 <summary>Code</summary>
@@ -2087,7 +2087,7 @@ INFO  [2026-04-29 15:26:38]  == Comparisons for all proteins are done.</code></p
 <div class="cell-output-display">
 <div data-pagedtable="false">
   <script data-pagedtable-source="" type="application/json">
-{"columns":[{"label":["Label"],"name":[1],"type":["chr"],"align":["left"]},{"label":["n_tested"],"name":[2],"type":["int"],"align":["right"]},{"label":["n_sig"],"name":[3],"type":["int"],"align":["right"]},{"label":["n_up"],"name":[4],"type":["int"],"align":["right"]},{"label":["n_down"],"name":[5],"type":["int"],"align":["right"]}],"data":[{"1":"Interaction_APP_x_Microglia","2":"39919","3":"21","4":"14","5":"7"},{"1":"hAppNLGF_FIRE_vs_hAppNLGF","2":"40294","3":"25","4":"10","5":"15"},{"1":"hAppNLGF_FIRE_vs_hApp_FIRE","2":"40281","3":"16","4":"7","5":"9"},{"1":"hAppNLGF_vs_hApp","2":"40696","3":"26","4":"17","5":"9"},{"1":"hApp_FIRE_vs_hApp","2":"40635","3":"52","4":"22","5":"30"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+{"columns":[{"label":["Label"],"name":[1],"type":["chr"],"align":["left"]},{"label":["n_tested"],"name":[2],"type":["int"],"align":["right"]},{"label":["n_sig"],"name":[3],"type":["int"],"align":["right"]},{"label":["n_up"],"name":[4],"type":["int"],"align":["right"]},{"label":["n_down"],"name":[5],"type":["int"],"align":["right"]}],"data":[{"1":"Interaction_APP_x_Microglia","2":"40734","3":"13","4":"5","5":"8"},{"1":"hAppNLGF_FIRE_vs_hAppNLGF","2":"41523","3":"24","4":"9","5":"15"},{"1":"hAppNLGF_FIRE_vs_hApp_FIRE","2":"41487","3":"21","4":"11","5":"10"},{"1":"hAppNLGF_vs_hApp","2":"42166","3":"26","4":"11","5":"15"},{"1":"hApp_FIRE_vs_hApp","2":"42077","3":"53","4":"14","5":"39"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
   </script>
 </div>
 </div>
@@ -2610,7 +2610,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb45-31"><a href="#cb45-31" aria-hidden="true" tabindex="-1"></a>phospho_base <span class="ot">&lt;-</span> <span class="fu">file.path</span>(project_root, <span class="st">"phosphoproteomics"</span>)</span>
 <span id="cb45-32"><a href="#cb45-32" aria-hidden="true" tabindex="-1"></a>bulk_base    <span class="ot">&lt;-</span> <span class="fu">file.path</span>(project_root, <span class="st">"bulk_proteomics"</span>)</span>
 <span id="cb45-33"><a href="#cb45-33" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb45-34"><a href="#cb45-34" aria-hidden="true" tabindex="-1"></a>run_num <span class="ot">&lt;-</span> <span class="st">"run1"</span></span>
+<span id="cb45-34"><a href="#cb45-34" aria-hidden="true" tabindex="-1"></a>run_num <span class="ot">&lt;-</span> <span class="st">"run2"</span></span>
 <span id="cb45-35"><a href="#cb45-35" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb45-36"><a href="#cb45-36" aria-hidden="true" tabindex="-1"></a>phospho_results_dir <span class="ot">&lt;-</span> <span class="fu">file.path</span>(phospho_base, <span class="st">"results"</span>, run_num)</span>
 <span id="cb45-37"><a href="#cb45-37" aria-hidden="true" tabindex="-1"></a>phospho_objects_dir <span class="ot">&lt;-</span> <span class="fu">file.path</span>(phospho_base, <span class="st">"data"</span>, <span class="st">"processed"</span>, run_num)</span>
@@ -2632,7 +2632,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb45-55"><a href="#cb45-55" aria-hidden="true" tabindex="-1"></a>msstats_annotation <span class="ot">&lt;-</span> <span class="fu">data.table</span>(</span>
 <span id="cb45-56"><a href="#cb45-56" aria-hidden="true" tabindex="-1"></a>  <span class="at">Run          =</span> <span class="fu">paste0</span>(<span class="st">"GA_"</span>, <span class="dv">1</span><span class="sc">:</span><span class="dv">16</span>),</span>
 <span id="cb45-57"><a href="#cb45-57" aria-hidden="true" tabindex="-1"></a>  <span class="at">Condition    =</span> <span class="fu">rep</span>(<span class="fu">c</span>(<span class="st">"hApp"</span>, <span class="st">"hAppNLGF"</span>, <span class="st">"hAppNLGF_FIRE"</span>, <span class="st">"hApp_FIRE"</span>), <span class="at">each =</span> <span class="dv">4</span>),</span>
-<span id="cb45-58"><a href="#cb45-58" aria-hidden="true" tabindex="-1"></a>  <span class="at">BioReplicate =</span> <span class="fu">rep</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">4</span>, <span class="at">times =</span> <span class="dv">4</span>)</span>
+<span id="cb45-58"><a href="#cb45-58" aria-hidden="true" tabindex="-1"></a>  <span class="at">BioReplicate =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">16</span></span>
 <span id="cb45-59"><a href="#cb45-59" aria-hidden="true" tabindex="-1"></a>)</span>
 <span id="cb45-60"><a href="#cb45-60" aria-hidden="true" tabindex="-1"></a>msstats_annotation</span>
 <span id="cb45-61"><a href="#cb45-61" aria-hidden="true" tabindex="-1"></a><span class="fu">fwrite</span>(msstats_annotation, <span class="fu">file.path</span>(phospho_objects_dir, <span class="st">"msstats_annotation.csv"</span>))</span>

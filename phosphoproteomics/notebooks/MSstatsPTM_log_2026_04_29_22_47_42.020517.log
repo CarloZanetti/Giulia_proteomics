@@ -1,0 +1,80 @@
+INFO  [2026-04-29 22:47:42] Starting parameter and data checks..
+INFO  [2026-04-29 22:47:42] Parameter and data checks complete.
+INFO  [2026-04-29 22:47:42] Starting PTM summarization..
+INFO  [2026-04-29 22:47:42] MSstats - dataProcess function
+INFO  [2026-04-29 22:47:42] Summary method: TMP
+INFO  [2026-04-29 22:47:42] censoredInt: NA
+INFO  [2026-04-29 22:47:51] ** Features with one or two measurements across runs are removed.
+INFO  [2026-04-29 22:47:51] ** Fractionation handled.
+INFO  [2026-04-29 22:47:59] ** Updated quantification data to make balanced design. Missing values are marked by NA
+INFO  [2026-04-29 22:47:59] 
+
+INFO  [2026-04-29 22:48:05] Logarithm transformation with base 2 is done
+INFO  [2026-04-29 22:48:10] Factorize in columns(GROUP, SUBJECT, GROUP_ORIGINAL, SUBJECT_ORIGINAL, FEATURE, RUN)
+Normalization based on median: OK [2026-04-29 22:48:11] 
+INFO  [2026-04-29 22:48:11] ** Log2 intensities under cutoff = -2.7132  were considered as censored missing values.
+INFO  [2026-04-29 22:48:11] ** Log2 intensities = NA were considered as censored missing values.
+INFO  [2026-04-29 22:48:12] ** Use all features that the dataset originally has.
+INFO  [2026-04-29 22:48:14] 
+ # proteins: 43745
+ # peptides per protein: 1-292
+ # features per peptide: 1-6
+INFO  [2026-04-29 22:48:14] Some proteins have only one feature: 
+ A2A699_S730,
+ A2AIV2_T994,
+ A2AJI0_S282,
+ A2AJI0_S95_T99,
+ A2ALS5_S529 ...
+INFO  [2026-04-29 22:48:14] 
+                    hApp hAppNLGF hAppNLGF_FIRE hApp_FIRE
+             # runs    4        4             4         4
+    # bioreplicates    4        4             4         4
+ # tech. replicates    1        1             1         1
+INFO  [2026-04-29 22:48:15] Some features are completely missing in at least one condition:  
+ AAAAALS[Phospho (STY)]GSPPQTEKPTHYR_4_y13_2,
+ AAADDGEEPKS[Phospho (STY)]EPETKK_2_y3_1,
+ AAADDGEEPKSEPETK_2_b12_1,
+ AAADDGEEPKSEPETK_2_b8_1,
+ AAADDGEEPKSEPETK_2_y11_1 ...
+INFO  [2026-04-29 22:48:15] == Start the summarization per subplot...
+INFO  [2026-04-30 01:10:16] == Summarization is done.
+INFO  [2026-04-30 01:11:13] Starting Protein summarization..
+INFO  [2026-04-30 01:11:13] MSstats - dataProcess function
+INFO  [2026-04-30 01:11:13] Summary method: TMP
+INFO  [2026-04-30 01:11:13] censoredInt: NA
+INFO  [2026-04-30 01:11:42] ** Features with one or two measurements across runs are removed.
+INFO  [2026-04-30 01:11:42] ** Fractionation handled.
+INFO  [2026-04-30 01:12:15] ** Updated quantification data to make balanced design. Missing values are marked by NA
+INFO  [2026-04-30 01:12:15] 
+
+INFO  [2026-04-30 01:12:31] Logarithm transformation with base 2 is done
+INFO  [2026-04-30 01:12:54] Factorize in columns(GROUP, SUBJECT, GROUP_ORIGINAL, SUBJECT_ORIGINAL, FEATURE, RUN)
+Normalization based on median: OK [2026-04-30 01:12:56] 
+INFO  [2026-04-30 01:13:00] ** Log2 intensities under cutoff = -2.162  were considered as censored missing values.
+INFO  [2026-04-30 01:13:00] ** Log2 intensities = NA were considered as censored missing values.
+INFO  [2026-04-30 03:30:50] ** Flag uninformative feature and outliers by feature selection algorithm.
+INFO  [2026-04-30 03:30:52] 
+ # proteins: 8918
+ # peptides per protein: 1-631
+ # features per peptide: 1-6
+INFO  [2026-04-30 03:30:52] Some proteins have only one feature: 
+ A0A0G2JET4,
+ A6X935,
+ C0HLV9,
+ D3Z7A4;K7N6U2;K7N6Y8;K7N754;L7N2A7,
+ P35991 ...
+INFO  [2026-04-30 03:30:52] 
+                    hApp hAppNLGF hAppNLGF_FIRE hApp_FIRE
+             # runs    4        4             4         4
+    # bioreplicates    4        4             4         4
+ # tech. replicates    1        1             1         1
+INFO  [2026-04-30 03:30:55] Some features are completely missing in at least one condition:  
+ AAAAAAAAQM[Oxidation (M)]HTK_2_b4_1,
+ AAAAAAAAQM[Oxidation (M)]HTK_2_b5_1,
+ AAAAAAAAQM[Oxidation (M)]HTK_2_y8_1,
+ AAAADGEPLHNEEER_2_y10_1,
+ AAAAVASAASSC[Carbamidomethyl (C)]R_3_y7_1 ...
+INFO  [2026-04-30 03:30:55] == Start the summarization per subplot...
+INFO  [2026-04-30 03:30:55] ** Filtered out uninformative features and outliers.
+INFO  [2026-04-30 03:46:10] == Summarization is done.
+INFO  [2026-04-30 03:46:26] Summarization complete. Returning output

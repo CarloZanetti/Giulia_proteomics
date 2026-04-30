@@ -1,0 +1,46 @@
+host=cn078
+start=2026-04-30T04:03:22+01:00
+[31m
+
+processing file: 04_kinase_activity.qmd
+[39m1/15                  
+2/15 [setup]          
+3/15                  
+4/15 [unnamed-chunk-1]
+5/15                  
+6/15 [load]           
+7/15                  
+8/15 [omnipath]       
+[31m[2026-04-30 04:03:42] [SUCCESS] [OmnipathR] Loaded 31257 enzyme-substrate relationships from cache.
+[39m9/15                  
+10/15 [score]          
+11/15                  
+12/15 [export]         
+13/15                  
+14/15 [barplots]       
+15/15                  
+[31moutput file: 04_kinase_activity.knit.md
+
+[39m[1mpandoc [22m
+  to: html
+  output-file: 04_kinase_activity.html
+  standalone: true
+  title-prefix: Giulia Proteomics
+  section-divs: true
+  html-math-method: mathjax
+  wrap: none
+  default-image-extension: png
+  toc: true
+  toc-depth: 3
+  
+[1mmetadata[22m
+  document-css: false
+  link-citations: true
+  date-format: long
+  lang: en
+  theme: cosmo
+  title: 4. Kinase activity inference
+  
+Output created: ../../docs/phosphoproteomics/notebooks/04_kinase_activity.html
+
+end=2026-04-30T04:03:56+01:00

@@ -30,7 +30,7 @@ library(circlize)
 
 ```{r}
 base_dir <- "/nemo/lab/destrooperb/home/shared/zanettc/giulia_proteomics/bulk_proteomics"
-run_num  <- "run3"
+run_num  <- "run4"
 
 results_dir <- file.path(base_dir, "results", run_num)
 objects_dir <- file.path(base_dir, "data", "processed", run_num)

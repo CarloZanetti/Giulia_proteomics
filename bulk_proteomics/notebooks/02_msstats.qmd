@@ -19,7 +19,7 @@ library(readr)
 
 ```{r}
 base_dir <- "/nemo/lab/destrooperb/home/shared/zanettc/giulia_proteomics/bulk_proteomics"
-run_num  <- "run3"
+run_num  <- "run4"
 
 results_dir <- file.path(base_dir, "results", run_num)
 objects_dir <- file.path(base_dir, "data", "processed", run_num)
@@ -38,7 +38,7 @@ design was not configured inside Spectronaut — we define it here from the know
 msstats_annotation <- data.table(
   Run          = paste0("GA_", 1:16),
   Condition    = rep(c("hApp", "hAppNLGF", "hAppNLGF_FIRE", "hApp_FIRE"), each = 4),
-  BioReplicate = rep(1:4, times = 4)
+  BioReplicate = 1:16
 )
 msstats_annotation
 
@@ -165,10 +165,13 @@ This removes near-absent features that destabilise the linear model.
 This is the same as saying proteins must be present in at least 2 samples out 
 of 3 for at least one condition. 
 
-```{r}
-#Read in if starting here
-msstats_input <- qs_read(file.path(base_dir, "data", "processed", "run1", "msstats_input.qs2"))
+```{r reload, eval=FALSE}
+# Manual resume only — not evaluated during render. msstats_input is already
+# in memory from the chunk above; this line lets you skip rebuilding it on a re-run.
+msstats_input <- qs_read(file.path(objects_dir, "msstats_input.qs2"))
+```
 
+```{r}
 msstats_input_filt <- as.data.frame(msstats_input) %>%
   group_by(ProteinName, PeptideSequence, PrecursorCharge, FragmentIon, ProductCharge, Condition) %>%
   summarise(

@@ -1,0 +1,43 @@
+host=cn077
+start=2026-04-30T00:33:42+01:00
+[31m
+
+processing file: 03_DE_plots.qmd
+[39m1/13                  
+2/13 [setup]          
+3/13                  
+4/13 [unnamed-chunk-1]
+5/13                  
+6/13 [unnamed-chunk-2]
+7/13                  
+8/13 [unnamed-chunk-3]
+9/13                  
+10/13 [unnamed-chunk-4]
+11/13                  
+12/13 [unnamed-chunk-5]
+13/13                  
+[31moutput file: 03_DE_plots.knit.md
+
+[39m[1mpandoc [22m
+  to: html
+  output-file: 03_DE_plots.html
+  standalone: true
+  title-prefix: Giulia Proteomics
+  section-divs: true
+  html-math-method: mathjax
+  wrap: none
+  default-image-extension: png
+  toc: true
+  toc-depth: 3
+  
+[1mmetadata[22m
+  document-css: false
+  link-citations: true
+  date-format: long
+  lang: en
+  theme: cosmo
+  title: 3. DE plots
+  
+Output created: ../../docs/bulk_proteomics/notebooks/03_DE_plots.html
+
+end=2026-04-30T00:35:10+01:00

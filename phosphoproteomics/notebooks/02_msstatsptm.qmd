@@ -29,7 +29,7 @@ project_root <- "/nemo/lab/destrooperb/home/shared/zanettc/giulia_proteomics"
 phospho_base <- file.path(project_root, "phosphoproteomics")
 bulk_base    <- file.path(project_root, "bulk_proteomics")
 
-run_num <- "run1"
+run_num <- "run2"
 
 phospho_results_dir <- file.path(phospho_base, "results", run_num)
 phospho_objects_dir <- file.path(phospho_base, "data", "processed", run_num)
@@ -51,7 +51,7 @@ stopifnot("FASTA missing — see Setup notes" = file.exists(FASTA_PATH))
 msstats_annotation <- data.table(
   Run          = paste0("GA_", 1:16),
   Condition    = rep(c("hApp", "hAppNLGF", "hAppNLGF_FIRE", "hApp_FIRE"), each = 4),
-  BioReplicate = rep(1:4, times = 4)
+  BioReplicate = 1:16
 )
 msstats_annotation
 fwrite(msstats_annotation, file.path(phospho_objects_dir, "msstats_annotation.csv"))

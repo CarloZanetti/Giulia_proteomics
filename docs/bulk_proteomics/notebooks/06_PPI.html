@@ -325,7 +325,7 @@ Attaching package: 'igraph'</code></pre>
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>base_dir    <span class="ot">&lt;-</span> <span class="st">"/nemo/lab/destrooperb/home/shared/zanettc/giulia_proteomics/bulk_proteomics"</span></span>
-<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>run_num     <span class="ot">&lt;-</span> <span class="st">"run3"</span></span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>run_num     <span class="ot">&lt;-</span> <span class="st">"run4"</span></span>
 <span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>results_dir <span class="ot">&lt;-</span> <span class="fu">file.path</span>(base_dir, <span class="st">"results"</span>, run_num)</span>
 <span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a>objects_dir <span class="ot">&lt;-</span> <span class="fu">file.path</span>(base_dir, <span class="st">"data"</span>, <span class="st">"processed"</span>, run_num)</span>
 <span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a>ppi_dir     <span class="ot">&lt;-</span> <span class="fu">file.path</span>(results_dir, <span class="st">"PPI_networks"</span>)</span>
@@ -436,34 +436,34 @@ Attaching package: 'igraph'</code></pre>
  hAppNLGF_vs_hApp 
 ============================
   Upregulated   n = 4
-  Downregulated n = 11
+  Downregulated n = 13
 
 ============================
  hApp_FIRE_vs_hApp 
 ============================
   Upregulated   n = 8
     -&gt; nodes 8 | edges 1
-  Downregulated n = 52
-    -&gt; nodes 52 | edges 15
+  Downregulated n = 66
+    -&gt; nodes 66 | edges 19
 
 ============================
  hAppNLGF_FIRE_vs_hAppNLGF 
 ============================
-  Upregulated   n = 15
-  Downregulated n = 35
-    -&gt; nodes 35 | edges 7
+  Upregulated   n = 16
+  Downregulated n = 42
+    -&gt; nodes 42 | edges 9
 
 ============================
  hAppNLGF_FIRE_vs_hApp_FIRE 
 ============================
-  Upregulated   n = 2
+  Upregulated   n = 3
   Downregulated n = 2
 
 ============================
  Interaction_APP_x_Microglia 
 ============================
   Upregulated   n = 1
-  Downregulated n = 2</code></pre>
+  Downregulated n = 4</code></pre>
 </div>
 </div>
 </section>
@@ -629,37 +629,39 @@ Attaching package: 'igraph'</code></pre>
 
 --- Top 20 hubs: hApp_FIRE_vs_hApp__Downregulated ---
                             Gene     log2FC Degree
-10090.ENSMUSP00000113852     Syk -2.2769085      3
+10090.ENSMUSP00000038838     Lyn -1.4974361      4
+10090.ENSMUSP00000113852     Syk -2.2769085      4
+10090.ENSMUSP00000000299   Itgb2 -3.6921908      3
+10090.ENSMUSP00000023531   Hcls1 -3.6457404      3
 10090.ENSMUSP00000081263   Wasf2 -1.3852725      3
-10090.ENSMUSP00000000299   Itgb2 -3.6921908      2
-10090.ENSMUSP00000040246    C1qb -5.7631545      2
+10090.ENSMUSP00000040246    C1qb -5.7305583      2
+10090.ENSMUSP00000078875  Fcer1g -3.3277773      2
 10090.ENSMUSP00000004377   Ptpn6 -2.6064623      2
-10090.ENSMUSP00000023531   Hcls1 -3.6507904      2
 10090.ENSMUSP00000048836    C1qa -5.7201826      2
-10090.ENSMUSP00000036747    C1qc -5.3453458      2
+10090.ENSMUSP00000036747    C1qc -5.3031844      2
 10090.ENSMUSP00000061893    Abi3 -3.2594921      2
-10090.ENSMUSP00000035400 Nckap1l -2.4270851      2
+10090.ENSMUSP00000035400 Nckap1l -2.4335139      2
 10090.ENSMUSP00000014290 Apbb1ip -2.1724247      2
-10090.ENSMUSP00000068468  P05555 -2.7808290      1
-10090.ENSMUSP00000078875  Fcer1g -3.3252801      1
+10090.ENSMUSP00000068468  P05555 -2.7276422      1
 10090.ENSMUSP00000113071     Msn -0.5312957      1
 10090.ENSMUSP00000032561    Vasp -0.8751803      1
 10090.ENSMUSP00000106013  Ripor2 -1.0608928      1
-10090.ENSMUSP00000037858  Fermt3 -3.3933466      1
+10090.ENSMUSP00000037858  Fermt3 -3.3957648      1
                                                Comparison
+10090.ENSMUSP00000038838 hApp_FIRE_vs_hApp__Downregulated
 10090.ENSMUSP00000113852 hApp_FIRE_vs_hApp__Downregulated
-10090.ENSMUSP00000081263 hApp_FIRE_vs_hApp__Downregulated
 10090.ENSMUSP00000000299 hApp_FIRE_vs_hApp__Downregulated
-10090.ENSMUSP00000040246 hApp_FIRE_vs_hApp__Downregulated
-10090.ENSMUSP00000004377 hApp_FIRE_vs_hApp__Downregulated
 10090.ENSMUSP00000023531 hApp_FIRE_vs_hApp__Downregulated
+10090.ENSMUSP00000081263 hApp_FIRE_vs_hApp__Downregulated
+10090.ENSMUSP00000040246 hApp_FIRE_vs_hApp__Downregulated
+10090.ENSMUSP00000078875 hApp_FIRE_vs_hApp__Downregulated
+10090.ENSMUSP00000004377 hApp_FIRE_vs_hApp__Downregulated
 10090.ENSMUSP00000048836 hApp_FIRE_vs_hApp__Downregulated
 10090.ENSMUSP00000036747 hApp_FIRE_vs_hApp__Downregulated
 10090.ENSMUSP00000061893 hApp_FIRE_vs_hApp__Downregulated
 10090.ENSMUSP00000035400 hApp_FIRE_vs_hApp__Downregulated
 10090.ENSMUSP00000014290 hApp_FIRE_vs_hApp__Downregulated
 10090.ENSMUSP00000068468 hApp_FIRE_vs_hApp__Downregulated
-10090.ENSMUSP00000078875 hApp_FIRE_vs_hApp__Downregulated
 10090.ENSMUSP00000113071 hApp_FIRE_vs_hApp__Downregulated
 10090.ENSMUSP00000032561 hApp_FIRE_vs_hApp__Downregulated
 10090.ENSMUSP00000106013 hApp_FIRE_vs_hApp__Downregulated
@@ -667,11 +669,12 @@ Attaching package: 'igraph'</code></pre>
 
 --- Top 20 hubs: hAppNLGF_FIRE_vs_hAppNLGF__Downregulated ---
                             Gene    log2FC Degree
-10090.ENSMUSP00000000299   Itgb2 -3.390713      2
-10090.ENSMUSP00000040246    C1qb -6.097614      2
+10090.ENSMUSP00000000299   Itgb2 -3.390713      3
+10090.ENSMUSP00000068468  P05555 -3.032191      2
+10090.ENSMUSP00000083587   Icam1 -1.888835      2
+10090.ENSMUSP00000040246    C1qb -6.055242      2
 10090.ENSMUSP00000048836    C1qa -5.669790      2
-10090.ENSMUSP00000036747    C1qc -6.144464      2
-10090.ENSMUSP00000068468  P05555 -3.085378      1
+10090.ENSMUSP00000036747    C1qc -6.145870      2
 10090.ENSMUSP00000004377   Ptpn6 -2.323901      1
 10090.ENSMUSP00000061893    Abi3 -3.218126      1
 10090.ENSMUSP00000037858  Fermt3 -3.090226      1
@@ -679,10 +682,11 @@ Attaching package: 'igraph'</code></pre>
 10090.ENSMUSP00000014290 Apbb1ip -1.923074      1
                                                        Comparison
 10090.ENSMUSP00000000299 hAppNLGF_FIRE_vs_hAppNLGF__Downregulated
+10090.ENSMUSP00000068468 hAppNLGF_FIRE_vs_hAppNLGF__Downregulated
+10090.ENSMUSP00000083587 hAppNLGF_FIRE_vs_hAppNLGF__Downregulated
 10090.ENSMUSP00000040246 hAppNLGF_FIRE_vs_hAppNLGF__Downregulated
 10090.ENSMUSP00000048836 hAppNLGF_FIRE_vs_hAppNLGF__Downregulated
 10090.ENSMUSP00000036747 hAppNLGF_FIRE_vs_hAppNLGF__Downregulated
-10090.ENSMUSP00000068468 hAppNLGF_FIRE_vs_hAppNLGF__Downregulated
 10090.ENSMUSP00000004377 hAppNLGF_FIRE_vs_hAppNLGF__Downregulated
 10090.ENSMUSP00000061893 hAppNLGF_FIRE_vs_hAppNLGF__Downregulated
 10090.ENSMUSP00000037858 hAppNLGF_FIRE_vs_hAppNLGF__Downregulated
@@ -737,17 +741,17 @@ Attaching package: 'igraph'</code></pre>
 </details>
 <div class="cell-output cell-output-stdout">
 <pre><code>                 Comparison     Direction Sig_proteins Mapped_to_STRING
-1          hAppNLGF_vs_hApp Downregulated           11               11
+1          hAppNLGF_vs_hApp Downregulated           13               13
 2         hApp_FIRE_vs_hApp   Upregulated            8                8
-3         hApp_FIRE_vs_hApp Downregulated           52               52
-4 hAppNLGF_FIRE_vs_hAppNLGF   Upregulated           15               15
-5 hAppNLGF_FIRE_vs_hAppNLGF Downregulated           35               35
+3         hApp_FIRE_vs_hApp Downregulated           66               66
+4 hAppNLGF_FIRE_vs_hAppNLGF   Upregulated           16               16
+5 hAppNLGF_FIRE_vs_hAppNLGF Downregulated           42               42
   Nodes_with_edges Edges
 1                0     0
 2                2     1
-3               17    15
+3               18    19
 4                0     0
-5               10     7</code></pre>
+5               11     9</code></pre>
 </div>
 <details class="code-fold">
 <summary>Code</summary>
@@ -1320,7 +1324,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb30-28"><a href="#cb30-28" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb30-31"><a href="#cb30-31" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
 <span id="cb30-32"><a href="#cb30-32" aria-hidden="true" tabindex="-1"></a>base_dir    <span class="ot">&lt;-</span> <span class="st">"/nemo/lab/destrooperb/home/shared/zanettc/giulia_proteomics/bulk_proteomics"</span></span>
-<span id="cb30-33"><a href="#cb30-33" aria-hidden="true" tabindex="-1"></a>run_num     <span class="ot">&lt;-</span> <span class="st">"run3"</span></span>
+<span id="cb30-33"><a href="#cb30-33" aria-hidden="true" tabindex="-1"></a>run_num     <span class="ot">&lt;-</span> <span class="st">"run4"</span></span>
 <span id="cb30-34"><a href="#cb30-34" aria-hidden="true" tabindex="-1"></a>results_dir <span class="ot">&lt;-</span> <span class="fu">file.path</span>(base_dir, <span class="st">"results"</span>, run_num)</span>
 <span id="cb30-35"><a href="#cb30-35" aria-hidden="true" tabindex="-1"></a>objects_dir <span class="ot">&lt;-</span> <span class="fu">file.path</span>(base_dir, <span class="st">"data"</span>, <span class="st">"processed"</span>, run_num)</span>
 <span id="cb30-36"><a href="#cb30-36" aria-hidden="true" tabindex="-1"></a>ppi_dir     <span class="ot">&lt;-</span> <span class="fu">file.path</span>(results_dir, <span class="st">"PPI_networks"</span>)</span>
