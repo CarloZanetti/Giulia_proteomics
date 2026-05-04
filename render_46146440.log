@@ -1,113 +1,0 @@
-host: cn055
-start: 2026-04-30T09:29:37+01:00
-[1m[34m[ 1/13] index.qmd[39m[22m
-[1m[34m[ 2/13] bulk_proteomics/notebooks/03_DE_plots.qmd[39m[22m
-[1m[34m[ 3/13] phosphoproteomics/notebooks/05_phospho_GSEA.qmd[39m[22m
-[1m[34m[ 4/13] bulk_proteomics/notebooks/05_microglia_app_modulated.qmd[39m[22m
-[31m
-
-processing file: 05_microglia_app_modulated.qmd
-[39m1/15                  
-2/15 [setup]          
-3/15                  
-4/15 [unnamed-chunk-1]
-5/15                  
-6/15 [unnamed-chunk-2]
-7/15                  
-8/15 [unnamed-chunk-3]
-9/15                  
-10/15 [upset]          
-11/15                  
-12/15 [unnamed-chunk-4]
-13/15                  
-14/15 [heatmap]        
-15/15                  
-[31moutput file: 05_microglia_app_modulated.knit.md
-
-[39m[1m[34m[ 5/13] phosphoproteomics/notebooks/03_phospho_DE_plots.qmd[39m[22m
-[1m[34m[ 6/13] phosphoproteomics/notebooks/04_kinase_activity.qmd[39m[22m
-[1m[34m[ 7/13] bulk_proteomics/notebooks/04_gsea.qmd[39m[22m
-[31m
-
-processing file: 04_gsea.qmd
-[39m1/17                  
-2/17 [unnamed-chunk-1]
-3/17                  
-4/17 [unnamed-chunk-2]
-5/17                  
-6/17 [unnamed-chunk-3]
-7/17                  
-8/17 [unnamed-chunk-4]
-9/17                  
-10/17 [unnamed-chunk-5]
-11/17                  
-12/17 [unnamed-chunk-6]
-13/17                  
-14/17 [unnamed-chunk-7]
-15/17                  
-16/17 [unnamed-chunk-8]
-17/17                  
-[31moutput file: 04_gsea.knit.md
-
-[39m[1m[34m[ 8/13] bulk_proteomics/notebooks/06_PPI.qmd[39m[22m
-[31m
-
-processing file: 06_PPI.qmd
-[39m1/21                  
-2/21 [setup]          
-3/21                  
-4/21 [unnamed-chunk-1]
-5/21                  
-6/21 [unnamed-chunk-2]
-7/21                  
-8/21 [unnamed-chunk-3]
-9/21                  
-10/21 [unnamed-chunk-4]
-11/21                  
-12/21 [plot_full]      
-13/21                  
-14/21 [plot_topN]      
-15/21                  
-16/21 [unnamed-chunk-5]
-17/21                  
-18/21 [unnamed-chunk-6]
-19/21                  
-20/21 [unnamed-chunk-7]
-21/21                  
-[31moutput file: 06_PPI.knit.md
-
-[39m[1m[34m[ 9/13] bulk_proteomics/notebooks/07_subcellular.qmd[39m[22m
-[31m
-
-processing file: 07_subcellular.qmd
-[39m1/21                      
-2/21 [setup]              
-3/21                      
-4/21 [unnamed-chunk-1]    
-5/21                      
-6/21 [unnamed-chunk-2]    
-7/21                      
-8/21 [unnamed-chunk-3]    
-9/21                      
-10/21 [unnamed-chunk-4]    
-11/21                      
-12/21 [compartment_counts] 
-13/21                      
-14/21 [facet_volcano]      
-15/21                      
-16/21 [secretome]          
-17/21                      
-18/21 [top_per_compartment]
-19/21                      
-20/21 [unnamed-chunk-5]    
-21/21                      
-[31moutput file: 07_subcellular.knit.md
-
-[39m[1m[34m[10/13] phosphoproteomics/notebooks/01_phospho_qc.qmd[39m[22m
-[1m[34m[11/13] phosphoproteomics/notebooks/02_msstatsptm.qmd[39m[22m
-[1m[34m[12/13] bulk_proteomics/notebooks/01_initial_qc_spectronaut.qmd[39m[22m
-[1m[34m[13/13] bulk_proteomics/notebooks/02_msstats.qmd[39m[22m
-
-Output created: docs/index.html
-
-end: 2026-04-30T09:36:06+01:00

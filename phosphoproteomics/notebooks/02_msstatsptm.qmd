@@ -8,6 +8,8 @@ Differential phospho-site abundance, adjusted for protein-level abundance change
 
 Same contrast set as the bulk pipeline: 4 pairwise + APP × Microglia interaction.
 
+Site-level localization filtering is applied to the phospho report at `LOC_PROB_CUTOFF` (default 0.75, Class I sites) before the MSstatsPTM converter — the bulk protein report is left untouched.
+
 ## Libraries
 
 ```{r setup, include=TRUE, message=FALSE}
@@ -29,7 +31,7 @@ project_root <- "/nemo/lab/destrooperb/home/shared/zanettc/giulia_proteomics"
 phospho_base <- file.path(project_root, "phosphoproteomics")
 bulk_base    <- file.path(project_root, "bulk_proteomics")
 
-run_num <- "run2"
+run_num <- "run3"
 
 phospho_results_dir <- file.path(phospho_base, "results", run_num)
 phospho_objects_dir <- file.path(phospho_base, "data", "processed", run_num)
@@ -67,14 +69,33 @@ msstats_cols <- c(
   "PG.ProteinGroups", "PG.ProteinAccessions",
   "PEP.StrippedSequence",
   "EG.ModifiedSequence", "EG.PrecursorId", "EG.Qvalue",
+  "EG.PTMAssayProbability",
   "FG.Charge", "FG.Id",
   "F.FrgIon", "F.Charge", "F.FrgLossType", "F.FrgNum", "F.FrgType",
   "F.NormalizedPeakArea", "F.PeakArea", "F.ExcludedFromQuantification"
 )
 
+# QC notebook 01 flagged that EG.PTMAssayProbability is sometimes missing from
+# Spectronaut exports — probe the header and fall back to
+# EG.PTMLocalizationProbabilities if needed.
+phospho_path <- file.path(phospho_input_dir, "PCF000612_phospho_GA_MSStats_report.csv")
+phospho_header <- names(fread(phospho_path, nrows = 0))
+if ("EG.PTMAssayProbability" %in% phospho_header) {
+  loc_prob_col <- "EG.PTMAssayProbability"
+} else if ("EG.PTMLocalizationProbabilities" %in% phospho_header) {
+  loc_prob_col <- "EG.PTMLocalizationProbabilities"
+  msstats_cols <- sub("EG.PTMAssayProbability", loc_prob_col, msstats_cols, fixed = TRUE)
+} else {
+  loc_prob_col <- NA_character_
+  msstats_cols <- setdiff(msstats_cols, "EG.PTMAssayProbability")
+}
+cat("Localization probability column:",
+    ifelse(is.na(loc_prob_col), "NONE — site-level filter will be skipped", loc_prob_col),
+    "\n")
+
 cat("Reading phospho report...\n")
 phospho_raw <- fread(
-  file.path(phospho_input_dir, "PCF000612_phospho_GA_MSStats_report.csv"),
+  phospho_path,
   select = msstats_cols
 )
 cat("Phospho rows:", nrow(phospho_raw), "\n")
@@ -82,9 +103,35 @@ cat("Phospho rows:", nrow(phospho_raw), "\n")
 cat("Reading bulk proteome report (for protein-level adjustment)...\n")
 protein_raw <- fread(
   file.path(bulk_input_dir, "20260423_154110_PCF000612_GA_MSStats_Report-Proteome.csv"),
-  select = msstats_cols
+  select = setdiff(msstats_cols,
+                   c("EG.PTMAssayProbability", "EG.PTMLocalizationProbabilities"))
 )
 cat("Protein rows:", nrow(protein_raw), "\n")
+```
+
+## Filter phospho by site localization probability
+
+```{r localization_filter}
+# 0.75 is the Class I threshold from Olsen et al. 2006 and is the standard
+# for library-based DIA searches. If the search mode is later confirmed to be
+# library-free (directDIA), Bekker-Jensen et al. 2020 recommend 0.99 instead.
+LOC_PROB_CUTOFF <- 0.75
+
+n_before <- nrow(phospho_raw)
+cat("Phospho rows before localization filter:", n_before, "\n")
+
+if (is.na(loc_prob_col)) {
+  warning("Localization probability column not found in phospho report — site-level filter skipped.")
+  cat("WARNING: no localization probability column available; filter skipped.\n")
+} else {
+  phospho_raw <- phospho_raw[get(loc_prob_col) >= LOC_PROB_CUTOFF]
+  n_after <- nrow(phospho_raw)
+  pct <- round(100 * n_after / n_before, 2)
+  cat("Phospho rows after filter (", loc_prob_col, " >= ", LOC_PROB_CUTOFF, "): ",
+      n_after, " (", pct, "% retained)\n", sep = "")
+}
+# protein_raw is intentionally NOT filtered — protein-level adjustment uses
+# whole-protein abundance and does not require site localization.
 ```
 
 ## Normalise phospho R.FileName + patch R.Condition / R.Replicate

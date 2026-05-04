@@ -2,7 +2,19 @@ project:
   type: website
   output-dir: docs
   render:
-    - "**/*.qmd"
+    - index.qmd
+    - bulk_proteomics/notebooks/01_initial_qc_spectronaut.qmd
+    - bulk_proteomics/notebooks/02_msstats.qmd
+    - bulk_proteomics/notebooks/03_DE_plots.qmd
+    - bulk_proteomics/notebooks/04_gsea.qmd
+    - bulk_proteomics/notebooks/05_microglia_app_modulated.qmd
+    - bulk_proteomics/notebooks/06_PPI.qmd
+    - bulk_proteomics/notebooks/07_subcellular.qmd
+    - phosphoproteomics/notebooks/01_phospho_qc.qmd
+    - phosphoproteomics/notebooks/02_msstatsptm.qmd
+    - phosphoproteomics/notebooks/03_phospho_DE_plots.qmd
+    - phosphoproteomics/notebooks/04_kinase_activity.qmd
+    - phosphoproteomics/notebooks/05_phospho_GSEA.qmd
 
 website:
   title: "Giulia Proteomics"

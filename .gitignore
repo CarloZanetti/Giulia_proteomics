@@ -2,5 +2,8 @@ data/
 input/
 results/
 scripts/
+.DS_Store
+logs/
 
 /.quarto/
+pdfs/
