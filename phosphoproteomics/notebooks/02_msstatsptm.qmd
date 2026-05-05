@@ -8,7 +8,7 @@ Differential phospho-site abundance, adjusted for protein-level abundance change
 
 Same contrast set as the bulk pipeline: 4 pairwise + APP × Microglia interaction.
 
-Site-level localization filtering is applied to the phospho report at `LOC_PROB_CUTOFF` (default 0.75, Class I sites) before the MSstatsPTM converter — the bulk protein report is left untouched.
+Site-level localization filtering is applied to the phospho report at `LOC_PROB_CUTOFF = 0.99` before the MSstatsPTM converter — the bulk protein report is left untouched. The search was confirmed to be directDIA (`EG.Library = "directDIA™"` in the Spectronaut export); Bekker-Jensen et al. 2020 (*Mol Cell Proteomics*) recommend a 0.99 probability threshold for directDIA searches rather than the 0.75 Class I default used for library-based searches.
 
 ## Libraries
 
@@ -78,7 +78,7 @@ msstats_cols <- c(
 # QC notebook 01 flagged that EG.PTMAssayProbability is sometimes missing from
 # Spectronaut exports — probe the header and fall back to
 # EG.PTMLocalizationProbabilities if needed.
-phospho_path <- file.path(phospho_input_dir, "PCF000612_phospho_GA_MSStats_report.csv")
+phospho_path <- file.path(phospho_input_dir, "20260504_125530_PCF000612_phospho_GA_MSStats_updated.csv")
 phospho_header <- names(fread(phospho_path, nrows = 0))
 if ("EG.PTMAssayProbability" %in% phospho_header) {
   loc_prob_col <- "EG.PTMAssayProbability"
@@ -86,12 +86,15 @@ if ("EG.PTMAssayProbability" %in% phospho_header) {
   loc_prob_col <- "EG.PTMLocalizationProbabilities"
   msstats_cols <- sub("EG.PTMAssayProbability", loc_prob_col, msstats_cols, fixed = TRUE)
 } else {
-  loc_prob_col <- NA_character_
-  msstats_cols <- setdiff(msstats_cols, "EG.PTMAssayProbability")
+  stop(paste0(
+    "FATAL: no localization probability column found in the phospho report.\n",
+    "Expected EG.PTMAssayProbability or EG.PTMLocalizationProbabilities.\n",
+    "Re-export from Spectronaut with PTM localization enabled before proceeding.\n",
+    "Do NOT run the pipeline without this column — site-level filtering would be skipped\n",
+    "and downstream results would be unreliable."
+  ))
 }
-cat("Localization probability column:",
-    ifelse(is.na(loc_prob_col), "NONE — site-level filter will be skipped", loc_prob_col),
-    "\n")
+cat("Localization probability column:", loc_prob_col, "\n")
 
 cat("Reading phospho report...\n")
 phospho_raw <- fread(
@@ -112,24 +115,27 @@ cat("Protein rows:", nrow(protein_raw), "\n")
 ## Filter phospho by site localization probability
 
 ```{r localization_filter}
-# 0.75 is the Class I threshold from Olsen et al. 2006 and is the standard
-# for library-based DIA searches. If the search mode is later confirmed to be
-# library-free (directDIA), Bekker-Jensen et al. 2020 recommend 0.99 instead.
-LOC_PROB_CUTOFF <- 0.75
+# directDIA confirmed via EG.Library = "directDIA™" in the Spectronaut export.
+# Bekker-Jensen et al. 2020 (Mol Cell Proteomics) recommend 0.99 for directDIA
+# rather than the 0.75 Class I threshold used for library-based DIA searches.
+LOC_PROB_CUTOFF <- 0.99
 
-n_before <- nrow(phospho_raw)
-cat("Phospho rows before localization filter:", n_before, "\n")
+n_before         <- nrow(phospho_raw)
+sites_before     <- uniqueN(phospho_raw$EG.ModifiedSequence)
+proteins_before  <- uniqueN(phospho_raw$PG.ProteinGroups)
 
-if (is.na(loc_prob_col)) {
-  warning("Localization probability column not found in phospho report — site-level filter skipped.")
-  cat("WARNING: no localization probability column available; filter skipped.\n")
-} else {
-  phospho_raw <- phospho_raw[get(loc_prob_col) >= LOC_PROB_CUTOFF]
-  n_after <- nrow(phospho_raw)
-  pct <- round(100 * n_after / n_before, 2)
-  cat("Phospho rows after filter (", loc_prob_col, " >= ", LOC_PROB_CUTOFF, "): ",
-      n_after, " (", pct, "% retained)\n", sep = "")
-}
+phospho_raw <- phospho_raw[get(loc_prob_col) >= LOC_PROB_CUTOFF]
+
+n_after         <- nrow(phospho_raw)
+sites_after     <- uniqueN(phospho_raw$EG.ModifiedSequence)
+proteins_after  <- uniqueN(phospho_raw$PG.ProteinGroups)
+pct             <- round(100 * n_after / n_before, 2)
+
+cat(sprintf("Localization filter: %s >= %.2f\n", loc_prob_col, LOC_PROB_CUTOFF))
+cat(sprintf("  Rows:     %d  →  %d  (%.2f%% retained)\n",  n_before,    n_after,    pct))
+cat(sprintf("  Sites:    %d  →  %d\n",                      sites_before, sites_after))
+cat(sprintf("  Proteins: %d  →  %d\n",                      proteins_before, proteins_after))
+
 # protein_raw is intentionally NOT filtered — protein-level adjustment uses
 # whole-protein abundance and does not require site localization.
 ```
