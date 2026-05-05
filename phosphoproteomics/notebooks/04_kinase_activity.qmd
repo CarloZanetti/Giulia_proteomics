@@ -198,6 +198,7 @@ contrasts_ordered <- sort(unique(as.data.table(sites_long)$Label))
 
 kinase_stats <- as.data.table(ulm_tidy)[, .(Contrast, Kinase,
                                             KinaseActivity = Activity,
+                                            KinasePvalue   = p_value,
                                             KinasePadj     = padj)]
 ks_dt <- as.data.table(ks_net)[, .(Kinase = source, ID = target)]
 
@@ -217,7 +218,8 @@ build_section <- function(contrast) {
     } else {
       joined <- merge(joined,
                       kinase_stats[Contrast == contrast,
-                                   .(Kinase, KinaseActivity, KinasePadj)],
+                                   .(Kinase, KinaseActivity,
+                                     KinasePvalue, KinasePadj)],
                       by = "Kinase", all.x = TRUE)
 
       tbl <- joined %>%
@@ -229,11 +231,13 @@ build_section <- function(contrast) {
           pvalue         = signif(pvalue,         3),
           adj.pvalue     = signif(adj.pvalue,     3),
           KinaseActivity = round(KinaseActivity,  3),
+          KinasePvalue   = signif(KinasePvalue,   3),
           KinasePadj     = signif(KinasePadj,     3)
         ) %>%
         dplyr::select(
           Kinase,
           `Kinase activity` = KinaseActivity,
+          `Kinase p-value`  = KinasePvalue,
           `Kinase padj`     = KinasePadj,
           `Substrate site`  = ID,
           Gene,
