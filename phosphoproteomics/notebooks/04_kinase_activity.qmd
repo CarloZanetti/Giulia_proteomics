@@ -193,7 +193,7 @@ ggsave(file.path(kinase_dir, "Top15_kinases_per_contrast.pdf"),
 
 For every contrast, the table below lists all phosphorylated substrates with nominal p-value < 0.05 in the MSstatsPTM output that are annotated targets of a kinase in the OmniPath network, sorted by substrate p-value. The ULM kinase activity score and adjusted p-value are joined in as columns so the kinase-level context is filterable alongside the substrate stats.
 
-```{r substrates, results='asis', message=FALSE}
+```{r substrates, message=FALSE}
 contrasts_ordered <- sort(unique(as.data.table(sites_long)$Label))
 
 kinase_stats <- as.data.table(ulm_tidy)[, .(Contrast, Kinase,
@@ -201,68 +201,60 @@ kinase_stats <- as.data.table(ulm_tidy)[, .(Contrast, Kinase,
                                             KinasePadj     = padj)]
 ks_dt <- as.data.table(ks_net)[, .(Kinase = source, ID = target)]
 
-for (contrast in contrasts_ordered) {
+build_section <- function(contrast) {
 
   substrates_dt <- as.data.table(sites_long)[
     Label == contrast & pvalue < 0.05
   ]
 
-  cat("### ", contrast, "\n\n")
+  body <- if (nrow(substrates_dt) == 0) {
+    htmltools::p(htmltools::em("No substrates with p < 0.05."))
+  } else {
+    joined <- merge(substrates_dt, ks_dt, by = "ID", allow.cartesian = TRUE)
+    if (nrow(joined) == 0) {
+      htmltools::p(htmltools::em(
+        "No substrates with p < 0.05 mapped to OmniPath kinases."))
+    } else {
+      joined <- merge(joined,
+                      kinase_stats[Contrast == contrast,
+                                   .(Kinase, KinaseActivity, KinasePadj)],
+                      by = "Kinase", all.x = TRUE)
 
-  if (nrow(substrates_dt) == 0) {
-    cat("_No substrates with p < 0.05._\n\n")
-    next
-  }
+      tbl <- joined %>%
+        as.data.frame() %>%
+        dplyr::arrange(pvalue) %>%
+        dplyr::mutate(
+          log2FC         = round(log2FC,         3),
+          Tvalue         = round(Tvalue,         3),
+          pvalue         = signif(pvalue,         3),
+          adj.pvalue     = signif(adj.pvalue,     3),
+          KinaseActivity = round(KinaseActivity,  3),
+          KinasePadj     = signif(KinasePadj,     3)
+        ) %>%
+        dplyr::select(
+          Kinase,
+          `Kinase activity` = KinaseActivity,
+          `Kinase padj`     = KinasePadj,
+          `Substrate site`  = ID,
+          Gene,
+          Site,
+          log2FC,
+          `T-value`         = Tvalue,
+          `p-value`         = pvalue,
+          `adj. p-value`    = adj.pvalue
+        )
 
-  joined <- merge(substrates_dt, ks_dt, by = "ID", allow.cartesian = TRUE)
-  if (nrow(joined) == 0) {
-    cat("_No substrates with p < 0.05 mapped to OmniPath kinases._\n\n")
-    next
-  }
-
-  joined <- merge(joined,
-                  kinase_stats[Contrast == contrast,
-                               .(Kinase, KinaseActivity, KinasePadj)],
-                  by = "Kinase", all.x = TRUE)
-
-  tbl <- joined %>%
-    as.data.frame() %>%
-    dplyr::arrange(pvalue) %>%
-    dplyr::mutate(
-      log2FC         = round(log2FC,         3),
-      Tvalue         = round(Tvalue,         3),
-      pvalue         = signif(pvalue,         3),
-      adj.pvalue     = signif(adj.pvalue,     3),
-      KinaseActivity = round(KinaseActivity,  3),
-      KinasePadj     = signif(KinasePadj,     3)
-    ) %>%
-    dplyr::select(
-      Kinase,
-      `Kinase activity` = KinaseActivity,
-      `Kinase padj`     = KinasePadj,
-      `Substrate site`  = ID,
-      Gene,
-      Site,
-      log2FC,
-      `T-value`         = Tvalue,
-      `p-value`         = pvalue,
-      `adj. p-value`    = adj.pvalue
-    )
-
-  print(htmltools::tagList(
-    DT::datatable(
-      tbl,
-      rownames   = FALSE,
-      filter     = "top",
-      extensions = "Buttons",
-      options    = list(
-        dom        = "Bfrtip",
-        buttons    = list("csv", "excel"),
-        pageLength = 10,
-        scrollX    = TRUE
+      DT::datatable(
+        tbl,
+        rownames = FALSE,
+        filter   = "top",
+        options  = list(pageLength = 10, scrollX = TRUE)
       )
-    )
-  ))
-  cat("\n\n")
+    }
+  }
+
+  htmltools::tagList(htmltools::h3(contrast), body)
 }
+
+htmltools::tagList(lapply(contrasts_ordered, build_section))
 ```
