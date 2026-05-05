@@ -1,0 +1,182 @@
+INFO  [2026-05-05 11:16:48] MSstats - groupComparison function
+INFO  [2026-05-05 11:16:48] labeled = FALSE
+INFO  [2026-05-05 11:16:48] scopeOfBioReplication = expanded
+INFO  [2026-05-05 11:16:49] Case control design of experiment - okay
+INFO  [2026-05-05 11:16:49] == Start to test and get inference in whole plot
+INFO  [2026-05-05 11:16:52] *** error: results of protein A2RSJ4_Y1012 for comparison hAppNLGF_vs_hApp are NA because there are measurements only in a single group
+INFO  [2026-05-05 11:16:52] *** error: results of protein A2RSJ4_Y1012 for comparison hApp_FIRE_vs_hApp are NA because there are no measurements in both conditions.
+INFO  [2026-05-05 11:16:52] *** error: results of protein A2RSJ4_Y1012 for comparison hAppNLGF_FIRE_vs_hAppNLGF are NA because there are measurements only in a single group
+INFO  [2026-05-05 11:16:52] *** error: results of protein A2RSJ4_Y1012 for comparison hAppNLGF_FIRE_vs_hApp_FIRE are NA because there are no measurements in both conditions.
+INFO  [2026-05-05 11:16:52] *** error: results of protein A2RSJ4_Y1012 for comparison Interaction_APP_x_Microglia are NA because there are measurements only in a single group
+INFO  [2026-05-05 11:17:03] *** error: results of protein O89053_T418 for comparison hAppNLGF_vs_hApp are NA because there are measurements only in a single group
+INFO  [2026-05-05 11:17:03] *** error: results of protein O89053_T418 for comparison hApp_FIRE_vs_hApp are NA because there are measurements only in a single group
+INFO  [2026-05-05 11:17:03] *** error: results of protein O89053_T418 for comparison hAppNLGF_FIRE_vs_hAppNLGF are NA because there are no measurements in both conditions.
+INFO  [2026-05-05 11:17:03] *** error: results of protein O89053_T418 for comparison hAppNLGF_FIRE_vs_hApp_FIRE are NA because there are no measurements in both conditions.
+INFO  [2026-05-05 11:17:03] *** error: results of protein O89053_T418 for comparison Interaction_APP_x_Microglia are NA because there are measurements only in a single group
+INFO  [2026-05-05 11:17:04] *** error: results of protein P08553_S689 for comparison hAppNLGF_vs_hApp are NA because there are measurements only in a single group
+INFO  [2026-05-05 11:17:04] *** error: results of protein P08553_S689 for comparison hApp_FIRE_vs_hApp are NA because there are no measurements in both conditions.
+INFO  [2026-05-05 11:17:04] *** error: results of protein P08553_S689 for comparison hAppNLGF_FIRE_vs_hAppNLGF are NA because there are measurements only in a single group
+INFO  [2026-05-05 11:17:04] *** error: results of protein P08553_S689 for comparison hAppNLGF_FIRE_vs_hApp_FIRE are NA because there are no measurements in both conditions.
+INFO  [2026-05-05 11:17:04] *** error: results of protein P08553_S689 for comparison Interaction_APP_x_Microglia are NA because there are measurements only in a single group
+INFO  [2026-05-05 11:17:08] *** error: results of protein P19246_S583_S589 for comparison hAppNLGF_vs_hApp are NA because there are no measurements in both conditions.
+INFO  [2026-05-05 11:17:08] *** error: results of protein P19246_S583_S589 for comparison hApp_FIRE_vs_hApp are NA because there are no measurements in both conditions.
+INFO  [2026-05-05 11:17:08] *** error: results of protein P19246_S583_S589 for comparison hAppNLGF_FIRE_vs_hAppNLGF are NA because there are measurements only in a single group
+INFO  [2026-05-05 11:17:08] *** error: results of protein P19246_S583_S589 for comparison hAppNLGF_FIRE_vs_hApp_FIRE are NA because there are measurements only in a single group
+INFO  [2026-05-05 11:17:08] *** error: results of protein P19246_S583_S589 for comparison Interaction_APP_x_Microglia are NA because there are measurements only in a single group
+INFO  [2026-05-05 11:17:11] *** error: results of protein P28352_S18 for comparison hAppNLGF_vs_hApp are NA because there are measurements only in a single group
+INFO  [2026-05-05 11:17:11] *** error: results of protein P28352_S18 for comparison hApp_FIRE_vs_hApp are NA because there are measurements only in a single group
+INFO  [2026-05-05 11:17:11] *** error: results of protein P28352_S18 for comparison hAppNLGF_FIRE_vs_hAppNLGF are NA because there are no measurements in both conditions.
+INFO  [2026-05-05 11:17:11] *** error: results of protein P28352_S18 for comparison hAppNLGF_FIRE_vs_hApp_FIRE are NA because there are no measurements in both conditions.
+INFO  [2026-05-05 11:17:11] *** error: results of protein P28352_S18 for comparison Interaction_APP_x_Microglia are NA because there are measurements only in a single group
+INFO  [2026-05-05 11:17:12] *** error: results of protein P33173_S1317 for comparison hAppNLGF_vs_hApp are NA because there are measurements only in a single group
+INFO  [2026-05-05 11:17:12] *** error: results of protein P33173_S1317 for comparison hApp_FIRE_vs_hApp are NA because there are no measurements in both conditions.
+INFO  [2026-05-05 11:17:12] *** error: results of protein P33173_S1317 for comparison hAppNLGF_FIRE_vs_hAppNLGF are NA because there are measurements only in a single group
+INFO  [2026-05-05 11:17:12] *** error: results of protein P33173_S1317 for comparison hAppNLGF_FIRE_vs_hApp_FIRE are NA because there are no measurements in both conditions.
+INFO  [2026-05-05 11:17:12] *** error: results of protein P33173_S1317 for comparison Interaction_APP_x_Microglia are NA because there are measurements only in a single group
+INFO  [2026-05-05 11:17:12] *** error: results of protein P35436_S1059 for comparison hAppNLGF_vs_hApp are NA because there are measurements only in a single group
+INFO  [2026-05-05 11:17:12] *** error: results of protein P35436_S1059 for comparison hApp_FIRE_vs_hApp are NA because there are no measurements in both conditions.
+INFO  [2026-05-05 11:17:12] *** error: results of protein P35436_S1059 for comparison hAppNLGF_FIRE_vs_hAppNLGF are NA because there are measurements only in a single group
+INFO  [2026-05-05 11:17:12] *** error: results of protein P35436_S1059 for comparison hAppNLGF_FIRE_vs_hApp_FIRE are NA because there are no measurements in both conditions.
+INFO  [2026-05-05 11:17:12] *** error: results of protein P35436_S1059 for comparison Interaction_APP_x_Microglia are NA because there are measurements only in a single group
+INFO  [2026-05-05 11:17:24] *** error: results of protein P98203_S205 for comparison hAppNLGF_vs_hApp are NA because there are no measurements in both conditions.
+INFO  [2026-05-05 11:17:24] *** error: results of protein P98203_S205 for comparison hApp_FIRE_vs_hApp are NA because there are no measurements in both conditions.
+INFO  [2026-05-05 11:17:24] *** error: results of protein P98203_S205 for comparison hAppNLGF_FIRE_vs_hAppNLGF are NA because there are measurements only in a single group
+INFO  [2026-05-05 11:17:24] *** error: results of protein P98203_S205 for comparison hAppNLGF_FIRE_vs_hApp_FIRE are NA because there are measurements only in a single group
+INFO  [2026-05-05 11:17:24] *** error: results of protein P98203_S205 for comparison Interaction_APP_x_Microglia are NA because there are measurements only in a single group
+INFO  [2026-05-05 11:17:30] *** error: results of protein Q3UHF7_S1049 for comparison hAppNLGF_vs_hApp are NA because there are measurements only in a single group
+INFO  [2026-05-05 11:17:30] *** error: results of protein Q3UHF7_S1049 for comparison hApp_FIRE_vs_hApp are NA because there are measurements only in a single group
+INFO  [2026-05-05 11:17:30] *** error: results of protein Q3UHF7_S1049 for comparison hAppNLGF_FIRE_vs_hAppNLGF are NA because there are no measurements in both conditions.
+INFO  [2026-05-05 11:17:30] *** error: results of protein Q3UHF7_S1049 for comparison hAppNLGF_FIRE_vs_hApp_FIRE are NA because there are no measurements in both conditions.
+INFO  [2026-05-05 11:17:30] *** error: results of protein Q3UHF7_S1049 for comparison Interaction_APP_x_Microglia are NA because there are measurements only in a single group
+INFO  [2026-05-05 11:17:32] *** error: results of protein Q3UQU0_Y582 for comparison hAppNLGF_vs_hApp are NA because there are no measurements in both conditions.
+INFO  [2026-05-05 11:17:32] *** error: results of protein Q3UQU0_Y582 for comparison hApp_FIRE_vs_hApp are NA because there are measurements only in a single group
+INFO  [2026-05-05 11:17:32] *** error: results of protein Q3UQU0_Y582 for comparison hAppNLGF_FIRE_vs_hAppNLGF are NA because there are no measurements in both conditions.
+INFO  [2026-05-05 11:17:32] *** error: results of protein Q3UQU0_Y582 for comparison hAppNLGF_FIRE_vs_hApp_FIRE are NA because there are measurements only in a single group
+INFO  [2026-05-05 11:17:32] *** error: results of protein Q3UQU0_Y582 for comparison Interaction_APP_x_Microglia are NA because there are measurements only in a single group
+INFO  [2026-05-05 11:17:37] *** error: results of protein Q5SWP3_S1216 for comparison hAppNLGF_vs_hApp are NA because there are no measurements in both conditions.
+INFO  [2026-05-05 11:17:37] *** error: results of protein Q5SWP3_S1216 for comparison hApp_FIRE_vs_hApp are NA because there are measurements only in a single group
+INFO  [2026-05-05 11:17:37] *** error: results of protein Q5SWP3_S1216 for comparison hAppNLGF_FIRE_vs_hAppNLGF are NA because there are no measurements in both conditions.
+INFO  [2026-05-05 11:17:37] *** error: results of protein Q5SWP3_S1216 for comparison hAppNLGF_FIRE_vs_hApp_FIRE are NA because there are measurements only in a single group
+INFO  [2026-05-05 11:17:37] *** error: results of protein Q5SWP3_S1216 for comparison Interaction_APP_x_Microglia are NA because there are measurements only in a single group
+INFO  [2026-05-05 11:17:47] *** error: results of protein Q6NS82_S362 for comparison hAppNLGF_vs_hApp are NA because there are measurements only in a single group
+INFO  [2026-05-05 11:17:47] *** error: results of protein Q6NS82_S362 for comparison hApp_FIRE_vs_hApp are NA because there are no measurements in both conditions.
+INFO  [2026-05-05 11:17:47] *** error: results of protein Q6NS82_S362 for comparison hAppNLGF_FIRE_vs_hAppNLGF are NA because there are measurements only in a single group
+INFO  [2026-05-05 11:17:47] *** error: results of protein Q6NS82_S362 for comparison hAppNLGF_FIRE_vs_hApp_FIRE are NA because there are no measurements in both conditions.
+INFO  [2026-05-05 11:17:47] *** error: results of protein Q6NS82_S362 for comparison Interaction_APP_x_Microglia are NA because there are measurements only in a single group
+INFO  [2026-05-05 11:17:50] *** error: results of protein Q6PGL7_S388 for comparison hAppNLGF_vs_hApp are NA because there are measurements only in a single group
+INFO  [2026-05-05 11:17:50] *** error: results of protein Q6PGL7_S388 for comparison hApp_FIRE_vs_hApp are NA because there are measurements only in a single group
+INFO  [2026-05-05 11:17:50] *** error: results of protein Q6PGL7_S388 for comparison hAppNLGF_FIRE_vs_hAppNLGF are NA because there are no measurements in both conditions.
+INFO  [2026-05-05 11:17:50] *** error: results of protein Q6PGL7_S388 for comparison hAppNLGF_FIRE_vs_hApp_FIRE are NA because there are no measurements in both conditions.
+INFO  [2026-05-05 11:17:50] *** error: results of protein Q6PGL7_S388 for comparison Interaction_APP_x_Microglia are NA because there are measurements only in a single group
+INFO  [2026-05-05 11:17:54] *** error: results of protein Q7TQG1_Y811 for comparison hAppNLGF_vs_hApp are NA because there are measurements only in a single group
+INFO  [2026-05-05 11:17:54] *** error: results of protein Q7TQG1_Y811 for comparison hApp_FIRE_vs_hApp are NA because there are measurements only in a single group
+INFO  [2026-05-05 11:17:54] *** error: results of protein Q7TQG1_Y811 for comparison hAppNLGF_FIRE_vs_hAppNLGF are NA because there are no measurements in both conditions.
+INFO  [2026-05-05 11:17:54] *** error: results of protein Q7TQG1_Y811 for comparison hAppNLGF_FIRE_vs_hApp_FIRE are NA because there are no measurements in both conditions.
+INFO  [2026-05-05 11:17:54] *** error: results of protein Q7TQG1_Y811 for comparison Interaction_APP_x_Microglia are NA because there are measurements only in a single group
+INFO  [2026-05-05 11:17:55] *** error: results of protein Q80T41_S775_S778 for comparison hAppNLGF_vs_hApp are NA because there are measurements only in a single group
+INFO  [2026-05-05 11:17:55] *** error: results of protein Q80T41_S775_S778 for comparison hApp_FIRE_vs_hApp are NA because there are no measurements in both conditions.
+INFO  [2026-05-05 11:17:55] *** error: results of protein Q80T41_S775_S778 for comparison hAppNLGF_FIRE_vs_hAppNLGF are NA because there are measurements only in a single group
+INFO  [2026-05-05 11:17:55] *** error: results of protein Q80T41_S775_S778 for comparison hAppNLGF_FIRE_vs_hApp_FIRE are NA because there are no measurements in both conditions.
+INFO  [2026-05-05 11:17:55] *** error: results of protein Q80T41_S775_S778 for comparison Interaction_APP_x_Microglia are NA because there are measurements only in a single group
+INFO  [2026-05-05 11:17:57] *** error: results of protein Q80U49_S981 for comparison hAppNLGF_vs_hApp are NA because there are no measurements in both conditions.
+INFO  [2026-05-05 11:17:57] *** error: results of protein Q80U49_S981 for comparison hApp_FIRE_vs_hApp are NA because there are no measurements in both conditions.
+INFO  [2026-05-05 11:17:57] *** error: results of protein Q80U49_S981 for comparison hAppNLGF_FIRE_vs_hAppNLGF are NA because there are measurements only in a single group
+INFO  [2026-05-05 11:17:57] *** error: results of protein Q80U49_S981 for comparison hAppNLGF_FIRE_vs_hApp_FIRE are NA because there are measurements only in a single group
+INFO  [2026-05-05 11:17:57] *** error: results of protein Q80U49_S981 for comparison Interaction_APP_x_Microglia are NA because there are measurements only in a single group
+INFO  [2026-05-05 11:17:58] *** error: results of protein Q80XI3_S1159 for comparison hAppNLGF_vs_hApp are NA because there are measurements only in a single group
+INFO  [2026-05-05 11:17:58] *** error: results of protein Q80XI3_S1159 for comparison hApp_FIRE_vs_hApp are NA because there are no measurements in both conditions.
+INFO  [2026-05-05 11:17:58] *** error: results of protein Q80XI3_S1159 for comparison hAppNLGF_FIRE_vs_hAppNLGF are NA because there are measurements only in a single group
+INFO  [2026-05-05 11:17:58] *** error: results of protein Q80XI3_S1159 for comparison hAppNLGF_FIRE_vs_hApp_FIRE are NA because there are no measurements in both conditions.
+INFO  [2026-05-05 11:17:58] *** error: results of protein Q80XI3_S1159 for comparison Interaction_APP_x_Microglia are NA because there are measurements only in a single group
+INFO  [2026-05-05 11:17:59] *** error: results of protein Q80YV2_S353 for comparison hAppNLGF_vs_hApp are NA because there are measurements only in a single group
+INFO  [2026-05-05 11:17:59] *** error: results of protein Q80YV2_S353 for comparison hApp_FIRE_vs_hApp are NA because there are measurements only in a single group
+INFO  [2026-05-05 11:17:59] *** error: results of protein Q80YV2_S353 for comparison hAppNLGF_FIRE_vs_hAppNLGF are NA because there are no measurements in both conditions.
+INFO  [2026-05-05 11:17:59] *** error: results of protein Q80YV2_S353 for comparison hAppNLGF_FIRE_vs_hApp_FIRE are NA because there are no measurements in both conditions.
+INFO  [2026-05-05 11:17:59] *** error: results of protein Q80YV2_S353 for comparison Interaction_APP_x_Microglia are NA because there are measurements only in a single group
+INFO  [2026-05-05 11:18:00] *** error: results of protein Q811P8_S935 for comparison hAppNLGF_vs_hApp are NA because there are no measurements in both conditions.
+INFO  [2026-05-05 11:18:00] *** error: results of protein Q811P8_S935 for comparison hApp_FIRE_vs_hApp are NA because there are measurements only in a single group
+INFO  [2026-05-05 11:18:00] *** error: results of protein Q811P8_S935 for comparison hAppNLGF_FIRE_vs_hAppNLGF are NA because there are no measurements in both conditions.
+INFO  [2026-05-05 11:18:00] *** error: results of protein Q811P8_S935 for comparison hAppNLGF_FIRE_vs_hApp_FIRE are NA because there are measurements only in a single group
+INFO  [2026-05-05 11:18:00] *** error: results of protein Q811P8_S935 for comparison Interaction_APP_x_Microglia are NA because there are measurements only in a single group
+INFO  [2026-05-05 11:18:04] *** error: results of protein Q8BRT1_S413 for comparison hAppNLGF_vs_hApp are NA because there are measurements only in a single group
+INFO  [2026-05-05 11:18:04] *** error: results of protein Q8BRT1_S413 for comparison hApp_FIRE_vs_hApp are NA because there are no measurements in both conditions.
+INFO  [2026-05-05 11:18:04] *** error: results of protein Q8BRT1_S413 for comparison hAppNLGF_FIRE_vs_hAppNLGF are NA because there are measurements only in a single group
+INFO  [2026-05-05 11:18:04] *** error: results of protein Q8BRT1_S413 for comparison hAppNLGF_FIRE_vs_hApp_FIRE are NA because there are no measurements in both conditions.
+INFO  [2026-05-05 11:18:04] *** error: results of protein Q8BRT1_S413 for comparison Interaction_APP_x_Microglia are NA because there are measurements only in a single group
+INFO  [2026-05-05 11:18:06] *** error: results of protein Q8BZ97_Y238 for comparison hAppNLGF_vs_hApp are NA because there are measurements only in a single group
+INFO  [2026-05-05 11:18:06] *** error: results of protein Q8BZ97_Y238 for comparison hApp_FIRE_vs_hApp are NA because there are no measurements in both conditions.
+INFO  [2026-05-05 11:18:06] *** error: results of protein Q8BZ97_Y238 for comparison hAppNLGF_FIRE_vs_hAppNLGF are NA because there are measurements only in a single group
+INFO  [2026-05-05 11:18:06] *** error: results of protein Q8BZ97_Y238 for comparison hAppNLGF_FIRE_vs_hApp_FIRE are NA because there are no measurements in both conditions.
+INFO  [2026-05-05 11:18:06] *** error: results of protein Q8BZ97_Y238 for comparison Interaction_APP_x_Microglia are NA because there are measurements only in a single group
+INFO  [2026-05-05 11:18:06] *** error: results of protein Q8C008_S500 for comparison hAppNLGF_vs_hApp are NA because there are measurements only in a single group
+INFO  [2026-05-05 11:18:06] *** error: results of protein Q8C008_S500 for comparison hApp_FIRE_vs_hApp are NA because there are no measurements in both conditions.
+INFO  [2026-05-05 11:18:06] *** error: results of protein Q8C008_S500 for comparison hAppNLGF_FIRE_vs_hAppNLGF are NA because there are measurements only in a single group
+INFO  [2026-05-05 11:18:06] *** error: results of protein Q8C008_S500 for comparison hAppNLGF_FIRE_vs_hApp_FIRE are NA because there are no measurements in both conditions.
+INFO  [2026-05-05 11:18:06] *** error: results of protein Q8C008_S500 for comparison Interaction_APP_x_Microglia are NA because there are measurements only in a single group
+INFO  [2026-05-05 11:18:09] *** error: results of protein Q8C9H6_S328 for comparison hAppNLGF_vs_hApp are NA because there are measurements only in a single group
+INFO  [2026-05-05 11:18:09] *** error: results of protein Q8C9H6_S328 for comparison hApp_FIRE_vs_hApp are NA because there are no measurements in both conditions.
+INFO  [2026-05-05 11:18:09] *** error: results of protein Q8C9H6_S328 for comparison hAppNLGF_FIRE_vs_hAppNLGF are NA because there are measurements only in a single group
+INFO  [2026-05-05 11:18:09] *** error: results of protein Q8C9H6_S328 for comparison hAppNLGF_FIRE_vs_hApp_FIRE are NA because there are no measurements in both conditions.
+INFO  [2026-05-05 11:18:09] *** error: results of protein Q8C9H6_S328 for comparison Interaction_APP_x_Microglia are NA because there are measurements only in a single group
+INFO  [2026-05-05 11:18:10] *** error: results of protein Q8CBW3_Y213 for comparison hAppNLGF_vs_hApp are NA because there are measurements only in a single group
+INFO  [2026-05-05 11:18:10] *** error: results of protein Q8CBW3_Y213 for comparison hApp_FIRE_vs_hApp are NA because there are no measurements in both conditions.
+INFO  [2026-05-05 11:18:10] *** error: results of protein Q8CBW3_Y213 for comparison hAppNLGF_FIRE_vs_hAppNLGF are NA because there are measurements only in a single group
+INFO  [2026-05-05 11:18:10] *** error: results of protein Q8CBW3_Y213 for comparison hAppNLGF_FIRE_vs_hApp_FIRE are NA because there are no measurements in both conditions.
+INFO  [2026-05-05 11:18:10] *** error: results of protein Q8CBW3_Y213 for comparison Interaction_APP_x_Microglia are NA because there are measurements only in a single group
+INFO  [2026-05-05 11:18:11] *** error: results of protein Q8CH02_S133 for comparison hAppNLGF_vs_hApp are NA because there are measurements only in a single group
+INFO  [2026-05-05 11:18:11] *** error: results of protein Q8CH02_S133 for comparison hApp_FIRE_vs_hApp are NA because there are no measurements in both conditions.
+INFO  [2026-05-05 11:18:11] *** error: results of protein Q8CH02_S133 for comparison hAppNLGF_FIRE_vs_hAppNLGF are NA because there are measurements only in a single group
+INFO  [2026-05-05 11:18:11] *** error: results of protein Q8CH02_S133 for comparison hAppNLGF_FIRE_vs_hApp_FIRE are NA because there are no measurements in both conditions.
+INFO  [2026-05-05 11:18:11] *** error: results of protein Q8CH02_S133 for comparison Interaction_APP_x_Microglia are NA because there are measurements only in a single group
+INFO  [2026-05-05 11:18:13] *** error: results of protein Q8K0H5_T48 for comparison hAppNLGF_vs_hApp are NA because there are measurements only in a single group
+INFO  [2026-05-05 11:18:13] *** error: results of protein Q8K0H5_T48 for comparison hApp_FIRE_vs_hApp are NA because there are no measurements in both conditions.
+INFO  [2026-05-05 11:18:13] *** error: results of protein Q8K0H5_T48 for comparison hAppNLGF_FIRE_vs_hAppNLGF are NA because there are measurements only in a single group
+INFO  [2026-05-05 11:18:13] *** error: results of protein Q8K0H5_T48 for comparison hAppNLGF_FIRE_vs_hApp_FIRE are NA because there are no measurements in both conditions.
+INFO  [2026-05-05 11:18:13] *** error: results of protein Q8K0H5_T48 for comparison Interaction_APP_x_Microglia are NA because there are measurements only in a single group
+INFO  [2026-05-05 11:18:14] *** error: results of protein Q8K2Y0_S210 for comparison hAppNLGF_vs_hApp are NA because there are no measurements in both conditions.
+INFO  [2026-05-05 11:18:14] *** error: results of protein Q8K2Y0_S210 for comparison hApp_FIRE_vs_hApp are NA because there are measurements only in a single group
+INFO  [2026-05-05 11:18:14] *** error: results of protein Q8K2Y0_S210 for comparison hAppNLGF_FIRE_vs_hAppNLGF are NA because there are no measurements in both conditions.
+INFO  [2026-05-05 11:18:14] *** error: results of protein Q8K2Y0_S210 for comparison hAppNLGF_FIRE_vs_hApp_FIRE are NA because there are measurements only in a single group
+INFO  [2026-05-05 11:18:14] *** error: results of protein Q8K2Y0_S210 for comparison Interaction_APP_x_Microglia are NA because there are measurements only in a single group
+INFO  [2026-05-05 11:18:16] *** error: results of protein Q8R138_S180 for comparison hAppNLGF_vs_hApp are NA because there are measurements only in a single group
+INFO  [2026-05-05 11:18:16] *** error: results of protein Q8R138_S180 for comparison hApp_FIRE_vs_hApp are NA because there are no measurements in both conditions.
+INFO  [2026-05-05 11:18:16] *** error: results of protein Q8R138_S180 for comparison hAppNLGF_FIRE_vs_hAppNLGF are NA because there are measurements only in a single group
+INFO  [2026-05-05 11:18:16] *** error: results of protein Q8R138_S180 for comparison hAppNLGF_FIRE_vs_hApp_FIRE are NA because there are no measurements in both conditions.
+INFO  [2026-05-05 11:18:16] *** error: results of protein Q8R138_S180 for comparison Interaction_APP_x_Microglia are NA because there are measurements only in a single group
+INFO  [2026-05-05 11:18:21] *** error: results of protein Q91XV3_S40 for comparison hAppNLGF_vs_hApp are NA because there are no measurements in both conditions.
+INFO  [2026-05-05 11:18:21] *** error: results of protein Q91XV3_S40 for comparison hApp_FIRE_vs_hApp are NA because there are no measurements in both conditions.
+INFO  [2026-05-05 11:18:21] *** error: results of protein Q91XV3_S40 for comparison hAppNLGF_FIRE_vs_hAppNLGF are NA because there are measurements only in a single group
+INFO  [2026-05-05 11:18:21] *** error: results of protein Q91XV3_S40 for comparison hAppNLGF_FIRE_vs_hApp_FIRE are NA because there are measurements only in a single group
+INFO  [2026-05-05 11:18:21] *** error: results of protein Q91XV3_S40 for comparison Interaction_APP_x_Microglia are NA because there are measurements only in a single group
+INFO  [2026-05-05 11:18:22] *** error: results of protein Q922B2_Y253 for comparison hAppNLGF_vs_hApp are NA because there are no measurements in both conditions.
+INFO  [2026-05-05 11:18:22] *** error: results of protein Q922B2_Y253 for comparison hApp_FIRE_vs_hApp are NA because there are measurements only in a single group
+INFO  [2026-05-05 11:18:22] *** error: results of protein Q922B2_Y253 for comparison hAppNLGF_FIRE_vs_hAppNLGF are NA because there are no measurements in both conditions.
+INFO  [2026-05-05 11:18:22] *** error: results of protein Q922B2_Y253 for comparison hAppNLGF_FIRE_vs_hApp_FIRE are NA because there are measurements only in a single group
+INFO  [2026-05-05 11:18:22] *** error: results of protein Q922B2_Y253 for comparison Interaction_APP_x_Microglia are NA because there are measurements only in a single group
+INFO  [2026-05-05 11:18:22] *** error: results of protein Q923T9_S311 for comparison hAppNLGF_vs_hApp are NA because there are measurements only in a single group
+INFO  [2026-05-05 11:18:22] *** error: results of protein Q923T9_S311 for comparison hApp_FIRE_vs_hApp are NA because there are measurements only in a single group
+INFO  [2026-05-05 11:18:22] *** error: results of protein Q923T9_S311 for comparison hAppNLGF_FIRE_vs_hAppNLGF are NA because there are no measurements in both conditions.
+INFO  [2026-05-05 11:18:22] *** error: results of protein Q923T9_S311 for comparison hAppNLGF_FIRE_vs_hApp_FIRE are NA because there are no measurements in both conditions.
+INFO  [2026-05-05 11:18:22] *** error: results of protein Q923T9_S311 for comparison Interaction_APP_x_Microglia are NA because there are measurements only in a single group
+INFO  [2026-05-05 11:18:24] *** error: results of protein Q99N13_S450 for comparison hAppNLGF_vs_hApp are NA because there are no measurements in both conditions.
+INFO  [2026-05-05 11:18:24] *** error: results of protein Q99N13_S450 for comparison hApp_FIRE_vs_hApp are NA because there are no measurements in both conditions.
+INFO  [2026-05-05 11:18:24] *** error: results of protein Q99N13_S450 for comparison hAppNLGF_FIRE_vs_hAppNLGF are NA because there are measurements only in a single group
+INFO  [2026-05-05 11:18:24] *** error: results of protein Q99N13_S450 for comparison hAppNLGF_FIRE_vs_hApp_FIRE are NA because there are measurements only in a single group
+INFO  [2026-05-05 11:18:24] *** error: results of protein Q99N13_S450 for comparison Interaction_APP_x_Microglia are NA because there are measurements only in a single group
+INFO  [2026-05-05 11:18:28] *** error: results of protein Q9D219_S686 for comparison hAppNLGF_vs_hApp are NA because there are no measurements in both conditions.
+INFO  [2026-05-05 11:18:28] *** error: results of protein Q9D219_S686 for comparison hApp_FIRE_vs_hApp are NA because there are no measurements in both conditions.
+INFO  [2026-05-05 11:18:28] *** error: results of protein Q9D219_S686 for comparison hAppNLGF_FIRE_vs_hAppNLGF are NA because there are measurements only in a single group
+INFO  [2026-05-05 11:18:28] *** error: results of protein Q9D219_S686 for comparison hAppNLGF_FIRE_vs_hApp_FIRE are NA because there are measurements only in a single group
+INFO  [2026-05-05 11:18:28] *** error: results of protein Q9D219_S686 for comparison Interaction_APP_x_Microglia are NA because there are measurements only in a single group
+INFO  [2026-05-05 11:18:28] *** error: results of protein Q9D415_S611 for comparison hAppNLGF_vs_hApp are NA because there are measurements only in a single group
+INFO  [2026-05-05 11:18:28] *** error: results of protein Q9D415_S611 for comparison hApp_FIRE_vs_hApp are NA because there are no measurements in both conditions.
+INFO  [2026-05-05 11:18:28] *** error: results of protein Q9D415_S611 for comparison hAppNLGF_FIRE_vs_hAppNLGF are NA because there are measurements only in a single group
+INFO  [2026-05-05 11:18:28] *** error: results of protein Q9D415_S611 for comparison hAppNLGF_FIRE_vs_hApp_FIRE are NA because there are no measurements in both conditions.
+INFO  [2026-05-05 11:18:28] *** error: results of protein Q9D415_S611 for comparison Interaction_APP_x_Microglia are NA because there are measurements only in a single group
+INFO  [2026-05-05 11:18:41] *** error: results of protein Q9WV80_S117 for comparison hAppNLGF_vs_hApp are NA because there are measurements only in a single group
+INFO  [2026-05-05 11:18:41] *** error: results of protein Q9WV80_S117 for comparison hApp_FIRE_vs_hApp are NA because there are measurements only in a single group
+INFO  [2026-05-05 11:18:41] *** error: results of protein Q9WV80_S117 for comparison hAppNLGF_FIRE_vs_hAppNLGF are NA because there are no measurements in both conditions.
+INFO  [2026-05-05 11:18:41] *** error: results of protein Q9WV80_S117 for comparison hAppNLGF_FIRE_vs_hApp_FIRE are NA because there are no measurements in both conditions.
+INFO  [2026-05-05 11:18:41] *** error: results of protein Q9WV80_S117 for comparison Interaction_APP_x_Microglia are NA because there are measurements only in a single group
+INFO  [2026-05-05 11:18:44] == Comparisons for all proteins are done.
+INFO  [2026-05-05 11:18:45] The output for groupComparison is ready.

@@ -28,6 +28,8 @@ library(OmnipathR)
 library(AnnotationDbi)
 library(org.Mm.eg.db)
 library(tidytext)
+library(DT)
+library(htmltools)
 ```
 
 ## Directories
@@ -185,4 +187,80 @@ p_kin <- ggplot(top_kinases,
 print(p_kin)
 ggsave(file.path(kinase_dir, "Top15_kinases_per_contrast.pdf"),
        p_kin, width = 11, height = 6, device = cairo_pdf)
+```
+
+## Substrates of significant kinases (p < 0.05)
+
+For every kinase with padj < 0.05 (ULM), the table below shows up to the top 10 phosphorylated substrates — sites present in the OmniPath network and with nominal p-value < 0.05 in the MSstatsPTM output for that contrast, sorted by p-value.
+
+```{r substrates, results='asis', message=FALSE}
+contrasts_ordered <- unique(sig_kinases$Contrast)
+
+for (contrast in contrasts_ordered) {
+
+  kin_rows <- sig_kinases %>% dplyr::filter(Contrast == contrast) %>%
+    dplyr::arrange(padj)
+
+  # collect tables first so we can skip contrasts with no substrate data
+  kin_tables <- lapply(seq_len(nrow(kin_rows)), function(i) {
+    kinase        <- kin_rows$Kinase[i]
+    substrate_ids <- ks_net$target[ks_net$source == kinase]
+
+    tbl <- as.data.table(sites_long)[
+      Label == contrast & ID %in% substrate_ids & pvalue < 0.05
+    ] %>%
+      as.data.frame() %>%
+      dplyr::arrange(pvalue) %>%
+      dplyr::slice_head(n = 10) %>%
+      dplyr::mutate(
+        log2FC     = round(log2FC,     3),
+        Tvalue     = round(Tvalue,     3),
+        pvalue     = signif(pvalue,     3),
+        adj.pvalue = signif(adj.pvalue, 3)
+      ) %>%
+      dplyr::select(
+        `Substrate site` = ID,
+        Gene,
+        Site,
+        log2FC,
+        `T-value`        = Tvalue,
+        `p-value`        = pvalue,
+        `adj. p-value`   = adj.pvalue
+      )
+    list(kinase = kinase, padj = kin_rows$padj[i],
+         activity = kin_rows$Activity[i], tbl = tbl)
+  })
+
+  # drop kinases that have no significant substrates
+  kin_tables <- Filter(function(x) nrow(x$tbl) > 0, kin_tables)
+  if (length(kin_tables) == 0) next
+
+  cat("### ", contrast, "\n\n")
+  cat("::: {.panel-tabset}\n\n")
+
+  for (kt in kin_tables) {
+    direction <- ifelse(kt$activity > 0, "Activated", "Inhibited")
+    cat("#### ", kt$kinase, "\n\n")
+    cat(sprintf("**%s** · activity score %.2f · kinase padj %.3g\n\n",
+                direction, kt$activity, kt$padj))
+
+    print(htmltools::tagList(
+      DT::datatable(
+        kt$tbl,
+        rownames   = FALSE,
+        filter     = "top",
+        extensions = "Buttons",
+        options    = list(
+          dom        = "Bfrtip",
+          buttons    = list("csv", "excel"),
+          pageLength = 10,
+          scrollX    = TRUE
+        )
+      )
+    ))
+    cat("\n\n")
+  }
+
+  cat(":::\n\n")
+}
 ```
