@@ -1,0 +1,42 @@
+host: cn065
+start: 2026-05-05T12:10:53+01:00
+[1m[34m[ 1/13] index.qmd[39m[22m
+[1m[34m[ 2/13] bulk_proteomics/notebooks/03_DE_plots.qmd[39m[22m
+[1m[34m[ 3/13] phosphoproteomics/notebooks/05_phospho_GSEA.qmd[39m[22m
+[1m[34m[ 4/13] bulk_proteomics/notebooks/05_microglia_app_modulated.qmd[39m[22m
+[1m[34m[ 5/13] phosphoproteomics/notebooks/03_phospho_DE_plots.qmd[39m[22m
+[1m[34m[ 6/13] bulk_proteomics/notebooks/04_gsea.qmd[39m[22m
+[1m[34m[ 7/13] phosphoproteomics/notebooks/04_kinase_activity.qmd[39m[22m
+[31m
+
+processing file: 04_kinase_activity.qmd
+[39m1/17                  
+2/17 [setup]          
+3/17                  
+4/17 [unnamed-chunk-1]
+5/17                  
+6/17 [load]           
+7/17                  
+8/17 [omnipath]       
+[31m[2026-05-05 12:11:33] [SUCCESS] [OmnipathR] Loaded 31257 enzyme-substrate relationships from cache.
+[39m9/17                  
+10/17 [score]          
+11/17                  
+12/17 [export]         
+13/17                  
+14/17 [barplots]       
+15/17                  
+16/17 [substrates]     
+17/17                  
+[31moutput file: 04_kinase_activity.knit.md
+
+[39m[1m[34m[ 8/13] bulk_proteomics/notebooks/06_PPI.qmd[39m[22m
+[1m[34m[ 9/13] bulk_proteomics/notebooks/07_subcellular.qmd[39m[22m
+[1m[34m[10/13] phosphoproteomics/notebooks/01_phospho_qc.qmd[39m[22m
+[1m[34m[11/13] phosphoproteomics/notebooks/02_msstatsptm.qmd[39m[22m
+[1m[34m[12/13] bulk_proteomics/notebooks/01_initial_qc_spectronaut.qmd[39m[22m
+[1m[34m[13/13] bulk_proteomics/notebooks/02_msstats.qmd[39m[22m
+
+Output created: docs/index.html
+
+end: 2026-05-05T12:11:52+01:00

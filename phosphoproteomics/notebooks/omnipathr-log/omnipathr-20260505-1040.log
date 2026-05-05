@@ -36,3 +36,19 @@
 [2026-05-05 10:40:14] [TRACE]   [OmnipathR] Loaded data from RDS `/nemo/homefs/home/zanettc/.cache/OmnipathR/0f125ba53afc8e4aa7cb2a4803bd367c40ffe20d-1.rds`.
 [2026-05-05 10:40:14] [INFO]    [OmnipathR] Loaded from cache: `https://omnipathdb.org/enzsub?genesymbols=yes&organisms=10090&fields=sources,references,curation_effort&license=academic`
 [2026-05-05 10:40:16] [SUCCESS] [OmnipathR] Loaded 31257 enzyme-substrate relationships from cache.
+[2026-05-05 12:00:12] [TRACE]   [OmnipathR] Processing args for OmniPath query
+[2026-05-05 12:00:12] [TRACE]   [OmnipathR] Arguments for OmniPath query: [organisms=10090,query_type=enzsub]
+[2026-05-05 12:00:12] [TRACE]   [OmnipathR] Organism(s): 10090
+[2026-05-05 12:00:12] [TRACE]   [OmnipathR] Orthology targets: 
+[2026-05-05 12:00:12] [TRACE]   [OmnipathR] Looking up in cache: `https://omnipathdb.org/enzsub?genesymbols=yes&organisms=10090&fields=sources,references,curation_effort&license=academic`
+[2026-05-05 12:00:12] [TRACE]   [OmnipathR] Loaded data from RDS `/nemo/homefs/home/zanettc/.cache/OmnipathR/0f125ba53afc8e4aa7cb2a4803bd367c40ffe20d-1.rds`.
+[2026-05-05 12:00:12] [INFO]    [OmnipathR] Loaded from cache: `https://omnipathdb.org/enzsub?genesymbols=yes&organisms=10090&fields=sources,references,curation_effort&license=academic`
+[2026-05-05 12:00:13] [SUCCESS] [OmnipathR] Loaded 31257 enzyme-substrate relationships from cache.
+[2026-05-05 12:09:32] [TRACE]   [OmnipathR] Processing args for OmniPath query
+[2026-05-05 12:09:32] [TRACE]   [OmnipathR] Arguments for OmniPath query: [organisms=10090,query_type=enzsub]
+[2026-05-05 12:09:32] [TRACE]   [OmnipathR] Organism(s): 10090
+[2026-05-05 12:09:32] [TRACE]   [OmnipathR] Orthology targets: 
+[2026-05-05 12:09:32] [TRACE]   [OmnipathR] Looking up in cache: `https://omnipathdb.org/enzsub?genesymbols=yes&organisms=10090&fields=sources,references,curation_effort&license=academic`
+[2026-05-05 12:09:32] [TRACE]   [OmnipathR] Loaded data from RDS `/nemo/homefs/home/zanettc/.cache/OmnipathR/0f125ba53afc8e4aa7cb2a4803bd367c40ffe20d-1.rds`.
+[2026-05-05 12:09:32] [INFO]    [OmnipathR] Loaded from cache: `https://omnipathdb.org/enzsub?genesymbols=yes&organisms=10090&fields=sources,references,curation_effort&license=academic`
+[2026-05-05 12:09:33] [SUCCESS] [OmnipathR] Loaded 31257 enzyme-substrate relationships from cache.
