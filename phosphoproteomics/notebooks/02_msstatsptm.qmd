@@ -207,6 +207,9 @@ qs_save(summarised, file.path(phospho_objects_dir, "summarised_ptm.qs2"))
 
 Same 4 pairwise + interaction as the bulk pipeline.
 
+Interaction expands to: (hAppNLGF − hApp) − (hAppNLGF_FIRE − hApp_FIRE)
+Disease effects with microglia vs disease effects without. 
+
 ```{r contrasts}
 summarised <- qs_read(file.path(phospho_objects_dir, "summarised_ptm.qs2"))
 
@@ -227,6 +230,7 @@ interaction_weights <- c(
   hApp_FIRE      =  1,
   hAppNLGF_FIRE = -1
 )
+
 make_linear_contrast <- function(weights, levels) {
   v <- setNames(rep(0, length(levels)), levels)
   v[names(weights)] <- weights
@@ -268,7 +272,7 @@ ptm_results <- suppressWarnings(groupComparisonPTM(
   data.type       = "LabelFree"
 ))
 
-# qs_save(ptm_results, file.path(phospho_objects_dir, "ptm_results.qs2"))
+#qs_save(ptm_results, file.path(phospho_objects_dir, "ptm_results.qs2"))
 ```
 
 ## Export results CSVs
@@ -294,10 +298,4 @@ adj[!is.na(adj.pvalue),
       n_up     = sum(adj.pvalue < 0.05 & log2FC > 0),
       n_down   = sum(adj.pvalue < 0.05 & log2FC < 0)),
     by = Label][order(Label)]
-```
-
-## Reload checkpoint
-
-```{r reload2, eval=FALSE}
-ptm_results <- qs_read(file.path(phospho_objects_dir, "ptm_results.qs2"))
 ```

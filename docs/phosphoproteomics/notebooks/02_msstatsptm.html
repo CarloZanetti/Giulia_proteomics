@@ -160,6 +160,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <a class="dropdown-item" href="../../bulk_proteomics/notebooks/07_subcellular.html">
  <span class="dropdown-text">7. Subcellular Stratification</span></a>
   </li>  
+        <li>
+    <a class="dropdown-item" href="../../bulk_proteomics/notebooks/08_protein_profileplots.html">
+ <span class="dropdown-text">8. Protein Profile Plots</span></a>
+  </li>  
     </ul>
   </li>
   <li class="nav-item dropdown ">
@@ -186,6 +190,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
         <li>
     <a class="dropdown-item" href="../../phosphoproteomics/notebooks/05_phospho_GSEA.html">
  <span class="dropdown-text">5. Phospho GSEA</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../phosphoproteomics/notebooks/06_ptmsea.html">
+ <span class="dropdown-text">6. PTM-SEA (PTMsigDB)</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../phosphoproteomics/notebooks/06_phospho_profileplots.html">
+ <span class="dropdown-text">6b. Phospho Profile Plots</span></a>
   </li>  
     </ul>
   </li>
@@ -219,7 +231,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#group-comparison-adjusted-for-protein-abundance" id="toc-group-comparison-adjusted-for-protein-abundance" class="nav-link" data-scroll-target="#group-comparison-adjusted-for-protein-abundance">Group comparison (adjusted for protein abundance)</a></li>
   <li><a href="#export-results-csvs" id="toc-export-results-csvs" class="nav-link" data-scroll-target="#export-results-csvs">Export results CSVs</a></li>
   <li><a href="#quick-summary-of-adjusted-results" id="toc-quick-summary-of-adjusted-results" class="nav-link" data-scroll-target="#quick-summary-of-adjusted-results">Quick summary of adjusted results</a></li>
-  <li><a href="#reload-checkpoint" id="toc-reload-checkpoint" class="nav-link" data-scroll-target="#reload-checkpoint">Reload checkpoint</a></li>
   </ul>
 </nav>
     </div>
@@ -491,48 +502,48 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </details>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] "FASTA file missing 275 Proteins. These will be removed. This may be due to non-unique identifications."
-INFO  [2026-05-05 09:38:23] ** Raw data from Spectronaut imported successfully.
-INFO  [2026-05-05 09:38:23] ** Raw data from Spectronaut cleaned successfully.
-INFO  [2026-05-05 09:38:23] ** Using provided annotation.
-INFO  [2026-05-05 09:38:23] ** Run labels were standardized to remove symbols such as '.' or '%'.
-INFO  [2026-05-05 09:38:23] ** The following options are used:
+INFO  [2026-05-05 18:59:03] ** Raw data from Spectronaut imported successfully.
+INFO  [2026-05-05 18:59:03] ** Raw data from Spectronaut cleaned successfully.
+INFO  [2026-05-05 18:59:03] ** Using provided annotation.
+INFO  [2026-05-05 18:59:03] ** Run labels were standardized to remove symbols such as '.' or '%'.
+INFO  [2026-05-05 18:59:03] ** The following options are used:
   - Features will be defined by the columns: PeptideSequence, PrecursorCharge, FragmentIon, ProductCharge
   - Shared peptides will be removed.
   - Proteins with single feature will not be removed.
   - Features with less than 3 measurements across runs will be removed.
-INFO  [2026-05-05 09:38:23] ** Intensities with values of FExcludedFromQuantification equal to TRUE are replaced with NA
-WARN  [2026-05-05 09:38:23] ** PGQvalue not found in input columns.
-INFO  [2026-05-05 09:38:23] ** Intensities with values not smaller than 0.01 in EGQvalue are replaced with NA
-INFO  [2026-05-05 09:38:23] ** Features with all missing measurements across runs are removed.
-INFO  [2026-05-05 09:38:24] ** Shared peptides are removed.
-INFO  [2026-05-05 09:38:25] ** Multiple measurements in a feature and a run are summarized by summaryforMultipleRows: max
-INFO  [2026-05-05 09:38:25] ** Features with one or two measurements across runs are removed.
-INFO  [2026-05-05 09:38:25] ** Run annotation merged with quantification data.
-INFO  [2026-05-05 09:38:26] ** Features with one or two measurements across runs are removed.
-INFO  [2026-05-05 09:38:26] ** Fractionation handled.
-INFO  [2026-05-05 09:38:26] ** Updated quantification data to make balanced design. Missing values are marked by NA
-INFO  [2026-05-05 09:38:26] ** Finished preprocessing. The dataset is ready to be processed by the dataProcess function.
-INFO  [2026-05-05 09:38:29] ** Raw data from Spectronaut imported successfully.
-INFO  [2026-05-05 09:38:34] ** Raw data from Spectronaut cleaned successfully.
-INFO  [2026-05-05 09:38:35] ** Using annotation extracted from quantification data.
-INFO  [2026-05-05 09:38:35] ** Run labels were standardized to remove symbols such as '.' or '%'.
-INFO  [2026-05-05 09:38:35] ** The following options are used:
+INFO  [2026-05-05 18:59:03] ** Intensities with values of FExcludedFromQuantification equal to TRUE are replaced with NA
+WARN  [2026-05-05 18:59:03] ** PGQvalue not found in input columns.
+INFO  [2026-05-05 18:59:03] ** Intensities with values not smaller than 0.01 in EGQvalue are replaced with NA
+INFO  [2026-05-05 18:59:03] ** Features with all missing measurements across runs are removed.
+INFO  [2026-05-05 18:59:04] ** Shared peptides are removed.
+INFO  [2026-05-05 18:59:05] ** Multiple measurements in a feature and a run are summarized by summaryforMultipleRows: max
+INFO  [2026-05-05 18:59:05] ** Features with one or two measurements across runs are removed.
+INFO  [2026-05-05 18:59:06] ** Run annotation merged with quantification data.
+INFO  [2026-05-05 18:59:06] ** Features with one or two measurements across runs are removed.
+INFO  [2026-05-05 18:59:06] ** Fractionation handled.
+INFO  [2026-05-05 18:59:06] ** Updated quantification data to make balanced design. Missing values are marked by NA
+INFO  [2026-05-05 18:59:06] ** Finished preprocessing. The dataset is ready to be processed by the dataProcess function.
+INFO  [2026-05-05 18:59:09] ** Raw data from Spectronaut imported successfully.
+INFO  [2026-05-05 18:59:14] ** Raw data from Spectronaut cleaned successfully.
+INFO  [2026-05-05 18:59:16] ** Using annotation extracted from quantification data.
+INFO  [2026-05-05 18:59:16] ** Run labels were standardized to remove symbols such as '.' or '%'.
+INFO  [2026-05-05 18:59:16] ** The following options are used:
   - Features will be defined by the columns: PeptideSequence, PrecursorCharge, FragmentIon, ProductCharge
   - Shared peptides will be removed.
   - Proteins with single feature will not be removed.
   - Features with less than 3 measurements across runs will be removed.
-INFO  [2026-05-05 09:38:40] ** Intensities with values of FExcludedFromQuantification equal to TRUE are replaced with NA
-WARN  [2026-05-05 09:38:42] ** PGQvalue not found in input columns.
-INFO  [2026-05-05 09:38:42] ** Intensities with values not smaller than 0.01 in EGQvalue are replaced with NA
-INFO  [2026-05-05 09:38:46] ** Features with all missing measurements across runs are removed.
-INFO  [2026-05-05 09:38:51] ** Shared peptides are removed.
-INFO  [2026-05-05 09:39:48] ** Multiple measurements in a feature and a run are summarized by summaryforMultipleRows: max
-INFO  [2026-05-05 09:39:50] ** Features with one or two measurements across runs are removed.
-INFO  [2026-05-05 09:39:52] ** Run annotation merged with quantification data.
-INFO  [2026-05-05 09:40:03] ** Features with one or two measurements across runs are removed.
-INFO  [2026-05-05 09:40:04] ** Fractionation handled.
-INFO  [2026-05-05 09:40:24] ** Updated quantification data to make balanced design. Missing values are marked by NA
-INFO  [2026-05-05 09:40:25] ** Finished preprocessing. The dataset is ready to be processed by the dataProcess function.</code></pre>
+INFO  [2026-05-05 18:59:21] ** Intensities with values of FExcludedFromQuantification equal to TRUE are replaced with NA
+WARN  [2026-05-05 18:59:22] ** PGQvalue not found in input columns.
+INFO  [2026-05-05 18:59:23] ** Intensities with values not smaller than 0.01 in EGQvalue are replaced with NA
+INFO  [2026-05-05 18:59:27] ** Features with all missing measurements across runs are removed.
+INFO  [2026-05-05 18:59:31] ** Shared peptides are removed.
+INFO  [2026-05-05 19:00:30] ** Multiple measurements in a feature and a run are summarized by summaryforMultipleRows: max
+INFO  [2026-05-05 19:00:32] ** Features with one or two measurements across runs are removed.
+INFO  [2026-05-05 19:00:35] ** Run annotation merged with quantification data.
+INFO  [2026-05-05 19:00:45] ** Features with one or two measurements across runs are removed.
+INFO  [2026-05-05 19:00:45] ** Fractionation handled.
+INFO  [2026-05-05 19:01:08] ** Updated quantification data to make balanced design. Missing values are marked by NA
+INFO  [2026-05-05 19:01:10] ** Finished preprocessing. The dataset is ready to be processed by the dataProcess function.</code></pre>
 </div>
 <details class="code-fold">
 <summary>Code</summary>
@@ -580,34 +591,34 @@ INFO  [2026-05-05 09:40:25] ** Finished preprocessing. The dataset is ready to b
 <span id="cb33-9"><a href="#cb33-9" aria-hidden="true" tabindex="-1"></a>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
-<pre><code>INFO  [2026-05-05 09:40:30] ** Features with one or two measurements across runs are removed.
-INFO  [2026-05-05 09:40:30] ** Fractionation handled.
-INFO  [2026-05-05 09:40:30] ** Updated quantification data to make balanced design. Missing values are marked by NA
-INFO  [2026-05-05 09:40:32] ** Log2 intensities under cutoff = -0.34817  were considered as censored missing values.
-INFO  [2026-05-05 09:40:32] ** Log2 intensities = NA were considered as censored missing values.
-INFO  [2026-05-05 09:40:32] ** Use all features that the dataset originally has.
-INFO  [2026-05-05 09:40:32] 
+<pre><code>INFO  [2026-05-05 19:01:15] ** Features with one or two measurements across runs are removed.
+INFO  [2026-05-05 19:01:15] ** Fractionation handled.
+INFO  [2026-05-05 19:01:16] ** Updated quantification data to make balanced design. Missing values are marked by NA
+INFO  [2026-05-05 19:01:17] ** Log2 intensities under cutoff = -0.34817  were considered as censored missing values.
+INFO  [2026-05-05 19:01:17] ** Log2 intensities = NA were considered as censored missing values.
+INFO  [2026-05-05 19:01:17] ** Use all features that the dataset originally has.
+INFO  [2026-05-05 19:01:17] 
  # proteins: 8883
  # peptides per protein: 1-11
  # features per peptide: 1-6
-INFO  [2026-05-05 09:40:32] Some proteins have only one feature: 
+INFO  [2026-05-05 19:01:17] Some proteins have only one feature: 
  A2AJI0_S282,
  A2AP18_S676_S686,
  A2AR02_S411_S413,
  A2RSJ4_S21,
  A2RSJ4_S952 ...
-INFO  [2026-05-05 09:40:32] 
+INFO  [2026-05-05 19:01:17] 
                     hApp hAppNLGF hAppNLGF_FIRE hApp_FIRE
              # runs    4        4             4         4
     # bioreplicates    4        4             4         4
  # tech. replicates    1        1             1         1
-INFO  [2026-05-05 09:40:32] Some features are completely missing in at least one condition:  
+INFO  [2026-05-05 19:01:17] Some features are completely missing in at least one condition:  
  AAAAALSGS[Phospho (STY)]PPQTEKPTHYR_3_b5_1,
  AAAAALSGS[Phospho (STY)]PPQTEKPTHYR_3_y11_2,
  AAAAALSGS[Phospho (STY)]PPQTEKPTHYR_3_y15_2,
  AAADDGEEPKS[Phospho (STY)]EPETK_3_b4_1,
  AAADDGEEPKS[Phospho (STY)]EPETK_3_y13_2 ...
-INFO  [2026-05-05 09:40:32]  == Start the summarization per subplot...
+INFO  [2026-05-05 19:01:17]  == Start the summarization per subplot...
 
   |                                                                            
   |                                                                      |   0%
@@ -951,38 +962,38 @@ INFO  [2026-05-05 09:40:32]  == Start the summarization per subplot...
   |======================================================================|  99%
   |                                                                            
   |======================================================================| 100%
-INFO  [2026-05-05 09:42:45]  == Summarization is done.</code></pre>
+INFO  [2026-05-05 19:03:25]  == Summarization is done.</code></pre>
 </div>
 <div class="cell-output cell-output-stdout">
-<pre><code>INFO  [2026-05-05 09:43:04] ** Features with one or two measurements across runs are removed.
-INFO  [2026-05-05 09:43:05] ** Fractionation handled.
-INFO  [2026-05-05 09:43:21] ** Updated quantification data to make balanced design. Missing values are marked by NA
-INFO  [2026-05-05 09:43:47] ** Log2 intensities under cutoff = -2.162  were considered as censored missing values.
-INFO  [2026-05-05 09:43:47] ** Log2 intensities = NA were considered as censored missing values.
-INFO  [2026-05-05 11:01:24] ** Flag uninformative feature and outliers by feature selection algorithm.
-INFO  [2026-05-05 11:01:26] 
+<pre><code>INFO  [2026-05-05 19:03:45] ** Features with one or two measurements across runs are removed.
+INFO  [2026-05-05 19:03:45] ** Fractionation handled.
+INFO  [2026-05-05 19:04:02] ** Updated quantification data to make balanced design. Missing values are marked by NA
+INFO  [2026-05-05 19:04:29] ** Log2 intensities under cutoff = -2.162  were considered as censored missing values.
+INFO  [2026-05-05 19:04:29] ** Log2 intensities = NA were considered as censored missing values.
+INFO  [2026-05-05 20:46:10] ** Flag uninformative feature and outliers by feature selection algorithm.
+INFO  [2026-05-05 20:46:13] 
  # proteins: 8918
  # peptides per protein: 1-631
  # features per peptide: 1-6
-INFO  [2026-05-05 11:01:26] Some proteins have only one feature: 
+INFO  [2026-05-05 20:46:13] Some proteins have only one feature: 
  A0A0G2JET4,
  A6X935,
  C0HLV9,
  D3Z7A4;K7N6U2;K7N6Y8;K7N754;L7N2A7,
  P35991 ...
-INFO  [2026-05-05 11:01:27] 
+INFO  [2026-05-05 20:46:13] 
                     hApp hAppNLGF hAppNLGF_FIRE hApp_FIRE
              # runs    4        4             4         4
     # bioreplicates    4        4             4         4
  # tech. replicates    1        1             1         1
-INFO  [2026-05-05 11:01:29] Some features are completely missing in at least one condition:  
+INFO  [2026-05-05 20:46:15] Some features are completely missing in at least one condition:  
  AAAAAAAAQM[Oxidation (M)]HTK_2_b4_1,
  AAAAAAAAQM[Oxidation (M)]HTK_2_b5_1,
  AAAAAAAAQM[Oxidation (M)]HTK_2_y8_1,
  AAAADGEPLHNEEER_2_y10_1,
  AAAAVASAASSC[Carbamidomethyl (C)]R_3_y7_1 ...
-INFO  [2026-05-05 11:01:29]  == Start the summarization per subplot...
-INFO  [2026-05-05 11:01:29] ** Filtered out uninformative features and outliers.
+INFO  [2026-05-05 20:46:15]  == Start the summarization per subplot...
+INFO  [2026-05-05 20:46:16] ** Filtered out uninformative features and outliers.
 
   |                                                                            
   |                                                                      |   0%
@@ -1326,7 +1337,7 @@ INFO  [2026-05-05 11:01:29] ** Filtered out uninformative features and outliers.
   |======================================================================|  99%
   |                                                                            
   |======================================================================| 100%
-INFO  [2026-05-05 11:16:27]  == Summarization is done.</code></pre>
+INFO  [2026-05-05 21:05:26]  == Summarization is done.</code></pre>
 </div>
 <details class="code-fold">
 <summary>Code</summary>
@@ -1337,6 +1348,7 @@ INFO  [2026-05-05 11:16:27]  == Summarization is done.</code></pre>
 <section id="verify-condition-levels-and-build-contrast-matrix" class="level2">
 <h2 class="anchored" data-anchor-id="verify-condition-levels-and-build-contrast-matrix">Verify condition levels and build contrast matrix</h2>
 <p>Same 4 pairwise + interaction as the bulk pipeline.</p>
+<p>Interaction expands to: (hAppNLGF − hApp) − (hAppNLGF_FIRE − hApp_FIRE) Disease effects with microglia vs disease effects without.</p>
 <div class="cell">
 <details class="code-fold">
 <summary>Code</summary>
@@ -1370,28 +1382,29 @@ INFO  [2026-05-05 11:16:27]  == Summarization is done.</code></pre>
 <span id="cb41-11"><a href="#cb41-11" aria-hidden="true" tabindex="-1"></a>  <span class="at">hApp_FIRE      =</span>  <span class="dv">1</span>,</span>
 <span id="cb41-12"><a href="#cb41-12" aria-hidden="true" tabindex="-1"></a>  <span class="at">hAppNLGF_FIRE =</span> <span class="sc">-</span><span class="dv">1</span></span>
 <span id="cb41-13"><a href="#cb41-13" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb41-14"><a href="#cb41-14" aria-hidden="true" tabindex="-1"></a>make_linear_contrast <span class="ot">&lt;-</span> <span class="cf">function</span>(weights, levels) {</span>
-<span id="cb41-15"><a href="#cb41-15" aria-hidden="true" tabindex="-1"></a>  v <span class="ot">&lt;-</span> <span class="fu">setNames</span>(<span class="fu">rep</span>(<span class="dv">0</span>, <span class="fu">length</span>(levels)), levels)</span>
-<span id="cb41-16"><a href="#cb41-16" aria-hidden="true" tabindex="-1"></a>  v[<span class="fu">names</span>(weights)] <span class="ot">&lt;-</span> weights</span>
-<span id="cb41-17"><a href="#cb41-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">stopifnot</span>(<span class="fu">abs</span>(<span class="fu">sum</span>(v)) <span class="sc">&lt;</span> <span class="fl">1e-9</span>)</span>
-<span id="cb41-18"><a href="#cb41-18" aria-hidden="true" tabindex="-1"></a>  v</span>
-<span id="cb41-19"><a href="#cb41-19" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb41-20"><a href="#cb41-20" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb41-21"><a href="#cb41-21" aria-hidden="true" tabindex="-1"></a>comparison_matrix <span class="ot">&lt;-</span> <span class="fu">rbind</span>(</span>
-<span id="cb41-22"><a href="#cb41-22" aria-hidden="true" tabindex="-1"></a>  <span class="fu">make_contrast</span>(<span class="st">"hAppNLGF"</span>,      <span class="st">"hApp"</span>,        condition_levels),</span>
-<span id="cb41-23"><a href="#cb41-23" aria-hidden="true" tabindex="-1"></a>  <span class="fu">make_contrast</span>(<span class="st">"hApp_FIRE"</span>,     <span class="st">"hApp"</span>,        condition_levels),</span>
-<span id="cb41-24"><a href="#cb41-24" aria-hidden="true" tabindex="-1"></a>  <span class="fu">make_contrast</span>(<span class="st">"hAppNLGF_FIRE"</span>, <span class="st">"hAppNLGF"</span>,    condition_levels),</span>
-<span id="cb41-25"><a href="#cb41-25" aria-hidden="true" tabindex="-1"></a>  <span class="fu">make_contrast</span>(<span class="st">"hAppNLGF_FIRE"</span>, <span class="st">"hApp_FIRE"</span>,   condition_levels),</span>
-<span id="cb41-26"><a href="#cb41-26" aria-hidden="true" tabindex="-1"></a>  <span class="fu">make_linear_contrast</span>(interaction_weights,     condition_levels)</span>
-<span id="cb41-27"><a href="#cb41-27" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb41-28"><a href="#cb41-28" aria-hidden="true" tabindex="-1"></a><span class="fu">rownames</span>(comparison_matrix) <span class="ot">&lt;-</span> <span class="fu">c</span>(</span>
-<span id="cb41-29"><a href="#cb41-29" aria-hidden="true" tabindex="-1"></a>  <span class="st">"hAppNLGF_vs_hApp"</span>,</span>
-<span id="cb41-30"><a href="#cb41-30" aria-hidden="true" tabindex="-1"></a>  <span class="st">"hApp_FIRE_vs_hApp"</span>,</span>
-<span id="cb41-31"><a href="#cb41-31" aria-hidden="true" tabindex="-1"></a>  <span class="st">"hAppNLGF_FIRE_vs_hAppNLGF"</span>,</span>
-<span id="cb41-32"><a href="#cb41-32" aria-hidden="true" tabindex="-1"></a>  <span class="st">"hAppNLGF_FIRE_vs_hApp_FIRE"</span>,</span>
-<span id="cb41-33"><a href="#cb41-33" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Interaction_APP_x_Microglia"</span></span>
-<span id="cb41-34"><a href="#cb41-34" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb41-35"><a href="#cb41-35" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(comparison_matrix)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb41-14"><a href="#cb41-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb41-15"><a href="#cb41-15" aria-hidden="true" tabindex="-1"></a>make_linear_contrast <span class="ot">&lt;-</span> <span class="cf">function</span>(weights, levels) {</span>
+<span id="cb41-16"><a href="#cb41-16" aria-hidden="true" tabindex="-1"></a>  v <span class="ot">&lt;-</span> <span class="fu">setNames</span>(<span class="fu">rep</span>(<span class="dv">0</span>, <span class="fu">length</span>(levels)), levels)</span>
+<span id="cb41-17"><a href="#cb41-17" aria-hidden="true" tabindex="-1"></a>  v[<span class="fu">names</span>(weights)] <span class="ot">&lt;-</span> weights</span>
+<span id="cb41-18"><a href="#cb41-18" aria-hidden="true" tabindex="-1"></a>  <span class="fu">stopifnot</span>(<span class="fu">abs</span>(<span class="fu">sum</span>(v)) <span class="sc">&lt;</span> <span class="fl">1e-9</span>)</span>
+<span id="cb41-19"><a href="#cb41-19" aria-hidden="true" tabindex="-1"></a>  v</span>
+<span id="cb41-20"><a href="#cb41-20" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb41-21"><a href="#cb41-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb41-22"><a href="#cb41-22" aria-hidden="true" tabindex="-1"></a>comparison_matrix <span class="ot">&lt;-</span> <span class="fu">rbind</span>(</span>
+<span id="cb41-23"><a href="#cb41-23" aria-hidden="true" tabindex="-1"></a>  <span class="fu">make_contrast</span>(<span class="st">"hAppNLGF"</span>,      <span class="st">"hApp"</span>,        condition_levels),</span>
+<span id="cb41-24"><a href="#cb41-24" aria-hidden="true" tabindex="-1"></a>  <span class="fu">make_contrast</span>(<span class="st">"hApp_FIRE"</span>,     <span class="st">"hApp"</span>,        condition_levels),</span>
+<span id="cb41-25"><a href="#cb41-25" aria-hidden="true" tabindex="-1"></a>  <span class="fu">make_contrast</span>(<span class="st">"hAppNLGF_FIRE"</span>, <span class="st">"hAppNLGF"</span>,    condition_levels),</span>
+<span id="cb41-26"><a href="#cb41-26" aria-hidden="true" tabindex="-1"></a>  <span class="fu">make_contrast</span>(<span class="st">"hAppNLGF_FIRE"</span>, <span class="st">"hApp_FIRE"</span>,   condition_levels),</span>
+<span id="cb41-27"><a href="#cb41-27" aria-hidden="true" tabindex="-1"></a>  <span class="fu">make_linear_contrast</span>(interaction_weights,     condition_levels)</span>
+<span id="cb41-28"><a href="#cb41-28" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb41-29"><a href="#cb41-29" aria-hidden="true" tabindex="-1"></a><span class="fu">rownames</span>(comparison_matrix) <span class="ot">&lt;-</span> <span class="fu">c</span>(</span>
+<span id="cb41-30"><a href="#cb41-30" aria-hidden="true" tabindex="-1"></a>  <span class="st">"hAppNLGF_vs_hApp"</span>,</span>
+<span id="cb41-31"><a href="#cb41-31" aria-hidden="true" tabindex="-1"></a>  <span class="st">"hApp_FIRE_vs_hApp"</span>,</span>
+<span id="cb41-32"><a href="#cb41-32" aria-hidden="true" tabindex="-1"></a>  <span class="st">"hAppNLGF_FIRE_vs_hAppNLGF"</span>,</span>
+<span id="cb41-33"><a href="#cb41-33" aria-hidden="true" tabindex="-1"></a>  <span class="st">"hAppNLGF_FIRE_vs_hApp_FIRE"</span>,</span>
+<span id="cb41-34"><a href="#cb41-34" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Interaction_APP_x_Microglia"</span></span>
+<span id="cb41-35"><a href="#cb41-35" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb41-36"><a href="#cb41-36" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(comparison_matrix)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
 <pre><code>                            hApp hApp_FIRE hAppNLGF hAppNLGF_FIRE
@@ -1422,7 +1435,7 @@ Interaction_APP_x_Microglia   -1         1        1            -1</code></pre>
 <span id="cb43-5"><a href="#cb43-5" aria-hidden="true" tabindex="-1"></a>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
-<pre><code>INFO  [2026-05-05 11:16:49]  == Start to test and get inference in whole plot ...
+<pre><code>INFO  [2026-05-05 21:05:50]  == Start to test and get inference in whole plot ...
 
   |                                                                            
   |                                                                      |   0%
@@ -1766,10 +1779,10 @@ Interaction_APP_x_Microglia   -1         1        1            -1</code></pre>
   |======================================================================|  99%
   |                                                                            
   |======================================================================| 100%
-INFO  [2026-05-05 11:18:44]  == Comparisons for all proteins are done.</code></pre>
+INFO  [2026-05-05 21:07:48]  == Comparisons for all proteins are done.</code></pre>
 </div>
 <div class="cell-output cell-output-stdout">
-<pre><code>INFO  [2026-05-05 11:18:46]  == Start to test and get inference in whole plot ...
+<pre><code>INFO  [2026-05-05 21:07:50]  == Start to test and get inference in whole plot ...
 
   |                                                                            
   |                                                                      |   0%
@@ -2113,11 +2126,11 @@ INFO  [2026-05-05 11:18:44]  == Comparisons for all proteins are done.</code></p
   |======================================================================|  99%
   |                                                                            
   |======================================================================| 100%
-INFO  [2026-05-05 11:20:38]  == Comparisons for all proteins are done.</code></pre>
+INFO  [2026-05-05 21:09:41]  == Comparisons for all proteins are done.</code></pre>
 </div>
 <details class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb46"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a><span class="co"># qs_save(ptm_results, file.path(phospho_objects_dir, "ptm_results.qs2"))</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb46"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a><span class="co">#qs_save(ptm_results, file.path(phospho_objects_dir, "ptm_results.qs2"))</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
 </section>
@@ -2172,15 +2185,6 @@ INFO  [2026-05-05 11:20:38]  == Comparisons for all proteins are done.</code></p
   </script>
 </div>
 </div>
-</div>
-</section>
-<section id="reload-checkpoint" class="level2">
-<h2 class="anchored" data-anchor-id="reload-checkpoint">Reload checkpoint</h2>
-<div class="cell">
-<details class="code-fold">
-<summary>Code</summary>
-<div class="sourceCode cell-code" id="cb54"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb54-1"><a href="#cb54-1" aria-hidden="true" tabindex="-1"></a>ptm_results <span class="ot">&lt;-</span> <span class="fu">qs_read</span>(<span class="fu">file.path</span>(phospho_objects_dir, <span class="st">"ptm_results.qs2"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
 </div>
 
 
@@ -2660,309 +2664,307 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   }
 });
 </script><div class="modal fade" id="quarto-embedded-source-code-modal" tabindex="-1" aria-labelledby="quarto-embedded-source-code-modal-label" aria-hidden="true"><div class="modal-dialog modal-dialog-scrollable"><div class="modal-content"><div class="modal-header"><h5 class="modal-title" id="quarto-embedded-source-code-modal-label">Source Code</h5><button class="btn-close" data-bs-dismiss="modal"></button></div><div class="modal-body"><div class="">
-<div class="sourceCode" id="cb55" data-shortcodes="false"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb55-1"><a href="#cb55-1" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
-<span id="cb55-2"><a href="#cb55-2" aria-hidden="true" tabindex="-1"></a><span class="an">title:</span><span class="co"> "2. MSstatsPTM — Phospho DE with protein-level adjustment"</span></span>
-<span id="cb55-3"><a href="#cb55-3" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
-<span id="cb55-4"><a href="#cb55-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb55-5"><a href="#cb55-5" aria-hidden="true" tabindex="-1"></a><span class="fu">## Overview</span></span>
-<span id="cb55-6"><a href="#cb55-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb55-7"><a href="#cb55-7" aria-hidden="true" tabindex="-1"></a>Differential phospho-site abundance, adjusted for protein-level abundance changes from the bulk proteome pipeline. Uses MSstatsPTM, which fits paired models on PTM and protein datasets and reports both unadjusted (raw phospho) and adjusted (phospho minus protein) log2 fold changes per contrast.</span>
-<span id="cb55-8"><a href="#cb55-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb55-9"><a href="#cb55-9" aria-hidden="true" tabindex="-1"></a>Same contrast set as the bulk pipeline: 4 pairwise + APP × Microglia interaction.</span>
-<span id="cb55-10"><a href="#cb55-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb55-11"><a href="#cb55-11" aria-hidden="true" tabindex="-1"></a>Site-level localization filtering is applied to the phospho report at <span class="in">`LOC_PROB_CUTOFF = 0.99`</span> before the MSstatsPTM converter — the bulk protein report is left untouched. The search was confirmed to be directDIA (<span class="in">`EG.Library = "directDIA™"`</span> in the Spectronaut export); Bekker-Jensen et al. 2020 (*Mol Cell Proteomics*) recommend a 0.99 probability threshold for directDIA searches rather than the 0.75 Class I default used for library-based searches.</span>
-<span id="cb55-12"><a href="#cb55-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb55-13"><a href="#cb55-13" aria-hidden="true" tabindex="-1"></a><span class="fu">## Libraries</span></span>
-<span id="cb55-14"><a href="#cb55-14" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb55-15"><a href="#cb55-15" aria-hidden="true" tabindex="-1"></a><span class="in">```{r setup, include=TRUE, message=FALSE}</span></span>
-<span id="cb55-16"><a href="#cb55-16" aria-hidden="true" tabindex="-1"></a><span class="in">library(data.table)</span></span>
-<span id="cb55-17"><a href="#cb55-17" aria-hidden="true" tabindex="-1"></a><span class="in">library(MSstats)</span></span>
-<span id="cb55-18"><a href="#cb55-18" aria-hidden="true" tabindex="-1"></a><span class="in">library(MSstatsPTM)</span></span>
-<span id="cb55-19"><a href="#cb55-19" aria-hidden="true" tabindex="-1"></a><span class="in">library(MSstatsConvert)</span></span>
-<span id="cb55-20"><a href="#cb55-20" aria-hidden="true" tabindex="-1"></a><span class="in">library(qs2)</span></span>
-<span id="cb55-21"><a href="#cb55-21" aria-hidden="true" tabindex="-1"></a><span class="in">library(dplyr)</span></span>
-<span id="cb55-22"><a href="#cb55-22" aria-hidden="true" tabindex="-1"></a><span class="in">library(ggplot2)</span></span>
-<span id="cb55-23"><a href="#cb55-23" aria-hidden="true" tabindex="-1"></a><span class="in">library(stringr)</span></span>
-<span id="cb55-24"><a href="#cb55-24" aria-hidden="true" tabindex="-1"></a><span class="in">library(tidyr)</span></span>
-<span id="cb55-25"><a href="#cb55-25" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb55-26"><a href="#cb55-26" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb55-27"><a href="#cb55-27" aria-hidden="true" tabindex="-1"></a><span class="fu">## Directories and parameters</span></span>
-<span id="cb55-28"><a href="#cb55-28" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb55-31"><a href="#cb55-31" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb55-32"><a href="#cb55-32" aria-hidden="true" tabindex="-1"></a>project_root <span class="ot">&lt;-</span> <span class="st">"/nemo/lab/destrooperb/home/shared/zanettc/giulia_proteomics"</span></span>
-<span id="cb55-33"><a href="#cb55-33" aria-hidden="true" tabindex="-1"></a>phospho_base <span class="ot">&lt;-</span> <span class="fu">file.path</span>(project_root, <span class="st">"phosphoproteomics"</span>)</span>
-<span id="cb55-34"><a href="#cb55-34" aria-hidden="true" tabindex="-1"></a>bulk_base    <span class="ot">&lt;-</span> <span class="fu">file.path</span>(project_root, <span class="st">"bulk_proteomics"</span>)</span>
-<span id="cb55-35"><a href="#cb55-35" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb55-36"><a href="#cb55-36" aria-hidden="true" tabindex="-1"></a>run_num <span class="ot">&lt;-</span> <span class="st">"run3"</span></span>
-<span id="cb55-37"><a href="#cb55-37" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb55-38"><a href="#cb55-38" aria-hidden="true" tabindex="-1"></a>phospho_results_dir <span class="ot">&lt;-</span> <span class="fu">file.path</span>(phospho_base, <span class="st">"results"</span>, run_num)</span>
-<span id="cb55-39"><a href="#cb55-39" aria-hidden="true" tabindex="-1"></a>phospho_objects_dir <span class="ot">&lt;-</span> <span class="fu">file.path</span>(phospho_base, <span class="st">"data"</span>, <span class="st">"processed"</span>, run_num)</span>
-<span id="cb55-40"><a href="#cb55-40" aria-hidden="true" tabindex="-1"></a>phospho_input_dir   <span class="ot">&lt;-</span> <span class="fu">file.path</span>(phospho_base, <span class="st">"input"</span>)</span>
-<span id="cb55-41"><a href="#cb55-41" aria-hidden="true" tabindex="-1"></a>bulk_input_dir      <span class="ot">&lt;-</span> <span class="fu">file.path</span>(bulk_base, <span class="st">"input"</span>)</span>
-<span id="cb55-42"><a href="#cb55-42" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb55-43"><a href="#cb55-43" aria-hidden="true" tabindex="-1"></a><span class="fu">dir.create</span>(phospho_results_dir, <span class="at">recursive =</span> <span class="cn">TRUE</span>, <span class="at">showWarnings =</span> <span class="cn">FALSE</span>)</span>
-<span id="cb55-44"><a href="#cb55-44" aria-hidden="true" tabindex="-1"></a><span class="fu">dir.create</span>(phospho_objects_dir, <span class="at">recursive =</span> <span class="cn">TRUE</span>, <span class="at">showWarnings =</span> <span class="cn">FALSE</span>)</span>
-<span id="cb55-45"><a href="#cb55-45" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb55-46"><a href="#cb55-46" aria-hidden="true" tabindex="-1"></a>FASTA_PATH <span class="ot">&lt;-</span> <span class="fu">file.path</span>(phospho_input_dir, <span class="st">"UP000000589_10090.fasta"</span>)</span>
-<span id="cb55-47"><a href="#cb55-47" aria-hidden="true" tabindex="-1"></a>PTM_LABEL  <span class="ot">&lt;-</span> <span class="st">"Phospho (STY)"</span>   <span class="co"># how Spectronaut writes the modification</span></span>
-<span id="cb55-48"><a href="#cb55-48" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb55-49"><a href="#cb55-49" aria-hidden="true" tabindex="-1"></a><span class="fu">stopifnot</span>(<span class="st">"FASTA missing — see Setup notes"</span> <span class="ot">=</span> <span class="fu">file.exists</span>(FASTA_PATH))</span>
-<span id="cb55-50"><a href="#cb55-50" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb55-51"><a href="#cb55-51" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb55-52"><a href="#cb55-52" aria-hidden="true" tabindex="-1"></a><span class="fu">## Build annotation (same 16-sample design)</span></span>
-<span id="cb55-53"><a href="#cb55-53" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb55-56"><a href="#cb55-56" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb55-57"><a href="#cb55-57" aria-hidden="true" tabindex="-1"></a>msstats_annotation <span class="ot">&lt;-</span> <span class="fu">data.table</span>(</span>
-<span id="cb55-58"><a href="#cb55-58" aria-hidden="true" tabindex="-1"></a>  <span class="at">Run          =</span> <span class="fu">paste0</span>(<span class="st">"GA_"</span>, <span class="dv">1</span><span class="sc">:</span><span class="dv">16</span>),</span>
-<span id="cb55-59"><a href="#cb55-59" aria-hidden="true" tabindex="-1"></a>  <span class="at">Condition    =</span> <span class="fu">rep</span>(<span class="fu">c</span>(<span class="st">"hApp"</span>, <span class="st">"hAppNLGF"</span>, <span class="st">"hAppNLGF_FIRE"</span>, <span class="st">"hApp_FIRE"</span>), <span class="at">each =</span> <span class="dv">4</span>),</span>
-<span id="cb55-60"><a href="#cb55-60" aria-hidden="true" tabindex="-1"></a>  <span class="at">BioReplicate =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">16</span></span>
-<span id="cb55-61"><a href="#cb55-61" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb55-62"><a href="#cb55-62" aria-hidden="true" tabindex="-1"></a>msstats_annotation</span>
-<span id="cb55-63"><a href="#cb55-63" aria-hidden="true" tabindex="-1"></a><span class="fu">fwrite</span>(msstats_annotation, <span class="fu">file.path</span>(phospho_objects_dir, <span class="st">"msstats_annotation.csv"</span>))</span>
-<span id="cb55-64"><a href="#cb55-64" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb55-65"><a href="#cb55-65" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb55-66"><a href="#cb55-66" aria-hidden="true" tabindex="-1"></a><span class="fu">## Load both Spectronaut reports (PTM and bulk)</span></span>
-<span id="cb55-67"><a href="#cb55-67" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb55-68"><a href="#cb55-68" aria-hidden="true" tabindex="-1"></a>The bulk report serves as the "global protein" reference for adjustment. We read the same column subset that the bulk MSstats notebook uses.</span>
-<span id="cb55-69"><a href="#cb55-69" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb55-70"><a href="#cb55-70" aria-hidden="true" tabindex="-1"></a><span class="in">```{r load}</span></span>
-<span id="cb55-71"><a href="#cb55-71" aria-hidden="true" tabindex="-1"></a><span class="in">msstats_cols &lt;- c(</span></span>
-<span id="cb55-72"><a href="#cb55-72" aria-hidden="true" tabindex="-1"></a><span class="in">  "R.Condition", "R.FileName", "R.Replicate",</span></span>
-<span id="cb55-73"><a href="#cb55-73" aria-hidden="true" tabindex="-1"></a><span class="in">  "PG.ProteinGroups", "PG.ProteinAccessions",</span></span>
-<span id="cb55-74"><a href="#cb55-74" aria-hidden="true" tabindex="-1"></a><span class="in">  "PEP.StrippedSequence",</span></span>
-<span id="cb55-75"><a href="#cb55-75" aria-hidden="true" tabindex="-1"></a><span class="in">  "EG.ModifiedSequence", "EG.PrecursorId", "EG.Qvalue",</span></span>
-<span id="cb55-76"><a href="#cb55-76" aria-hidden="true" tabindex="-1"></a><span class="in">  "EG.PTMAssayProbability",</span></span>
-<span id="cb55-77"><a href="#cb55-77" aria-hidden="true" tabindex="-1"></a><span class="in">  "FG.Charge", "FG.Id",</span></span>
-<span id="cb55-78"><a href="#cb55-78" aria-hidden="true" tabindex="-1"></a><span class="in">  "F.FrgIon", "F.Charge", "F.FrgLossType", "F.FrgNum", "F.FrgType",</span></span>
-<span id="cb55-79"><a href="#cb55-79" aria-hidden="true" tabindex="-1"></a><span class="in">  "F.NormalizedPeakArea", "F.PeakArea", "F.ExcludedFromQuantification"</span></span>
-<span id="cb55-80"><a href="#cb55-80" aria-hidden="true" tabindex="-1"></a><span class="in">)</span></span>
-<span id="cb55-81"><a href="#cb55-81" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb55-82"><a href="#cb55-82" aria-hidden="true" tabindex="-1"></a><span class="in"># QC notebook 01 flagged that EG.PTMAssayProbability is sometimes missing from</span></span>
-<span id="cb55-83"><a href="#cb55-83" aria-hidden="true" tabindex="-1"></a><span class="in"># Spectronaut exports — probe the header and fall back to</span></span>
-<span id="cb55-84"><a href="#cb55-84" aria-hidden="true" tabindex="-1"></a><span class="in"># EG.PTMLocalizationProbabilities if needed.</span></span>
-<span id="cb55-85"><a href="#cb55-85" aria-hidden="true" tabindex="-1"></a><span class="in">phospho_path &lt;- file.path(phospho_input_dir, "20260504_125530_PCF000612_phospho_GA_MSStats_updated.csv")</span></span>
-<span id="cb55-86"><a href="#cb55-86" aria-hidden="true" tabindex="-1"></a><span class="in">phospho_header &lt;- names(fread(phospho_path, nrows = 0))</span></span>
-<span id="cb55-87"><a href="#cb55-87" aria-hidden="true" tabindex="-1"></a><span class="in">if ("EG.PTMAssayProbability" %in% phospho_header) {</span></span>
-<span id="cb55-88"><a href="#cb55-88" aria-hidden="true" tabindex="-1"></a><span class="in">  loc_prob_col &lt;- "EG.PTMAssayProbability"</span></span>
-<span id="cb55-89"><a href="#cb55-89" aria-hidden="true" tabindex="-1"></a><span class="in">} else if ("EG.PTMLocalizationProbabilities" %in% phospho_header) {</span></span>
-<span id="cb55-90"><a href="#cb55-90" aria-hidden="true" tabindex="-1"></a><span class="in">  loc_prob_col &lt;- "EG.PTMLocalizationProbabilities"</span></span>
-<span id="cb55-91"><a href="#cb55-91" aria-hidden="true" tabindex="-1"></a><span class="in">  msstats_cols &lt;- sub("EG.PTMAssayProbability", loc_prob_col, msstats_cols, fixed = TRUE)</span></span>
-<span id="cb55-92"><a href="#cb55-92" aria-hidden="true" tabindex="-1"></a><span class="in">} else {</span></span>
-<span id="cb55-93"><a href="#cb55-93" aria-hidden="true" tabindex="-1"></a><span class="in">  stop(paste0(</span></span>
-<span id="cb55-94"><a href="#cb55-94" aria-hidden="true" tabindex="-1"></a><span class="in">    "FATAL: no localization probability column found in the phospho report.\n",</span></span>
-<span id="cb55-95"><a href="#cb55-95" aria-hidden="true" tabindex="-1"></a><span class="in">    "Expected EG.PTMAssayProbability or EG.PTMLocalizationProbabilities.\n",</span></span>
-<span id="cb55-96"><a href="#cb55-96" aria-hidden="true" tabindex="-1"></a><span class="in">    "Re-export from Spectronaut with PTM localization enabled before proceeding.\n",</span></span>
-<span id="cb55-97"><a href="#cb55-97" aria-hidden="true" tabindex="-1"></a><span class="in">    "Do NOT run the pipeline without this column — site-level filtering would be skipped\n",</span></span>
-<span id="cb55-98"><a href="#cb55-98" aria-hidden="true" tabindex="-1"></a><span class="in">    "and downstream results would be unreliable."</span></span>
-<span id="cb55-99"><a href="#cb55-99" aria-hidden="true" tabindex="-1"></a><span class="in">  ))</span></span>
-<span id="cb55-100"><a href="#cb55-100" aria-hidden="true" tabindex="-1"></a><span class="in">}</span></span>
-<span id="cb55-101"><a href="#cb55-101" aria-hidden="true" tabindex="-1"></a><span class="in">cat("Localization probability column:", loc_prob_col, "\n")</span></span>
-<span id="cb55-102"><a href="#cb55-102" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb55-103"><a href="#cb55-103" aria-hidden="true" tabindex="-1"></a><span class="in">cat("Reading phospho report...\n")</span></span>
-<span id="cb55-104"><a href="#cb55-104" aria-hidden="true" tabindex="-1"></a><span class="in">phospho_raw &lt;- fread(</span></span>
-<span id="cb55-105"><a href="#cb55-105" aria-hidden="true" tabindex="-1"></a><span class="in">  phospho_path,</span></span>
-<span id="cb55-106"><a href="#cb55-106" aria-hidden="true" tabindex="-1"></a><span class="in">  select = msstats_cols</span></span>
-<span id="cb55-107"><a href="#cb55-107" aria-hidden="true" tabindex="-1"></a><span class="in">)</span></span>
-<span id="cb55-108"><a href="#cb55-108" aria-hidden="true" tabindex="-1"></a><span class="in">cat("Phospho rows:", nrow(phospho_raw), "\n")</span></span>
-<span id="cb55-109"><a href="#cb55-109" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb55-110"><a href="#cb55-110" aria-hidden="true" tabindex="-1"></a><span class="in">cat("Reading bulk proteome report (for protein-level adjustment)...\n")</span></span>
-<span id="cb55-111"><a href="#cb55-111" aria-hidden="true" tabindex="-1"></a><span class="in">protein_raw &lt;- fread(</span></span>
-<span id="cb55-112"><a href="#cb55-112" aria-hidden="true" tabindex="-1"></a><span class="in">  file.path(bulk_input_dir, "20260423_154110_PCF000612_GA_MSStats_Report-Proteome.csv"),</span></span>
-<span id="cb55-113"><a href="#cb55-113" aria-hidden="true" tabindex="-1"></a><span class="in">  select = setdiff(msstats_cols,</span></span>
-<span id="cb55-114"><a href="#cb55-114" aria-hidden="true" tabindex="-1"></a><span class="in">                   c("EG.PTMAssayProbability", "EG.PTMLocalizationProbabilities"))</span></span>
-<span id="cb55-115"><a href="#cb55-115" aria-hidden="true" tabindex="-1"></a><span class="in">)</span></span>
-<span id="cb55-116"><a href="#cb55-116" aria-hidden="true" tabindex="-1"></a><span class="in">cat("Protein rows:", nrow(protein_raw), "\n")</span></span>
-<span id="cb55-117"><a href="#cb55-117" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb55-118"><a href="#cb55-118" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb55-119"><a href="#cb55-119" aria-hidden="true" tabindex="-1"></a><span class="fu">## Filter phospho by site localization probability</span></span>
-<span id="cb55-120"><a href="#cb55-120" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb55-121"><a href="#cb55-121" aria-hidden="true" tabindex="-1"></a><span class="in">```{r localization_filter}</span></span>
-<span id="cb55-122"><a href="#cb55-122" aria-hidden="true" tabindex="-1"></a><span class="in"># directDIA confirmed via EG.Library = "directDIA™" in the Spectronaut export.</span></span>
-<span id="cb55-123"><a href="#cb55-123" aria-hidden="true" tabindex="-1"></a><span class="in"># Bekker-Jensen et al. 2020 (Mol Cell Proteomics) recommend 0.99 for directDIA</span></span>
-<span id="cb55-124"><a href="#cb55-124" aria-hidden="true" tabindex="-1"></a><span class="in"># rather than the 0.75 Class I threshold used for library-based DIA searches.</span></span>
-<span id="cb55-125"><a href="#cb55-125" aria-hidden="true" tabindex="-1"></a><span class="in">LOC_PROB_CUTOFF &lt;- 0.99</span></span>
-<span id="cb55-126"><a href="#cb55-126" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb55-127"><a href="#cb55-127" aria-hidden="true" tabindex="-1"></a><span class="in">n_before         &lt;- nrow(phospho_raw)</span></span>
-<span id="cb55-128"><a href="#cb55-128" aria-hidden="true" tabindex="-1"></a><span class="in">sites_before     &lt;- uniqueN(phospho_raw$EG.ModifiedSequence)</span></span>
-<span id="cb55-129"><a href="#cb55-129" aria-hidden="true" tabindex="-1"></a><span class="in">proteins_before  &lt;- uniqueN(phospho_raw$PG.ProteinGroups)</span></span>
-<span id="cb55-130"><a href="#cb55-130" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb55-131"><a href="#cb55-131" aria-hidden="true" tabindex="-1"></a><span class="in">phospho_raw &lt;- phospho_raw[get(loc_prob_col) &gt;= LOC_PROB_CUTOFF]</span></span>
-<span id="cb55-132"><a href="#cb55-132" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb55-133"><a href="#cb55-133" aria-hidden="true" tabindex="-1"></a><span class="in">n_after         &lt;- nrow(phospho_raw)</span></span>
-<span id="cb55-134"><a href="#cb55-134" aria-hidden="true" tabindex="-1"></a><span class="in">sites_after     &lt;- uniqueN(phospho_raw$EG.ModifiedSequence)</span></span>
-<span id="cb55-135"><a href="#cb55-135" aria-hidden="true" tabindex="-1"></a><span class="in">proteins_after  &lt;- uniqueN(phospho_raw$PG.ProteinGroups)</span></span>
-<span id="cb55-136"><a href="#cb55-136" aria-hidden="true" tabindex="-1"></a><span class="in">pct             &lt;- round(100 * n_after / n_before, 2)</span></span>
-<span id="cb55-137"><a href="#cb55-137" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb55-138"><a href="#cb55-138" aria-hidden="true" tabindex="-1"></a><span class="in">cat(sprintf("Localization filter: %s &gt;= %.2f\n", loc_prob_col, LOC_PROB_CUTOFF))</span></span>
-<span id="cb55-139"><a href="#cb55-139" aria-hidden="true" tabindex="-1"></a><span class="in">cat(sprintf("  Rows:     %d  →  %d  (%.2f%% retained)\n",  n_before,    n_after,    pct))</span></span>
-<span id="cb55-140"><a href="#cb55-140" aria-hidden="true" tabindex="-1"></a><span class="in">cat(sprintf("  Sites:    %d  →  %d\n",                      sites_before, sites_after))</span></span>
-<span id="cb55-141"><a href="#cb55-141" aria-hidden="true" tabindex="-1"></a><span class="in">cat(sprintf("  Proteins: %d  →  %d\n",                      proteins_before, proteins_after))</span></span>
-<span id="cb55-142"><a href="#cb55-142" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb55-143"><a href="#cb55-143" aria-hidden="true" tabindex="-1"></a><span class="in"># protein_raw is intentionally NOT filtered — protein-level adjustment uses</span></span>
-<span id="cb55-144"><a href="#cb55-144" aria-hidden="true" tabindex="-1"></a><span class="in"># whole-protein abundance and does not require site localization.</span></span>
-<span id="cb55-145"><a href="#cb55-145" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb55-146"><a href="#cb55-146" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb55-147"><a href="#cb55-147" aria-hidden="true" tabindex="-1"></a><span class="fu">## Normalise phospho R.FileName + patch R.Condition / R.Replicate</span></span>
-<span id="cb55-148"><a href="#cb55-148" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb55-149"><a href="#cb55-149" aria-hidden="true" tabindex="-1"></a>The phospho report writes sample IDs as <span class="in">`GA_P_1..GA_P_16`</span> while the bulk proteome and the annotation use <span class="in">`GA_1..GA_16`</span>. Strip the <span class="in">`GA_P_`</span> prefix on the phospho data so both reports key against the same annotation. R.Condition is also "Not Defined" in both raw files — overwrite it from the annotation.</span>
-<span id="cb55-150"><a href="#cb55-150" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb55-151"><a href="#cb55-151" aria-hidden="true" tabindex="-1"></a><span class="in">```{r patch_conditions}</span></span>
-<span id="cb55-152"><a href="#cb55-152" aria-hidden="true" tabindex="-1"></a><span class="in">phospho_raw[, R.FileName := stringr::str_replace(R.FileName, "^GA_P_", "GA_")]</span></span>
-<span id="cb55-153"><a href="#cb55-153" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb55-154"><a href="#cb55-154" aria-hidden="true" tabindex="-1"></a><span class="in">patch &lt;- function(dt) {</span></span>
-<span id="cb55-155"><a href="#cb55-155" aria-hidden="true" tabindex="-1"></a><span class="in">  dt[msstats_annotation, on = c("R.FileName" = "Run"),</span></span>
-<span id="cb55-156"><a href="#cb55-156" aria-hidden="true" tabindex="-1"></a><span class="in">     `:=`(R.Condition = i.Condition, R.Replicate = i.BioReplicate)]</span></span>
-<span id="cb55-157"><a href="#cb55-157" aria-hidden="true" tabindex="-1"></a><span class="in">  dt</span></span>
-<span id="cb55-158"><a href="#cb55-158" aria-hidden="true" tabindex="-1"></a><span class="in">}</span></span>
-<span id="cb55-159"><a href="#cb55-159" aria-hidden="true" tabindex="-1"></a><span class="in">phospho_raw &lt;- patch(phospho_raw)</span></span>
-<span id="cb55-160"><a href="#cb55-160" aria-hidden="true" tabindex="-1"></a><span class="in">protein_raw &lt;- patch(protein_raw)</span></span>
-<span id="cb55-161"><a href="#cb55-161" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb55-162"><a href="#cb55-162" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb55-163"><a href="#cb55-163" aria-hidden="true" tabindex="-1"></a><span class="fu">## Convert to MSstatsPTM input format</span></span>
-<span id="cb55-164"><a href="#cb55-164" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb55-165"><a href="#cb55-165" aria-hidden="true" tabindex="-1"></a><span class="in">`SpectronauttoMSstatsPTMFormat()`</span> returns a list of two data frames: <span class="in">`PTM`</span> and <span class="in">`PROTEIN`</span>. Both must be present for protein-level adjustment. The same <span class="in">`annotation`</span> table is used for both — MSstatsPTM matches by <span class="in">`Run`</span>.</span>
-<span id="cb55-166"><a href="#cb55-166" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb55-167"><a href="#cb55-167" aria-hidden="true" tabindex="-1"></a><span class="in">```{r convert}</span></span>
-<span id="cb55-168"><a href="#cb55-168" aria-hidden="true" tabindex="-1"></a><span class="in">ptm_input &lt;- suppressWarnings(SpectronauttoMSstatsPTMFormat(</span></span>
-<span id="cb55-169"><a href="#cb55-169" aria-hidden="true" tabindex="-1"></a><span class="in">  input              = phospho_raw,</span></span>
-<span id="cb55-170"><a href="#cb55-170" aria-hidden="true" tabindex="-1"></a><span class="in">  annotation         = msstats_annotation,</span></span>
-<span id="cb55-171"><a href="#cb55-171" aria-hidden="true" tabindex="-1"></a><span class="in">  fasta_path         = FASTA_PATH,</span></span>
-<span id="cb55-172"><a href="#cb55-172" aria-hidden="true" tabindex="-1"></a><span class="in">  protein_input      = protein_raw,</span></span>
-<span id="cb55-173"><a href="#cb55-173" aria-hidden="true" tabindex="-1"></a><span class="in">  use_unmod_peptides = FALSE,         # site-level: drop unmodified peptides</span></span>
-<span id="cb55-174"><a href="#cb55-174" aria-hidden="true" tabindex="-1"></a><span class="in">  mod_id             = "\\[Phospho \\(STY\\)\\]",</span></span>
-<span id="cb55-175"><a href="#cb55-175" aria-hidden="true" tabindex="-1"></a><span class="in">  filter_with_Qvalue = TRUE,</span></span>
-<span id="cb55-176"><a href="#cb55-176" aria-hidden="true" tabindex="-1"></a><span class="in">  qvalue_cutoff      = 0.01,</span></span>
-<span id="cb55-177"><a href="#cb55-177" aria-hidden="true" tabindex="-1"></a><span class="in">  removeProtein_with1Feature = FALSE</span></span>
-<span id="cb55-178"><a href="#cb55-178" aria-hidden="true" tabindex="-1"></a><span class="in">))</span></span>
-<span id="cb55-179"><a href="#cb55-179" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb55-180"><a href="#cb55-180" aria-hidden="true" tabindex="-1"></a><span class="in">cat("PTM features:    ", nrow(ptm_input$PTM),     "\n")</span></span>
-<span id="cb55-181"><a href="#cb55-181" aria-hidden="true" tabindex="-1"></a><span class="in">cat("Protein features:", nrow(ptm_input$PROTEIN), "\n")</span></span>
-<span id="cb55-182"><a href="#cb55-182" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb55-183"><a href="#cb55-183" aria-hidden="true" tabindex="-1"></a><span class="in">qs_save(ptm_input, file.path(phospho_objects_dir, "ptm_input.qs2"))</span></span>
-<span id="cb55-184"><a href="#cb55-184" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb55-185"><a href="#cb55-185" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb55-186"><a href="#cb55-186" aria-hidden="true" tabindex="-1"></a><span class="fu">## Reload checkpoint (skip the read+convert on re-runs)</span></span>
-<span id="cb55-187"><a href="#cb55-187" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb55-188"><a href="#cb55-188" aria-hidden="true" tabindex="-1"></a><span class="in">```{r reload, eval=FALSE}</span></span>
-<span id="cb55-189"><a href="#cb55-189" aria-hidden="true" tabindex="-1"></a><span class="in">ptm_input &lt;- qs_read(file.path(phospho_objects_dir, "ptm_input.qs2"))</span></span>
-<span id="cb55-190"><a href="#cb55-190" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb55-191"><a href="#cb55-191" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb55-192"><a href="#cb55-192" aria-hidden="true" tabindex="-1"></a><span class="fu">## Data summarisation (per dataset)</span></span>
-<span id="cb55-193"><a href="#cb55-193" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb55-194"><a href="#cb55-194" aria-hidden="true" tabindex="-1"></a><span class="in">`dataSummarizationPTM()`</span> runs <span class="in">`dataProcess`</span> on PTM and PROTEIN separately and returns both. TMP summarisation, median normalisation, MB-imputation — same defaults as the bulk pipeline.</span>
-<span id="cb55-195"><a href="#cb55-195" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb55-196"><a href="#cb55-196" aria-hidden="true" tabindex="-1"></a><span class="in">```{r summarise}</span></span>
-<span id="cb55-197"><a href="#cb55-197" aria-hidden="true" tabindex="-1"></a><span class="in">summarised &lt;- suppressWarnings(dataSummarizationPTM(</span></span>
-<span id="cb55-198"><a href="#cb55-198" aria-hidden="true" tabindex="-1"></a><span class="in">  data                                 = ptm_input,</span></span>
-<span id="cb55-199"><a href="#cb55-199" aria-hidden="true" tabindex="-1"></a><span class="in">  normalization                        = "equalizeMedians",</span></span>
-<span id="cb55-200"><a href="#cb55-200" aria-hidden="true" tabindex="-1"></a><span class="in">  summaryMethod                        = "TMP",</span></span>
-<span id="cb55-201"><a href="#cb55-201" aria-hidden="true" tabindex="-1"></a><span class="in">  censoredInt                          = "NA",</span></span>
-<span id="cb55-202"><a href="#cb55-202" aria-hidden="true" tabindex="-1"></a><span class="in">  MBimpute                             = TRUE,</span></span>
-<span id="cb55-203"><a href="#cb55-203" aria-hidden="true" tabindex="-1"></a><span class="in">  featureSubset                        = "highQuality",</span></span>
-<span id="cb55-204"><a href="#cb55-204" aria-hidden="true" tabindex="-1"></a><span class="in">  remove_uninformative_feature_outlier = TRUE</span></span>
-<span id="cb55-205"><a href="#cb55-205" aria-hidden="true" tabindex="-1"></a><span class="in">))</span></span>
-<span id="cb55-206"><a href="#cb55-206" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb55-207"><a href="#cb55-207" aria-hidden="true" tabindex="-1"></a><span class="in">qs_save(summarised, file.path(phospho_objects_dir, "summarised_ptm.qs2"))</span></span>
-<span id="cb55-208"><a href="#cb55-208" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb55-209"><a href="#cb55-209" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb55-210"><a href="#cb55-210" aria-hidden="true" tabindex="-1"></a><span class="fu">## Verify condition levels and build contrast matrix</span></span>
-<span id="cb55-211"><a href="#cb55-211" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb55-212"><a href="#cb55-212" aria-hidden="true" tabindex="-1"></a>Same 4 pairwise + interaction as the bulk pipeline.</span>
-<span id="cb55-213"><a href="#cb55-213" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb55-214"><a href="#cb55-214" aria-hidden="true" tabindex="-1"></a><span class="in">```{r contrasts}</span></span>
-<span id="cb55-215"><a href="#cb55-215" aria-hidden="true" tabindex="-1"></a><span class="in">summarised &lt;- qs_read(file.path(phospho_objects_dir, "summarised_ptm.qs2"))</span></span>
-<span id="cb55-216"><a href="#cb55-216" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb55-217"><a href="#cb55-217" aria-hidden="true" tabindex="-1"></a><span class="in">condition_levels &lt;- levels(summarised$PTM$ProteinLevelData$GROUP)</span></span>
-<span id="cb55-218"><a href="#cb55-218" aria-hidden="true" tabindex="-1"></a><span class="in">cat("Condition levels (alphabetical):\n")</span></span>
-<span id="cb55-219"><a href="#cb55-219" aria-hidden="true" tabindex="-1"></a><span class="in">print(condition_levels)</span></span>
-<span id="cb55-220"><a href="#cb55-220" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb55-221"><a href="#cb55-221" aria-hidden="true" tabindex="-1"></a><span class="in">make_contrast &lt;- function(numerator, denominator, levels) {</span></span>
-<span id="cb55-222"><a href="#cb55-222" aria-hidden="true" tabindex="-1"></a><span class="in">  v &lt;- setNames(rep(0L, length(levels)), levels)</span></span>
-<span id="cb55-223"><a href="#cb55-223" aria-hidden="true" tabindex="-1"></a><span class="in">  v[numerator]   &lt;-  1L</span></span>
-<span id="cb55-224"><a href="#cb55-224" aria-hidden="true" tabindex="-1"></a><span class="in">  v[denominator] &lt;- -1L</span></span>
-<span id="cb55-225"><a href="#cb55-225" aria-hidden="true" tabindex="-1"></a><span class="in">  v</span></span>
-<span id="cb55-226"><a href="#cb55-226" aria-hidden="true" tabindex="-1"></a><span class="in">}</span></span>
-<span id="cb55-227"><a href="#cb55-227" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb55-228"><a href="#cb55-228" aria-hidden="true" tabindex="-1"></a><span class="in">interaction_weights &lt;- c(</span></span>
-<span id="cb55-229"><a href="#cb55-229" aria-hidden="true" tabindex="-1"></a><span class="in">  hApp           = -1,</span></span>
-<span id="cb55-230"><a href="#cb55-230" aria-hidden="true" tabindex="-1"></a><span class="in">  hAppNLGF       =  1,</span></span>
-<span id="cb55-231"><a href="#cb55-231" aria-hidden="true" tabindex="-1"></a><span class="in">  hApp_FIRE      =  1,</span></span>
-<span id="cb55-232"><a href="#cb55-232" aria-hidden="true" tabindex="-1"></a><span class="in">  hAppNLGF_FIRE = -1</span></span>
-<span id="cb55-233"><a href="#cb55-233" aria-hidden="true" tabindex="-1"></a><span class="in">)</span></span>
-<span id="cb55-234"><a href="#cb55-234" aria-hidden="true" tabindex="-1"></a><span class="in">make_linear_contrast &lt;- function(weights, levels) {</span></span>
-<span id="cb55-235"><a href="#cb55-235" aria-hidden="true" tabindex="-1"></a><span class="in">  v &lt;- setNames(rep(0, length(levels)), levels)</span></span>
-<span id="cb55-236"><a href="#cb55-236" aria-hidden="true" tabindex="-1"></a><span class="in">  v[names(weights)] &lt;- weights</span></span>
-<span id="cb55-237"><a href="#cb55-237" aria-hidden="true" tabindex="-1"></a><span class="in">  stopifnot(abs(sum(v)) &lt; 1e-9)</span></span>
-<span id="cb55-238"><a href="#cb55-238" aria-hidden="true" tabindex="-1"></a><span class="in">  v</span></span>
-<span id="cb55-239"><a href="#cb55-239" aria-hidden="true" tabindex="-1"></a><span class="in">}</span></span>
-<span id="cb55-240"><a href="#cb55-240" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb55-241"><a href="#cb55-241" aria-hidden="true" tabindex="-1"></a><span class="in">comparison_matrix &lt;- rbind(</span></span>
-<span id="cb55-242"><a href="#cb55-242" aria-hidden="true" tabindex="-1"></a><span class="in">  make_contrast("hAppNLGF",      "hApp",        condition_levels),</span></span>
-<span id="cb55-243"><a href="#cb55-243" aria-hidden="true" tabindex="-1"></a><span class="in">  make_contrast("hApp_FIRE",     "hApp",        condition_levels),</span></span>
-<span id="cb55-244"><a href="#cb55-244" aria-hidden="true" tabindex="-1"></a><span class="in">  make_contrast("hAppNLGF_FIRE", "hAppNLGF",    condition_levels),</span></span>
-<span id="cb55-245"><a href="#cb55-245" aria-hidden="true" tabindex="-1"></a><span class="in">  make_contrast("hAppNLGF_FIRE", "hApp_FIRE",   condition_levels),</span></span>
-<span id="cb55-246"><a href="#cb55-246" aria-hidden="true" tabindex="-1"></a><span class="in">  make_linear_contrast(interaction_weights,     condition_levels)</span></span>
-<span id="cb55-247"><a href="#cb55-247" aria-hidden="true" tabindex="-1"></a><span class="in">)</span></span>
-<span id="cb55-248"><a href="#cb55-248" aria-hidden="true" tabindex="-1"></a><span class="in">rownames(comparison_matrix) &lt;- c(</span></span>
-<span id="cb55-249"><a href="#cb55-249" aria-hidden="true" tabindex="-1"></a><span class="in">  "hAppNLGF_vs_hApp",</span></span>
-<span id="cb55-250"><a href="#cb55-250" aria-hidden="true" tabindex="-1"></a><span class="in">  "hApp_FIRE_vs_hApp",</span></span>
-<span id="cb55-251"><a href="#cb55-251" aria-hidden="true" tabindex="-1"></a><span class="in">  "hAppNLGF_FIRE_vs_hAppNLGF",</span></span>
-<span id="cb55-252"><a href="#cb55-252" aria-hidden="true" tabindex="-1"></a><span class="in">  "hAppNLGF_FIRE_vs_hApp_FIRE",</span></span>
-<span id="cb55-253"><a href="#cb55-253" aria-hidden="true" tabindex="-1"></a><span class="in">  "Interaction_APP_x_Microglia"</span></span>
-<span id="cb55-254"><a href="#cb55-254" aria-hidden="true" tabindex="-1"></a><span class="in">)</span></span>
-<span id="cb55-255"><a href="#cb55-255" aria-hidden="true" tabindex="-1"></a><span class="in">print(comparison_matrix)</span></span>
-<span id="cb55-256"><a href="#cb55-256" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb55-257"><a href="#cb55-257" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb55-258"><a href="#cb55-258" aria-hidden="true" tabindex="-1"></a><span class="fu">## Group comparison (adjusted for protein abundance)</span></span>
-<span id="cb55-259"><a href="#cb55-259" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb55-260"><a href="#cb55-260" aria-hidden="true" tabindex="-1"></a><span class="in">`groupComparisonPTM()`</span> returns three result tables:</span>
-<span id="cb55-261"><a href="#cb55-261" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb55-262"><a href="#cb55-262" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span><span class="in">`PTM.Model`</span> — raw PTM contrast results (unadjusted phospho changes)</span>
-<span id="cb55-263"><a href="#cb55-263" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span><span class="in">`PROTEIN.Model`</span> — protein-level contrast results (from the bulk reference)</span>
-<span id="cb55-264"><a href="#cb55-264" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span><span class="in">`ADJUSTED.Model`</span> — phospho minus protein per contrast → "phospho-specific" changes</span>
-<span id="cb55-265"><a href="#cb55-265" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb55-266"><a href="#cb55-266" aria-hidden="true" tabindex="-1"></a>The adjusted table is what most phospho papers cite — it isolates regulation that isn't simply explained by total protein abundance.</span>
-<span id="cb55-267"><a href="#cb55-267" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb55-268"><a href="#cb55-268" aria-hidden="true" tabindex="-1"></a><span class="in">```{r group_comparison}</span></span>
-<span id="cb55-269"><a href="#cb55-269" aria-hidden="true" tabindex="-1"></a><span class="in">ptm_results &lt;- suppressWarnings(groupComparisonPTM(</span></span>
-<span id="cb55-270"><a href="#cb55-270" aria-hidden="true" tabindex="-1"></a><span class="in">  data            = summarised,</span></span>
-<span id="cb55-271"><a href="#cb55-271" aria-hidden="true" tabindex="-1"></a><span class="in">  contrast.matrix = comparison_matrix,</span></span>
-<span id="cb55-272"><a href="#cb55-272" aria-hidden="true" tabindex="-1"></a><span class="in">  data.type       = "LabelFree"</span></span>
-<span id="cb55-273"><a href="#cb55-273" aria-hidden="true" tabindex="-1"></a><span class="in">))</span></span>
-<span id="cb55-274"><a href="#cb55-274" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb55-275"><a href="#cb55-275" aria-hidden="true" tabindex="-1"></a><span class="in"># qs_save(ptm_results, file.path(phospho_objects_dir, "ptm_results.qs2"))</span></span>
-<span id="cb55-276"><a href="#cb55-276" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb55-277"><a href="#cb55-277" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb55-278"><a href="#cb55-278" aria-hidden="true" tabindex="-1"></a><span class="fu">## Export results CSVs</span></span>
-<span id="cb55-279"><a href="#cb55-279" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb55-280"><a href="#cb55-280" aria-hidden="true" tabindex="-1"></a><span class="in">```{r export}</span></span>
-<span id="cb55-281"><a href="#cb55-281" aria-hidden="true" tabindex="-1"></a><span class="in">write_table &lt;- function(df, filename) {</span></span>
-<span id="cb55-282"><a href="#cb55-282" aria-hidden="true" tabindex="-1"></a><span class="in">  fwrite(as.data.table(df), file.path(phospho_results_dir, filename))</span></span>
-<span id="cb55-283"><a href="#cb55-283" aria-hidden="true" tabindex="-1"></a><span class="in">  cat("Wrote", filename, ":", nrow(df), "rows\n")</span></span>
-<span id="cb55-284"><a href="#cb55-284" aria-hidden="true" tabindex="-1"></a><span class="in">}</span></span>
-<span id="cb55-285"><a href="#cb55-285" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb55-286"><a href="#cb55-286" aria-hidden="true" tabindex="-1"></a><span class="in">write_table(ptm_results$PTM.Model,      "PTM_unadjusted_GroupComparison.csv")</span></span>
-<span id="cb55-287"><a href="#cb55-287" aria-hidden="true" tabindex="-1"></a><span class="in">write_table(ptm_results$PROTEIN.Model,  "PROTEIN_GroupComparison.csv")</span></span>
-<span id="cb55-288"><a href="#cb55-288" aria-hidden="true" tabindex="-1"></a><span class="in">write_table(ptm_results$ADJUSTED.Model, "PTM_adjusted_GroupComparison.csv")</span></span>
-<span id="cb55-289"><a href="#cb55-289" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb55-290"><a href="#cb55-290" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb55-291"><a href="#cb55-291" aria-hidden="true" tabindex="-1"></a><span class="fu">## Quick summary of adjusted results</span></span>
-<span id="cb55-292"><a href="#cb55-292" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb55-293"><a href="#cb55-293" aria-hidden="true" tabindex="-1"></a><span class="in">```{r summary_table}</span></span>
-<span id="cb55-294"><a href="#cb55-294" aria-hidden="true" tabindex="-1"></a><span class="in">adj &lt;- as.data.table(ptm_results$ADJUSTED.Model)</span></span>
-<span id="cb55-295"><a href="#cb55-295" aria-hidden="true" tabindex="-1"></a><span class="in">adj[!is.na(adj.pvalue),</span></span>
-<span id="cb55-296"><a href="#cb55-296" aria-hidden="true" tabindex="-1"></a><span class="in">    .(n_tested = .N,</span></span>
-<span id="cb55-297"><a href="#cb55-297" aria-hidden="true" tabindex="-1"></a><span class="in">      n_sig    = sum(adj.pvalue &lt; 0.05),</span></span>
-<span id="cb55-298"><a href="#cb55-298" aria-hidden="true" tabindex="-1"></a><span class="in">      n_up     = sum(adj.pvalue &lt; 0.05 &amp; log2FC &gt; 0),</span></span>
-<span id="cb55-299"><a href="#cb55-299" aria-hidden="true" tabindex="-1"></a><span class="in">      n_down   = sum(adj.pvalue &lt; 0.05 &amp; log2FC &lt; 0)),</span></span>
-<span id="cb55-300"><a href="#cb55-300" aria-hidden="true" tabindex="-1"></a><span class="in">    by = Label][order(Label)]</span></span>
-<span id="cb55-301"><a href="#cb55-301" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb55-302"><a href="#cb55-302" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb55-303"><a href="#cb55-303" aria-hidden="true" tabindex="-1"></a><span class="fu">## Reload checkpoint</span></span>
-<span id="cb55-304"><a href="#cb55-304" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb55-305"><a href="#cb55-305" aria-hidden="true" tabindex="-1"></a><span class="in">```{r reload2, eval=FALSE}</span></span>
-<span id="cb55-306"><a href="#cb55-306" aria-hidden="true" tabindex="-1"></a><span class="in">ptm_results &lt;- qs_read(file.path(phospho_objects_dir, "ptm_results.qs2"))</span></span>
-<span id="cb55-307"><a href="#cb55-307" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<div class="sourceCode" id="cb54" data-shortcodes="false"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb54-1"><a href="#cb54-1" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
+<span id="cb54-2"><a href="#cb54-2" aria-hidden="true" tabindex="-1"></a><span class="an">title:</span><span class="co"> "2. MSstatsPTM — Phospho DE with protein-level adjustment"</span></span>
+<span id="cb54-3"><a href="#cb54-3" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
+<span id="cb54-4"><a href="#cb54-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb54-5"><a href="#cb54-5" aria-hidden="true" tabindex="-1"></a><span class="fu">## Overview</span></span>
+<span id="cb54-6"><a href="#cb54-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb54-7"><a href="#cb54-7" aria-hidden="true" tabindex="-1"></a>Differential phospho-site abundance, adjusted for protein-level abundance changes from the bulk proteome pipeline. Uses MSstatsPTM, which fits paired models on PTM and protein datasets and reports both unadjusted (raw phospho) and adjusted (phospho minus protein) log2 fold changes per contrast.</span>
+<span id="cb54-8"><a href="#cb54-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb54-9"><a href="#cb54-9" aria-hidden="true" tabindex="-1"></a>Same contrast set as the bulk pipeline: 4 pairwise + APP × Microglia interaction.</span>
+<span id="cb54-10"><a href="#cb54-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb54-11"><a href="#cb54-11" aria-hidden="true" tabindex="-1"></a>Site-level localization filtering is applied to the phospho report at <span class="in">`LOC_PROB_CUTOFF = 0.99`</span> before the MSstatsPTM converter — the bulk protein report is left untouched. The search was confirmed to be directDIA (<span class="in">`EG.Library = "directDIA™"`</span> in the Spectronaut export); Bekker-Jensen et al. 2020 (*Mol Cell Proteomics*) recommend a 0.99 probability threshold for directDIA searches rather than the 0.75 Class I default used for library-based searches.</span>
+<span id="cb54-12"><a href="#cb54-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb54-13"><a href="#cb54-13" aria-hidden="true" tabindex="-1"></a><span class="fu">## Libraries</span></span>
+<span id="cb54-14"><a href="#cb54-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb54-15"><a href="#cb54-15" aria-hidden="true" tabindex="-1"></a><span class="in">```{r setup, include=TRUE, message=FALSE}</span></span>
+<span id="cb54-16"><a href="#cb54-16" aria-hidden="true" tabindex="-1"></a><span class="in">library(data.table)</span></span>
+<span id="cb54-17"><a href="#cb54-17" aria-hidden="true" tabindex="-1"></a><span class="in">library(MSstats)</span></span>
+<span id="cb54-18"><a href="#cb54-18" aria-hidden="true" tabindex="-1"></a><span class="in">library(MSstatsPTM)</span></span>
+<span id="cb54-19"><a href="#cb54-19" aria-hidden="true" tabindex="-1"></a><span class="in">library(MSstatsConvert)</span></span>
+<span id="cb54-20"><a href="#cb54-20" aria-hidden="true" tabindex="-1"></a><span class="in">library(qs2)</span></span>
+<span id="cb54-21"><a href="#cb54-21" aria-hidden="true" tabindex="-1"></a><span class="in">library(dplyr)</span></span>
+<span id="cb54-22"><a href="#cb54-22" aria-hidden="true" tabindex="-1"></a><span class="in">library(ggplot2)</span></span>
+<span id="cb54-23"><a href="#cb54-23" aria-hidden="true" tabindex="-1"></a><span class="in">library(stringr)</span></span>
+<span id="cb54-24"><a href="#cb54-24" aria-hidden="true" tabindex="-1"></a><span class="in">library(tidyr)</span></span>
+<span id="cb54-25"><a href="#cb54-25" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb54-26"><a href="#cb54-26" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb54-27"><a href="#cb54-27" aria-hidden="true" tabindex="-1"></a><span class="fu">## Directories and parameters</span></span>
+<span id="cb54-28"><a href="#cb54-28" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb54-31"><a href="#cb54-31" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb54-32"><a href="#cb54-32" aria-hidden="true" tabindex="-1"></a>project_root <span class="ot">&lt;-</span> <span class="st">"/nemo/lab/destrooperb/home/shared/zanettc/giulia_proteomics"</span></span>
+<span id="cb54-33"><a href="#cb54-33" aria-hidden="true" tabindex="-1"></a>phospho_base <span class="ot">&lt;-</span> <span class="fu">file.path</span>(project_root, <span class="st">"phosphoproteomics"</span>)</span>
+<span id="cb54-34"><a href="#cb54-34" aria-hidden="true" tabindex="-1"></a>bulk_base    <span class="ot">&lt;-</span> <span class="fu">file.path</span>(project_root, <span class="st">"bulk_proteomics"</span>)</span>
+<span id="cb54-35"><a href="#cb54-35" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb54-36"><a href="#cb54-36" aria-hidden="true" tabindex="-1"></a>run_num <span class="ot">&lt;-</span> <span class="st">"run3"</span></span>
+<span id="cb54-37"><a href="#cb54-37" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb54-38"><a href="#cb54-38" aria-hidden="true" tabindex="-1"></a>phospho_results_dir <span class="ot">&lt;-</span> <span class="fu">file.path</span>(phospho_base, <span class="st">"results"</span>, run_num)</span>
+<span id="cb54-39"><a href="#cb54-39" aria-hidden="true" tabindex="-1"></a>phospho_objects_dir <span class="ot">&lt;-</span> <span class="fu">file.path</span>(phospho_base, <span class="st">"data"</span>, <span class="st">"processed"</span>, run_num)</span>
+<span id="cb54-40"><a href="#cb54-40" aria-hidden="true" tabindex="-1"></a>phospho_input_dir   <span class="ot">&lt;-</span> <span class="fu">file.path</span>(phospho_base, <span class="st">"input"</span>)</span>
+<span id="cb54-41"><a href="#cb54-41" aria-hidden="true" tabindex="-1"></a>bulk_input_dir      <span class="ot">&lt;-</span> <span class="fu">file.path</span>(bulk_base, <span class="st">"input"</span>)</span>
+<span id="cb54-42"><a href="#cb54-42" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb54-43"><a href="#cb54-43" aria-hidden="true" tabindex="-1"></a><span class="fu">dir.create</span>(phospho_results_dir, <span class="at">recursive =</span> <span class="cn">TRUE</span>, <span class="at">showWarnings =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb54-44"><a href="#cb54-44" aria-hidden="true" tabindex="-1"></a><span class="fu">dir.create</span>(phospho_objects_dir, <span class="at">recursive =</span> <span class="cn">TRUE</span>, <span class="at">showWarnings =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb54-45"><a href="#cb54-45" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb54-46"><a href="#cb54-46" aria-hidden="true" tabindex="-1"></a>FASTA_PATH <span class="ot">&lt;-</span> <span class="fu">file.path</span>(phospho_input_dir, <span class="st">"UP000000589_10090.fasta"</span>)</span>
+<span id="cb54-47"><a href="#cb54-47" aria-hidden="true" tabindex="-1"></a>PTM_LABEL  <span class="ot">&lt;-</span> <span class="st">"Phospho (STY)"</span>   <span class="co"># how Spectronaut writes the modification</span></span>
+<span id="cb54-48"><a href="#cb54-48" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb54-49"><a href="#cb54-49" aria-hidden="true" tabindex="-1"></a><span class="fu">stopifnot</span>(<span class="st">"FASTA missing — see Setup notes"</span> <span class="ot">=</span> <span class="fu">file.exists</span>(FASTA_PATH))</span>
+<span id="cb54-50"><a href="#cb54-50" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb54-51"><a href="#cb54-51" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb54-52"><a href="#cb54-52" aria-hidden="true" tabindex="-1"></a><span class="fu">## Build annotation (same 16-sample design)</span></span>
+<span id="cb54-53"><a href="#cb54-53" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb54-56"><a href="#cb54-56" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb54-57"><a href="#cb54-57" aria-hidden="true" tabindex="-1"></a>msstats_annotation <span class="ot">&lt;-</span> <span class="fu">data.table</span>(</span>
+<span id="cb54-58"><a href="#cb54-58" aria-hidden="true" tabindex="-1"></a>  <span class="at">Run          =</span> <span class="fu">paste0</span>(<span class="st">"GA_"</span>, <span class="dv">1</span><span class="sc">:</span><span class="dv">16</span>),</span>
+<span id="cb54-59"><a href="#cb54-59" aria-hidden="true" tabindex="-1"></a>  <span class="at">Condition    =</span> <span class="fu">rep</span>(<span class="fu">c</span>(<span class="st">"hApp"</span>, <span class="st">"hAppNLGF"</span>, <span class="st">"hAppNLGF_FIRE"</span>, <span class="st">"hApp_FIRE"</span>), <span class="at">each =</span> <span class="dv">4</span>),</span>
+<span id="cb54-60"><a href="#cb54-60" aria-hidden="true" tabindex="-1"></a>  <span class="at">BioReplicate =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">16</span></span>
+<span id="cb54-61"><a href="#cb54-61" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb54-62"><a href="#cb54-62" aria-hidden="true" tabindex="-1"></a>msstats_annotation</span>
+<span id="cb54-63"><a href="#cb54-63" aria-hidden="true" tabindex="-1"></a><span class="fu">fwrite</span>(msstats_annotation, <span class="fu">file.path</span>(phospho_objects_dir, <span class="st">"msstats_annotation.csv"</span>))</span>
+<span id="cb54-64"><a href="#cb54-64" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb54-65"><a href="#cb54-65" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb54-66"><a href="#cb54-66" aria-hidden="true" tabindex="-1"></a><span class="fu">## Load both Spectronaut reports (PTM and bulk)</span></span>
+<span id="cb54-67"><a href="#cb54-67" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb54-68"><a href="#cb54-68" aria-hidden="true" tabindex="-1"></a>The bulk report serves as the "global protein" reference for adjustment. We read the same column subset that the bulk MSstats notebook uses.</span>
+<span id="cb54-69"><a href="#cb54-69" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb54-70"><a href="#cb54-70" aria-hidden="true" tabindex="-1"></a><span class="in">```{r load}</span></span>
+<span id="cb54-71"><a href="#cb54-71" aria-hidden="true" tabindex="-1"></a><span class="in">msstats_cols &lt;- c(</span></span>
+<span id="cb54-72"><a href="#cb54-72" aria-hidden="true" tabindex="-1"></a><span class="in">  "R.Condition", "R.FileName", "R.Replicate",</span></span>
+<span id="cb54-73"><a href="#cb54-73" aria-hidden="true" tabindex="-1"></a><span class="in">  "PG.ProteinGroups", "PG.ProteinAccessions",</span></span>
+<span id="cb54-74"><a href="#cb54-74" aria-hidden="true" tabindex="-1"></a><span class="in">  "PEP.StrippedSequence",</span></span>
+<span id="cb54-75"><a href="#cb54-75" aria-hidden="true" tabindex="-1"></a><span class="in">  "EG.ModifiedSequence", "EG.PrecursorId", "EG.Qvalue",</span></span>
+<span id="cb54-76"><a href="#cb54-76" aria-hidden="true" tabindex="-1"></a><span class="in">  "EG.PTMAssayProbability",</span></span>
+<span id="cb54-77"><a href="#cb54-77" aria-hidden="true" tabindex="-1"></a><span class="in">  "FG.Charge", "FG.Id",</span></span>
+<span id="cb54-78"><a href="#cb54-78" aria-hidden="true" tabindex="-1"></a><span class="in">  "F.FrgIon", "F.Charge", "F.FrgLossType", "F.FrgNum", "F.FrgType",</span></span>
+<span id="cb54-79"><a href="#cb54-79" aria-hidden="true" tabindex="-1"></a><span class="in">  "F.NormalizedPeakArea", "F.PeakArea", "F.ExcludedFromQuantification"</span></span>
+<span id="cb54-80"><a href="#cb54-80" aria-hidden="true" tabindex="-1"></a><span class="in">)</span></span>
+<span id="cb54-81"><a href="#cb54-81" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb54-82"><a href="#cb54-82" aria-hidden="true" tabindex="-1"></a><span class="in"># QC notebook 01 flagged that EG.PTMAssayProbability is sometimes missing from</span></span>
+<span id="cb54-83"><a href="#cb54-83" aria-hidden="true" tabindex="-1"></a><span class="in"># Spectronaut exports — probe the header and fall back to</span></span>
+<span id="cb54-84"><a href="#cb54-84" aria-hidden="true" tabindex="-1"></a><span class="in"># EG.PTMLocalizationProbabilities if needed.</span></span>
+<span id="cb54-85"><a href="#cb54-85" aria-hidden="true" tabindex="-1"></a><span class="in">phospho_path &lt;- file.path(phospho_input_dir, "20260504_125530_PCF000612_phospho_GA_MSStats_updated.csv")</span></span>
+<span id="cb54-86"><a href="#cb54-86" aria-hidden="true" tabindex="-1"></a><span class="in">phospho_header &lt;- names(fread(phospho_path, nrows = 0))</span></span>
+<span id="cb54-87"><a href="#cb54-87" aria-hidden="true" tabindex="-1"></a><span class="in">if ("EG.PTMAssayProbability" %in% phospho_header) {</span></span>
+<span id="cb54-88"><a href="#cb54-88" aria-hidden="true" tabindex="-1"></a><span class="in">  loc_prob_col &lt;- "EG.PTMAssayProbability"</span></span>
+<span id="cb54-89"><a href="#cb54-89" aria-hidden="true" tabindex="-1"></a><span class="in">} else if ("EG.PTMLocalizationProbabilities" %in% phospho_header) {</span></span>
+<span id="cb54-90"><a href="#cb54-90" aria-hidden="true" tabindex="-1"></a><span class="in">  loc_prob_col &lt;- "EG.PTMLocalizationProbabilities"</span></span>
+<span id="cb54-91"><a href="#cb54-91" aria-hidden="true" tabindex="-1"></a><span class="in">  msstats_cols &lt;- sub("EG.PTMAssayProbability", loc_prob_col, msstats_cols, fixed = TRUE)</span></span>
+<span id="cb54-92"><a href="#cb54-92" aria-hidden="true" tabindex="-1"></a><span class="in">} else {</span></span>
+<span id="cb54-93"><a href="#cb54-93" aria-hidden="true" tabindex="-1"></a><span class="in">  stop(paste0(</span></span>
+<span id="cb54-94"><a href="#cb54-94" aria-hidden="true" tabindex="-1"></a><span class="in">    "FATAL: no localization probability column found in the phospho report.\n",</span></span>
+<span id="cb54-95"><a href="#cb54-95" aria-hidden="true" tabindex="-1"></a><span class="in">    "Expected EG.PTMAssayProbability or EG.PTMLocalizationProbabilities.\n",</span></span>
+<span id="cb54-96"><a href="#cb54-96" aria-hidden="true" tabindex="-1"></a><span class="in">    "Re-export from Spectronaut with PTM localization enabled before proceeding.\n",</span></span>
+<span id="cb54-97"><a href="#cb54-97" aria-hidden="true" tabindex="-1"></a><span class="in">    "Do NOT run the pipeline without this column — site-level filtering would be skipped\n",</span></span>
+<span id="cb54-98"><a href="#cb54-98" aria-hidden="true" tabindex="-1"></a><span class="in">    "and downstream results would be unreliable."</span></span>
+<span id="cb54-99"><a href="#cb54-99" aria-hidden="true" tabindex="-1"></a><span class="in">  ))</span></span>
+<span id="cb54-100"><a href="#cb54-100" aria-hidden="true" tabindex="-1"></a><span class="in">}</span></span>
+<span id="cb54-101"><a href="#cb54-101" aria-hidden="true" tabindex="-1"></a><span class="in">cat("Localization probability column:", loc_prob_col, "\n")</span></span>
+<span id="cb54-102"><a href="#cb54-102" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb54-103"><a href="#cb54-103" aria-hidden="true" tabindex="-1"></a><span class="in">cat("Reading phospho report...\n")</span></span>
+<span id="cb54-104"><a href="#cb54-104" aria-hidden="true" tabindex="-1"></a><span class="in">phospho_raw &lt;- fread(</span></span>
+<span id="cb54-105"><a href="#cb54-105" aria-hidden="true" tabindex="-1"></a><span class="in">  phospho_path,</span></span>
+<span id="cb54-106"><a href="#cb54-106" aria-hidden="true" tabindex="-1"></a><span class="in">  select = msstats_cols</span></span>
+<span id="cb54-107"><a href="#cb54-107" aria-hidden="true" tabindex="-1"></a><span class="in">)</span></span>
+<span id="cb54-108"><a href="#cb54-108" aria-hidden="true" tabindex="-1"></a><span class="in">cat("Phospho rows:", nrow(phospho_raw), "\n")</span></span>
+<span id="cb54-109"><a href="#cb54-109" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb54-110"><a href="#cb54-110" aria-hidden="true" tabindex="-1"></a><span class="in">cat("Reading bulk proteome report (for protein-level adjustment)...\n")</span></span>
+<span id="cb54-111"><a href="#cb54-111" aria-hidden="true" tabindex="-1"></a><span class="in">protein_raw &lt;- fread(</span></span>
+<span id="cb54-112"><a href="#cb54-112" aria-hidden="true" tabindex="-1"></a><span class="in">  file.path(bulk_input_dir, "20260423_154110_PCF000612_GA_MSStats_Report-Proteome.csv"),</span></span>
+<span id="cb54-113"><a href="#cb54-113" aria-hidden="true" tabindex="-1"></a><span class="in">  select = setdiff(msstats_cols,</span></span>
+<span id="cb54-114"><a href="#cb54-114" aria-hidden="true" tabindex="-1"></a><span class="in">                   c("EG.PTMAssayProbability", "EG.PTMLocalizationProbabilities"))</span></span>
+<span id="cb54-115"><a href="#cb54-115" aria-hidden="true" tabindex="-1"></a><span class="in">)</span></span>
+<span id="cb54-116"><a href="#cb54-116" aria-hidden="true" tabindex="-1"></a><span class="in">cat("Protein rows:", nrow(protein_raw), "\n")</span></span>
+<span id="cb54-117"><a href="#cb54-117" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb54-118"><a href="#cb54-118" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb54-119"><a href="#cb54-119" aria-hidden="true" tabindex="-1"></a><span class="fu">## Filter phospho by site localization probability</span></span>
+<span id="cb54-120"><a href="#cb54-120" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb54-121"><a href="#cb54-121" aria-hidden="true" tabindex="-1"></a><span class="in">```{r localization_filter}</span></span>
+<span id="cb54-122"><a href="#cb54-122" aria-hidden="true" tabindex="-1"></a><span class="in"># directDIA confirmed via EG.Library = "directDIA™" in the Spectronaut export.</span></span>
+<span id="cb54-123"><a href="#cb54-123" aria-hidden="true" tabindex="-1"></a><span class="in"># Bekker-Jensen et al. 2020 (Mol Cell Proteomics) recommend 0.99 for directDIA</span></span>
+<span id="cb54-124"><a href="#cb54-124" aria-hidden="true" tabindex="-1"></a><span class="in"># rather than the 0.75 Class I threshold used for library-based DIA searches.</span></span>
+<span id="cb54-125"><a href="#cb54-125" aria-hidden="true" tabindex="-1"></a><span class="in">LOC_PROB_CUTOFF &lt;- 0.99</span></span>
+<span id="cb54-126"><a href="#cb54-126" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb54-127"><a href="#cb54-127" aria-hidden="true" tabindex="-1"></a><span class="in">n_before         &lt;- nrow(phospho_raw)</span></span>
+<span id="cb54-128"><a href="#cb54-128" aria-hidden="true" tabindex="-1"></a><span class="in">sites_before     &lt;- uniqueN(phospho_raw$EG.ModifiedSequence)</span></span>
+<span id="cb54-129"><a href="#cb54-129" aria-hidden="true" tabindex="-1"></a><span class="in">proteins_before  &lt;- uniqueN(phospho_raw$PG.ProteinGroups)</span></span>
+<span id="cb54-130"><a href="#cb54-130" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb54-131"><a href="#cb54-131" aria-hidden="true" tabindex="-1"></a><span class="in">phospho_raw &lt;- phospho_raw[get(loc_prob_col) &gt;= LOC_PROB_CUTOFF]</span></span>
+<span id="cb54-132"><a href="#cb54-132" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb54-133"><a href="#cb54-133" aria-hidden="true" tabindex="-1"></a><span class="in">n_after         &lt;- nrow(phospho_raw)</span></span>
+<span id="cb54-134"><a href="#cb54-134" aria-hidden="true" tabindex="-1"></a><span class="in">sites_after     &lt;- uniqueN(phospho_raw$EG.ModifiedSequence)</span></span>
+<span id="cb54-135"><a href="#cb54-135" aria-hidden="true" tabindex="-1"></a><span class="in">proteins_after  &lt;- uniqueN(phospho_raw$PG.ProteinGroups)</span></span>
+<span id="cb54-136"><a href="#cb54-136" aria-hidden="true" tabindex="-1"></a><span class="in">pct             &lt;- round(100 * n_after / n_before, 2)</span></span>
+<span id="cb54-137"><a href="#cb54-137" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb54-138"><a href="#cb54-138" aria-hidden="true" tabindex="-1"></a><span class="in">cat(sprintf("Localization filter: %s &gt;= %.2f\n", loc_prob_col, LOC_PROB_CUTOFF))</span></span>
+<span id="cb54-139"><a href="#cb54-139" aria-hidden="true" tabindex="-1"></a><span class="in">cat(sprintf("  Rows:     %d  →  %d  (%.2f%% retained)\n",  n_before,    n_after,    pct))</span></span>
+<span id="cb54-140"><a href="#cb54-140" aria-hidden="true" tabindex="-1"></a><span class="in">cat(sprintf("  Sites:    %d  →  %d\n",                      sites_before, sites_after))</span></span>
+<span id="cb54-141"><a href="#cb54-141" aria-hidden="true" tabindex="-1"></a><span class="in">cat(sprintf("  Proteins: %d  →  %d\n",                      proteins_before, proteins_after))</span></span>
+<span id="cb54-142"><a href="#cb54-142" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb54-143"><a href="#cb54-143" aria-hidden="true" tabindex="-1"></a><span class="in"># protein_raw is intentionally NOT filtered — protein-level adjustment uses</span></span>
+<span id="cb54-144"><a href="#cb54-144" aria-hidden="true" tabindex="-1"></a><span class="in"># whole-protein abundance and does not require site localization.</span></span>
+<span id="cb54-145"><a href="#cb54-145" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb54-146"><a href="#cb54-146" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb54-147"><a href="#cb54-147" aria-hidden="true" tabindex="-1"></a><span class="fu">## Normalise phospho R.FileName + patch R.Condition / R.Replicate</span></span>
+<span id="cb54-148"><a href="#cb54-148" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb54-149"><a href="#cb54-149" aria-hidden="true" tabindex="-1"></a>The phospho report writes sample IDs as <span class="in">`GA_P_1..GA_P_16`</span> while the bulk proteome and the annotation use <span class="in">`GA_1..GA_16`</span>. Strip the <span class="in">`GA_P_`</span> prefix on the phospho data so both reports key against the same annotation. R.Condition is also "Not Defined" in both raw files — overwrite it from the annotation.</span>
+<span id="cb54-150"><a href="#cb54-150" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb54-151"><a href="#cb54-151" aria-hidden="true" tabindex="-1"></a><span class="in">```{r patch_conditions}</span></span>
+<span id="cb54-152"><a href="#cb54-152" aria-hidden="true" tabindex="-1"></a><span class="in">phospho_raw[, R.FileName := stringr::str_replace(R.FileName, "^GA_P_", "GA_")]</span></span>
+<span id="cb54-153"><a href="#cb54-153" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb54-154"><a href="#cb54-154" aria-hidden="true" tabindex="-1"></a><span class="in">patch &lt;- function(dt) {</span></span>
+<span id="cb54-155"><a href="#cb54-155" aria-hidden="true" tabindex="-1"></a><span class="in">  dt[msstats_annotation, on = c("R.FileName" = "Run"),</span></span>
+<span id="cb54-156"><a href="#cb54-156" aria-hidden="true" tabindex="-1"></a><span class="in">     `:=`(R.Condition = i.Condition, R.Replicate = i.BioReplicate)]</span></span>
+<span id="cb54-157"><a href="#cb54-157" aria-hidden="true" tabindex="-1"></a><span class="in">  dt</span></span>
+<span id="cb54-158"><a href="#cb54-158" aria-hidden="true" tabindex="-1"></a><span class="in">}</span></span>
+<span id="cb54-159"><a href="#cb54-159" aria-hidden="true" tabindex="-1"></a><span class="in">phospho_raw &lt;- patch(phospho_raw)</span></span>
+<span id="cb54-160"><a href="#cb54-160" aria-hidden="true" tabindex="-1"></a><span class="in">protein_raw &lt;- patch(protein_raw)</span></span>
+<span id="cb54-161"><a href="#cb54-161" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb54-162"><a href="#cb54-162" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb54-163"><a href="#cb54-163" aria-hidden="true" tabindex="-1"></a><span class="fu">## Convert to MSstatsPTM input format</span></span>
+<span id="cb54-164"><a href="#cb54-164" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb54-165"><a href="#cb54-165" aria-hidden="true" tabindex="-1"></a><span class="in">`SpectronauttoMSstatsPTMFormat()`</span> returns a list of two data frames: <span class="in">`PTM`</span> and <span class="in">`PROTEIN`</span>. Both must be present for protein-level adjustment. The same <span class="in">`annotation`</span> table is used for both — MSstatsPTM matches by <span class="in">`Run`</span>.</span>
+<span id="cb54-166"><a href="#cb54-166" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb54-167"><a href="#cb54-167" aria-hidden="true" tabindex="-1"></a><span class="in">```{r convert}</span></span>
+<span id="cb54-168"><a href="#cb54-168" aria-hidden="true" tabindex="-1"></a><span class="in">ptm_input &lt;- suppressWarnings(SpectronauttoMSstatsPTMFormat(</span></span>
+<span id="cb54-169"><a href="#cb54-169" aria-hidden="true" tabindex="-1"></a><span class="in">  input              = phospho_raw,</span></span>
+<span id="cb54-170"><a href="#cb54-170" aria-hidden="true" tabindex="-1"></a><span class="in">  annotation         = msstats_annotation,</span></span>
+<span id="cb54-171"><a href="#cb54-171" aria-hidden="true" tabindex="-1"></a><span class="in">  fasta_path         = FASTA_PATH,</span></span>
+<span id="cb54-172"><a href="#cb54-172" aria-hidden="true" tabindex="-1"></a><span class="in">  protein_input      = protein_raw,</span></span>
+<span id="cb54-173"><a href="#cb54-173" aria-hidden="true" tabindex="-1"></a><span class="in">  use_unmod_peptides = FALSE,         # site-level: drop unmodified peptides</span></span>
+<span id="cb54-174"><a href="#cb54-174" aria-hidden="true" tabindex="-1"></a><span class="in">  mod_id             = "\\[Phospho \\(STY\\)\\]",</span></span>
+<span id="cb54-175"><a href="#cb54-175" aria-hidden="true" tabindex="-1"></a><span class="in">  filter_with_Qvalue = TRUE,</span></span>
+<span id="cb54-176"><a href="#cb54-176" aria-hidden="true" tabindex="-1"></a><span class="in">  qvalue_cutoff      = 0.01,</span></span>
+<span id="cb54-177"><a href="#cb54-177" aria-hidden="true" tabindex="-1"></a><span class="in">  removeProtein_with1Feature = FALSE</span></span>
+<span id="cb54-178"><a href="#cb54-178" aria-hidden="true" tabindex="-1"></a><span class="in">))</span></span>
+<span id="cb54-179"><a href="#cb54-179" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb54-180"><a href="#cb54-180" aria-hidden="true" tabindex="-1"></a><span class="in">cat("PTM features:    ", nrow(ptm_input$PTM),     "\n")</span></span>
+<span id="cb54-181"><a href="#cb54-181" aria-hidden="true" tabindex="-1"></a><span class="in">cat("Protein features:", nrow(ptm_input$PROTEIN), "\n")</span></span>
+<span id="cb54-182"><a href="#cb54-182" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb54-183"><a href="#cb54-183" aria-hidden="true" tabindex="-1"></a><span class="in">qs_save(ptm_input, file.path(phospho_objects_dir, "ptm_input.qs2"))</span></span>
+<span id="cb54-184"><a href="#cb54-184" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb54-185"><a href="#cb54-185" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb54-186"><a href="#cb54-186" aria-hidden="true" tabindex="-1"></a><span class="fu">## Reload checkpoint (skip the read+convert on re-runs)</span></span>
+<span id="cb54-187"><a href="#cb54-187" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb54-188"><a href="#cb54-188" aria-hidden="true" tabindex="-1"></a><span class="in">```{r reload, eval=FALSE}</span></span>
+<span id="cb54-189"><a href="#cb54-189" aria-hidden="true" tabindex="-1"></a><span class="in">ptm_input &lt;- qs_read(file.path(phospho_objects_dir, "ptm_input.qs2"))</span></span>
+<span id="cb54-190"><a href="#cb54-190" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb54-191"><a href="#cb54-191" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb54-192"><a href="#cb54-192" aria-hidden="true" tabindex="-1"></a><span class="fu">## Data summarisation (per dataset)</span></span>
+<span id="cb54-193"><a href="#cb54-193" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb54-194"><a href="#cb54-194" aria-hidden="true" tabindex="-1"></a><span class="in">`dataSummarizationPTM()`</span> runs <span class="in">`dataProcess`</span> on PTM and PROTEIN separately and returns both. TMP summarisation, median normalisation, MB-imputation — same defaults as the bulk pipeline.</span>
+<span id="cb54-195"><a href="#cb54-195" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb54-196"><a href="#cb54-196" aria-hidden="true" tabindex="-1"></a><span class="in">```{r summarise}</span></span>
+<span id="cb54-197"><a href="#cb54-197" aria-hidden="true" tabindex="-1"></a><span class="in">summarised &lt;- suppressWarnings(dataSummarizationPTM(</span></span>
+<span id="cb54-198"><a href="#cb54-198" aria-hidden="true" tabindex="-1"></a><span class="in">  data                                 = ptm_input,</span></span>
+<span id="cb54-199"><a href="#cb54-199" aria-hidden="true" tabindex="-1"></a><span class="in">  normalization                        = "equalizeMedians",</span></span>
+<span id="cb54-200"><a href="#cb54-200" aria-hidden="true" tabindex="-1"></a><span class="in">  summaryMethod                        = "TMP",</span></span>
+<span id="cb54-201"><a href="#cb54-201" aria-hidden="true" tabindex="-1"></a><span class="in">  censoredInt                          = "NA",</span></span>
+<span id="cb54-202"><a href="#cb54-202" aria-hidden="true" tabindex="-1"></a><span class="in">  MBimpute                             = TRUE,</span></span>
+<span id="cb54-203"><a href="#cb54-203" aria-hidden="true" tabindex="-1"></a><span class="in">  featureSubset                        = "highQuality",</span></span>
+<span id="cb54-204"><a href="#cb54-204" aria-hidden="true" tabindex="-1"></a><span class="in">  remove_uninformative_feature_outlier = TRUE</span></span>
+<span id="cb54-205"><a href="#cb54-205" aria-hidden="true" tabindex="-1"></a><span class="in">))</span></span>
+<span id="cb54-206"><a href="#cb54-206" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb54-207"><a href="#cb54-207" aria-hidden="true" tabindex="-1"></a><span class="in">qs_save(summarised, file.path(phospho_objects_dir, "summarised_ptm.qs2"))</span></span>
+<span id="cb54-208"><a href="#cb54-208" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb54-209"><a href="#cb54-209" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb54-210"><a href="#cb54-210" aria-hidden="true" tabindex="-1"></a><span class="fu">## Verify condition levels and build contrast matrix</span></span>
+<span id="cb54-211"><a href="#cb54-211" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb54-212"><a href="#cb54-212" aria-hidden="true" tabindex="-1"></a>Same 4 pairwise + interaction as the bulk pipeline.</span>
+<span id="cb54-213"><a href="#cb54-213" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb54-214"><a href="#cb54-214" aria-hidden="true" tabindex="-1"></a>Interaction expands to: (hAppNLGF − hApp) − (hAppNLGF_FIRE − hApp_FIRE)</span>
+<span id="cb54-215"><a href="#cb54-215" aria-hidden="true" tabindex="-1"></a>Disease effects with microglia vs disease effects without. </span>
+<span id="cb54-216"><a href="#cb54-216" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb54-217"><a href="#cb54-217" aria-hidden="true" tabindex="-1"></a><span class="in">```{r contrasts}</span></span>
+<span id="cb54-218"><a href="#cb54-218" aria-hidden="true" tabindex="-1"></a><span class="in">summarised &lt;- qs_read(file.path(phospho_objects_dir, "summarised_ptm.qs2"))</span></span>
+<span id="cb54-219"><a href="#cb54-219" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb54-220"><a href="#cb54-220" aria-hidden="true" tabindex="-1"></a><span class="in">condition_levels &lt;- levels(summarised$PTM$ProteinLevelData$GROUP)</span></span>
+<span id="cb54-221"><a href="#cb54-221" aria-hidden="true" tabindex="-1"></a><span class="in">cat("Condition levels (alphabetical):\n")</span></span>
+<span id="cb54-222"><a href="#cb54-222" aria-hidden="true" tabindex="-1"></a><span class="in">print(condition_levels)</span></span>
+<span id="cb54-223"><a href="#cb54-223" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb54-224"><a href="#cb54-224" aria-hidden="true" tabindex="-1"></a><span class="in">make_contrast &lt;- function(numerator, denominator, levels) {</span></span>
+<span id="cb54-225"><a href="#cb54-225" aria-hidden="true" tabindex="-1"></a><span class="in">  v &lt;- setNames(rep(0L, length(levels)), levels)</span></span>
+<span id="cb54-226"><a href="#cb54-226" aria-hidden="true" tabindex="-1"></a><span class="in">  v[numerator]   &lt;-  1L</span></span>
+<span id="cb54-227"><a href="#cb54-227" aria-hidden="true" tabindex="-1"></a><span class="in">  v[denominator] &lt;- -1L</span></span>
+<span id="cb54-228"><a href="#cb54-228" aria-hidden="true" tabindex="-1"></a><span class="in">  v</span></span>
+<span id="cb54-229"><a href="#cb54-229" aria-hidden="true" tabindex="-1"></a><span class="in">}</span></span>
+<span id="cb54-230"><a href="#cb54-230" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb54-231"><a href="#cb54-231" aria-hidden="true" tabindex="-1"></a><span class="in">interaction_weights &lt;- c(</span></span>
+<span id="cb54-232"><a href="#cb54-232" aria-hidden="true" tabindex="-1"></a><span class="in">  hApp           = -1,</span></span>
+<span id="cb54-233"><a href="#cb54-233" aria-hidden="true" tabindex="-1"></a><span class="in">  hAppNLGF       =  1,</span></span>
+<span id="cb54-234"><a href="#cb54-234" aria-hidden="true" tabindex="-1"></a><span class="in">  hApp_FIRE      =  1,</span></span>
+<span id="cb54-235"><a href="#cb54-235" aria-hidden="true" tabindex="-1"></a><span class="in">  hAppNLGF_FIRE = -1</span></span>
+<span id="cb54-236"><a href="#cb54-236" aria-hidden="true" tabindex="-1"></a><span class="in">)</span></span>
+<span id="cb54-237"><a href="#cb54-237" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb54-238"><a href="#cb54-238" aria-hidden="true" tabindex="-1"></a><span class="in">make_linear_contrast &lt;- function(weights, levels) {</span></span>
+<span id="cb54-239"><a href="#cb54-239" aria-hidden="true" tabindex="-1"></a><span class="in">  v &lt;- setNames(rep(0, length(levels)), levels)</span></span>
+<span id="cb54-240"><a href="#cb54-240" aria-hidden="true" tabindex="-1"></a><span class="in">  v[names(weights)] &lt;- weights</span></span>
+<span id="cb54-241"><a href="#cb54-241" aria-hidden="true" tabindex="-1"></a><span class="in">  stopifnot(abs(sum(v)) &lt; 1e-9)</span></span>
+<span id="cb54-242"><a href="#cb54-242" aria-hidden="true" tabindex="-1"></a><span class="in">  v</span></span>
+<span id="cb54-243"><a href="#cb54-243" aria-hidden="true" tabindex="-1"></a><span class="in">}</span></span>
+<span id="cb54-244"><a href="#cb54-244" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb54-245"><a href="#cb54-245" aria-hidden="true" tabindex="-1"></a><span class="in">comparison_matrix &lt;- rbind(</span></span>
+<span id="cb54-246"><a href="#cb54-246" aria-hidden="true" tabindex="-1"></a><span class="in">  make_contrast("hAppNLGF",      "hApp",        condition_levels),</span></span>
+<span id="cb54-247"><a href="#cb54-247" aria-hidden="true" tabindex="-1"></a><span class="in">  make_contrast("hApp_FIRE",     "hApp",        condition_levels),</span></span>
+<span id="cb54-248"><a href="#cb54-248" aria-hidden="true" tabindex="-1"></a><span class="in">  make_contrast("hAppNLGF_FIRE", "hAppNLGF",    condition_levels),</span></span>
+<span id="cb54-249"><a href="#cb54-249" aria-hidden="true" tabindex="-1"></a><span class="in">  make_contrast("hAppNLGF_FIRE", "hApp_FIRE",   condition_levels),</span></span>
+<span id="cb54-250"><a href="#cb54-250" aria-hidden="true" tabindex="-1"></a><span class="in">  make_linear_contrast(interaction_weights,     condition_levels)</span></span>
+<span id="cb54-251"><a href="#cb54-251" aria-hidden="true" tabindex="-1"></a><span class="in">)</span></span>
+<span id="cb54-252"><a href="#cb54-252" aria-hidden="true" tabindex="-1"></a><span class="in">rownames(comparison_matrix) &lt;- c(</span></span>
+<span id="cb54-253"><a href="#cb54-253" aria-hidden="true" tabindex="-1"></a><span class="in">  "hAppNLGF_vs_hApp",</span></span>
+<span id="cb54-254"><a href="#cb54-254" aria-hidden="true" tabindex="-1"></a><span class="in">  "hApp_FIRE_vs_hApp",</span></span>
+<span id="cb54-255"><a href="#cb54-255" aria-hidden="true" tabindex="-1"></a><span class="in">  "hAppNLGF_FIRE_vs_hAppNLGF",</span></span>
+<span id="cb54-256"><a href="#cb54-256" aria-hidden="true" tabindex="-1"></a><span class="in">  "hAppNLGF_FIRE_vs_hApp_FIRE",</span></span>
+<span id="cb54-257"><a href="#cb54-257" aria-hidden="true" tabindex="-1"></a><span class="in">  "Interaction_APP_x_Microglia"</span></span>
+<span id="cb54-258"><a href="#cb54-258" aria-hidden="true" tabindex="-1"></a><span class="in">)</span></span>
+<span id="cb54-259"><a href="#cb54-259" aria-hidden="true" tabindex="-1"></a><span class="in">print(comparison_matrix)</span></span>
+<span id="cb54-260"><a href="#cb54-260" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb54-261"><a href="#cb54-261" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb54-262"><a href="#cb54-262" aria-hidden="true" tabindex="-1"></a><span class="fu">## Group comparison (adjusted for protein abundance)</span></span>
+<span id="cb54-263"><a href="#cb54-263" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb54-264"><a href="#cb54-264" aria-hidden="true" tabindex="-1"></a><span class="in">`groupComparisonPTM()`</span> returns three result tables:</span>
+<span id="cb54-265"><a href="#cb54-265" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb54-266"><a href="#cb54-266" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span><span class="in">`PTM.Model`</span> — raw PTM contrast results (unadjusted phospho changes)</span>
+<span id="cb54-267"><a href="#cb54-267" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span><span class="in">`PROTEIN.Model`</span> — protein-level contrast results (from the bulk reference)</span>
+<span id="cb54-268"><a href="#cb54-268" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span><span class="in">`ADJUSTED.Model`</span> — phospho minus protein per contrast → "phospho-specific" changes</span>
+<span id="cb54-269"><a href="#cb54-269" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb54-270"><a href="#cb54-270" aria-hidden="true" tabindex="-1"></a>The adjusted table is what most phospho papers cite — it isolates regulation that isn't simply explained by total protein abundance.</span>
+<span id="cb54-271"><a href="#cb54-271" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb54-272"><a href="#cb54-272" aria-hidden="true" tabindex="-1"></a><span class="in">```{r group_comparison}</span></span>
+<span id="cb54-273"><a href="#cb54-273" aria-hidden="true" tabindex="-1"></a><span class="in">ptm_results &lt;- suppressWarnings(groupComparisonPTM(</span></span>
+<span id="cb54-274"><a href="#cb54-274" aria-hidden="true" tabindex="-1"></a><span class="in">  data            = summarised,</span></span>
+<span id="cb54-275"><a href="#cb54-275" aria-hidden="true" tabindex="-1"></a><span class="in">  contrast.matrix = comparison_matrix,</span></span>
+<span id="cb54-276"><a href="#cb54-276" aria-hidden="true" tabindex="-1"></a><span class="in">  data.type       = "LabelFree"</span></span>
+<span id="cb54-277"><a href="#cb54-277" aria-hidden="true" tabindex="-1"></a><span class="in">))</span></span>
+<span id="cb54-278"><a href="#cb54-278" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb54-279"><a href="#cb54-279" aria-hidden="true" tabindex="-1"></a><span class="in">#qs_save(ptm_results, file.path(phospho_objects_dir, "ptm_results.qs2"))</span></span>
+<span id="cb54-280"><a href="#cb54-280" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb54-281"><a href="#cb54-281" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb54-282"><a href="#cb54-282" aria-hidden="true" tabindex="-1"></a><span class="fu">## Export results CSVs</span></span>
+<span id="cb54-283"><a href="#cb54-283" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb54-284"><a href="#cb54-284" aria-hidden="true" tabindex="-1"></a><span class="in">```{r export}</span></span>
+<span id="cb54-285"><a href="#cb54-285" aria-hidden="true" tabindex="-1"></a><span class="in">write_table &lt;- function(df, filename) {</span></span>
+<span id="cb54-286"><a href="#cb54-286" aria-hidden="true" tabindex="-1"></a><span class="in">  fwrite(as.data.table(df), file.path(phospho_results_dir, filename))</span></span>
+<span id="cb54-287"><a href="#cb54-287" aria-hidden="true" tabindex="-1"></a><span class="in">  cat("Wrote", filename, ":", nrow(df), "rows\n")</span></span>
+<span id="cb54-288"><a href="#cb54-288" aria-hidden="true" tabindex="-1"></a><span class="in">}</span></span>
+<span id="cb54-289"><a href="#cb54-289" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb54-290"><a href="#cb54-290" aria-hidden="true" tabindex="-1"></a><span class="in">write_table(ptm_results$PTM.Model,      "PTM_unadjusted_GroupComparison.csv")</span></span>
+<span id="cb54-291"><a href="#cb54-291" aria-hidden="true" tabindex="-1"></a><span class="in">write_table(ptm_results$PROTEIN.Model,  "PROTEIN_GroupComparison.csv")</span></span>
+<span id="cb54-292"><a href="#cb54-292" aria-hidden="true" tabindex="-1"></a><span class="in">write_table(ptm_results$ADJUSTED.Model, "PTM_adjusted_GroupComparison.csv")</span></span>
+<span id="cb54-293"><a href="#cb54-293" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb54-294"><a href="#cb54-294" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb54-295"><a href="#cb54-295" aria-hidden="true" tabindex="-1"></a><span class="fu">## Quick summary of adjusted results</span></span>
+<span id="cb54-296"><a href="#cb54-296" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb54-297"><a href="#cb54-297" aria-hidden="true" tabindex="-1"></a><span class="in">```{r summary_table}</span></span>
+<span id="cb54-298"><a href="#cb54-298" aria-hidden="true" tabindex="-1"></a><span class="in">adj &lt;- as.data.table(ptm_results$ADJUSTED.Model)</span></span>
+<span id="cb54-299"><a href="#cb54-299" aria-hidden="true" tabindex="-1"></a><span class="in">adj[!is.na(adj.pvalue),</span></span>
+<span id="cb54-300"><a href="#cb54-300" aria-hidden="true" tabindex="-1"></a><span class="in">    .(n_tested = .N,</span></span>
+<span id="cb54-301"><a href="#cb54-301" aria-hidden="true" tabindex="-1"></a><span class="in">      n_sig    = sum(adj.pvalue &lt; 0.05),</span></span>
+<span id="cb54-302"><a href="#cb54-302" aria-hidden="true" tabindex="-1"></a><span class="in">      n_up     = sum(adj.pvalue &lt; 0.05 &amp; log2FC &gt; 0),</span></span>
+<span id="cb54-303"><a href="#cb54-303" aria-hidden="true" tabindex="-1"></a><span class="in">      n_down   = sum(adj.pvalue &lt; 0.05 &amp; log2FC &lt; 0)),</span></span>
+<span id="cb54-304"><a href="#cb54-304" aria-hidden="true" tabindex="-1"></a><span class="in">    by = Label][order(Label)]</span></span>
+<span id="cb54-305"><a href="#cb54-305" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 </code><button title="Copy to Clipboard" class="code-copy-button" data-in-quarto-modal=""><i class="bi"></i></button></pre></div>
 </div></div></div></div></div>
 </div> <!-- /content -->

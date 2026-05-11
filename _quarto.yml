@@ -10,11 +10,13 @@ project:
     - bulk_proteomics/notebooks/05_microglia_app_modulated.qmd
     - bulk_proteomics/notebooks/06_PPI.qmd
     - bulk_proteomics/notebooks/07_subcellular.qmd
+    - bulk_proteomics/notebooks/08_protein_profileplots.qmd
     - phosphoproteomics/notebooks/01_phospho_qc.qmd
     - phosphoproteomics/notebooks/02_msstatsptm.qmd
     - phosphoproteomics/notebooks/03_phospho_DE_plots.qmd
     - phosphoproteomics/notebooks/04_kinase_activity.qmd
     - phosphoproteomics/notebooks/05_phospho_GSEA.qmd
+    - phosphoproteomics/notebooks/06_phospho_profileplots.qmd
 
 website:
   title: "Giulia Proteomics"
@@ -38,6 +40,8 @@ website:
             text: "6. PPI Networks"
           - href: bulk_proteomics/notebooks/07_subcellular.qmd
             text: "7. Subcellular Stratification"
+          - href: bulk_proteomics/notebooks/08_protein_profileplots.qmd
+            text: "8. Protein Profile Plots"
       - text: "Phosphoproteomics"
         menu:
           - href: phosphoproteomics/notebooks/01_phospho_qc.qmd
@@ -50,6 +54,8 @@ website:
             text: "4. Kinase Activity"
           - href: phosphoproteomics/notebooks/05_phospho_GSEA.qmd
             text: "5. Phospho GSEA"
+          - href: phosphoproteomics/notebooks/06_phospho_profileplots.qmd
+            text: "6b. Phospho Profile Plots"
 
 format:
   html:
