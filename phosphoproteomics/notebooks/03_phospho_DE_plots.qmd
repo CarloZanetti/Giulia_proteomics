@@ -147,35 +147,52 @@ for (cl in unique(res_df$Label)) {
 
 ## Quick sanity check — bulk vs phospho concordance
 
-For each contrast, scatter the protein-level log2FC against the unadjusted phospho log2FC at sites whose protein is present in both. Diagonal = abundance-driven. Off-diagonal = phosphorylation-specific regulation.
+For each contrast, scatter the bulk protein-level log2FC against the unadjusted phospho log2FC at sites whose protein is present in both. Diagonal = abundance-driven. Off-diagonal = phosphorylation-specific regulation.
+
+Points are coloured by **adjusted** phospho FDR (from the `phospho − protein` contrast in notebook 02), not by unadjusted FDR. MSstatsPTM gives `oneConditionMissing` / `completeMissing` sites a sentinel `log2FC = ±Inf` and `p = 0`, which dominate the unadjusted FDR call but carry no real biological signal — they're filtered out here.
 
 ```{r concordance, fig.width=10, fig.height=8}
 ptm_unadj <- fread(file.path(results_dir, "PTM_unadjusted_GroupComparison.csv"))
 prot_res  <- fread(file.path(results_dir, "PROTEIN_GroupComparison.csv"))
 
-# Map each phospho row's parent accession back to the protein result
 ptm_unadj[, Accession := str_extract(Protein, "^[^_;]+")]
 prot_res[, Accession := str_extract(Protein, "^[^;]+")]
 
 cmp <- merge(
   ptm_unadj[, .(Label, SiteProtein = Protein, Accession,
-                Phospho_log2FC = log2FC, Phospho_padj = adj.pvalue)],
-  prot_res[, .(Label, Accession,
-               Protein_log2FC = log2FC, Protein_padj = adj.pvalue)],
+                Phospho_log2FC = log2FC, Phospho_issue = issue)],
+  prot_res[, .(Label, Accession, Protein_log2FC = log2FC)],
   by = c("Label", "Accession")
 )
 
-p_scat <- ggplot(cmp,
-                 aes(Protein_log2FC, Phospho_log2FC,
-                     color = Phospho_padj < 0.05)) +
+# Bring in adjusted (phospho − protein) FDR from notebook 02 — `res_df` is already
+# loaded above. SiteProtein matches the adjusted table's `Protein` column.
+cmp <- merge(
+  cmp,
+  res_df[, .(Label, SiteProtein = Protein, Adj_padj = adj.pvalue)],
+  by = c("Label", "SiteProtein"),
+  all.x = TRUE
+)
+
+cmp_plot <- cmp[is.finite(Phospho_log2FC) & is.finite(Protein_log2FC)]
+cmp_plot[, Significant := !is.na(Adj_padj) & Adj_padj < 0.05]
+
+cat("Sentinel rows dropped:", nrow(cmp) - nrow(cmp_plot),
+    " | retained:", nrow(cmp_plot),
+    " | significant (adj FDR < 0.05):", sum(cmp_plot$Significant), "\n")
+
+p_scat <- ggplot(cmp_plot,
+                 aes(Protein_log2FC, Phospho_log2FC, color = Significant)) +
   geom_point(alpha = 0.5, size = 1) +
   geom_abline(slope = 1, intercept = 0, linetype = "dashed", color = "grey30") +
   geom_hline(yintercept = 0, linetype = "dotted", color = "grey60") +
   geom_vline(xintercept = 0, linetype = "dotted", color = "grey60") +
   scale_color_manual(values = c("TRUE" = "firebrick3", "FALSE" = "grey60"),
-                     name   = "Phospho FDR < 0.05") +
+                     labels = c("TRUE" = "Significant", "FALSE" = "n.s."),
+                     name   = "Adjusted phospho FDR < 0.05") +
   facet_wrap(~ Label, ncol = 3, scales = "free") +
-  labs(title = "Phospho vs Protein log2FC per contrast",
+  labs(title    = "Phospho vs Protein log2FC per contrast",
+       subtitle = "Coloured by adjusted (phospho − protein) FDR; MSstats sentinel sites removed",
        x = "Protein log2FC (bulk)",
        y = "Phospho log2FC (unadjusted)") +
   theme_bw(base_size = 11) +
@@ -184,19 +201,5 @@ p_scat <- ggplot(cmp,
 print(p_scat)
 ggsave(file.path(results_dir, "Phospho_vs_Protein_log2FC_scatter.pdf"),
        p_scat, width = 12, height = 8, device = cairo_pdf)
-```
-```{r}
-# 1. Diagnose: how many sites are at the sentinel values?
-ptm_unadj[, .(.N), by = .(Label, log2FC)][order(-N)][1:20]
-# If you see large N at specific extreme values, those are the sentinels.
-
-# 2. Flag them explicitly rather than letting them dominate the plot
-cmp[, imputed_phospho := abs(Phospho_log2FC) >= quantile(abs(Phospho_log2FC), 0.999, na.rm = TRUE) &
-                         duplicated(Phospho_log2FC) | 
-                         duplicated(Phospho_log2FC, fromLast = TRUE)]
-
-# Better: MSstats sets a column `issue` for these. Check it:
-unique(ptm_unadj$issue)
-# Look for "oneConditionMissing" or similar — those are your sentinel rows.
 ```
 

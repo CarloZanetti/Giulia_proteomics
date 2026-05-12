@@ -4,6 +4,6 @@ results/
 scripts/
 .DS_Store
 logs/
-
+context/
 /.quarto/
 pdfs/
