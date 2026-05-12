@@ -55,7 +55,7 @@ website:
           - href: phosphoproteomics/notebooks/05_phospho_GSEA.qmd
             text: "5. Phospho GSEA"
           - href: phosphoproteomics/notebooks/06_phospho_profileplots.qmd
-            text: "6b. Phospho Profile Plots"
+            text: "6. Phospho Profile Plots"
 
 format:
   html:

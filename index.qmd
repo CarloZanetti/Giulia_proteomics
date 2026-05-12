@@ -29,6 +29,7 @@ Four genotypes, 4 animals each (n=16 total):
 | [5. Microglia × APP-NLGF](bulk_proteomics/notebooks/05_microglia_app_modulated.qmd) | Microglia-attributable proteins further modulated by APP-NLGF — interaction hits, UpSet, heatmap |
 | [6. PPI Networks](bulk_proteomics/notebooks/06_PPI.qmd) | STRINGdb interaction networks and hub proteins per contrast |
 | [7. Subcellular Stratification](bulk_proteomics/notebooks/07_subcellular.qmd) | UniProt subcellular-location and secretome stratification of significant hits |
+| [8. Protein Profile Plots](bulk_proteomics/notebooks/08_protein_profileplots.qmd) | Per-protein profile plots across genotypes for selected hits |
 
 ### Phosphoproteomics
 
@@ -39,3 +40,4 @@ Four genotypes, 4 animals each (n=16 total):
 | [3. Phospho DE Plots](phosphoproteomics/notebooks/03_phospho_DE_plots.qmd) | Volcano plots of adjusted phospho contrasts, plus phospho-vs-protein concordance scatter |
 | [4. Kinase Activity](phosphoproteomics/notebooks/04_kinase_activity.qmd) | Inferred kinase activities per contrast via decoupleR + OmniPath kinase–substrate network |
 | [5. Phospho GSEA](phosphoproteomics/notebooks/05_phospho_GSEA.qmd) | Pathway enrichment over GO/KEGG/C8 using gene-level rolled-up phospho ranks |
+| [6. Phospho Profile Plots](phosphoproteomics/notebooks/06_phospho_profileplots.qmd) | Per-phosphosite profile plots across genotypes for selected hits |
