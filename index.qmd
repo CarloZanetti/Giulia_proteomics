@@ -41,3 +41,4 @@ Four genotypes, 4 animals each (n=16 total):
 | [4. Kinase Activity](phosphoproteomics/notebooks/04_kinase_activity.qmd) | Inferred kinase activities per contrast via decoupleR + OmniPath kinase–substrate network |
 | [5. Phospho GSEA](phosphoproteomics/notebooks/05_phospho_GSEA.qmd) | Pathway enrichment over GO/KEGG/C8 using gene-level rolled-up phospho ranks |
 | [6. Phospho Profile Plots](phosphoproteomics/notebooks/06_phospho_profileplots.qmd) | Per-phosphosite profile plots across genotypes for selected hits |
+| [7. Power Downsampling](phosphoproteomics/notebooks/07_power_downsampling.qmd) | Empirical power curve for the Interaction contrast — subsample N∈{2,3,4} reps per condition, re-run MSstatsPTM + decoupleR per draw in parallel |
